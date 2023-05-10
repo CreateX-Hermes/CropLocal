@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "HermesApp",
+    "slug": "HermesApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "HermesApp"
+}
