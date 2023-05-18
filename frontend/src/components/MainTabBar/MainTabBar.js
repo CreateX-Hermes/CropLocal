@@ -1,5 +1,9 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 const MainTabBar = () => {
 
@@ -11,7 +15,7 @@ const MainTabBar = () => {
                     style={styles.barImageLeft}
                 />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity style={{ marginHorizontal: '24%' }}>
                 <Image
                     source={require('../../assets/Plus.png')}
                     style={styles.barImageMiddle}
@@ -32,13 +36,12 @@ const styles = StyleSheet.create({
         position: 'relative',
         width: 30,
         height: 30,
-        left: '70%'
+        marginLeft: '0%',
     },
     barImageRight: {
         position: 'relative',
         width: 30,
         height: 30,
-        right: '70%'
     },
     barImageMiddle: {
         position: 'relative',
@@ -47,13 +50,13 @@ const styles = StyleSheet.create({
     },
     MainTabBarStyle: {
         backgroundColor: 'white',
-        minWidth: '80%',
-        maxWidth: '80%',
+        minWidth: '72%',
+        maxWidth: '72%',
         minHeight: '8%',
         flexDirection: 'row',
-        justifyContent: 'space-between',
         alignItems: 'center',
-        borderRadius: '100%'
+        borderRadius: '100%',
+        justifyContent: 'center'
     }
 });
 

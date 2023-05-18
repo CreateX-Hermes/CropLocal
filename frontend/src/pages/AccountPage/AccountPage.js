@@ -2,6 +2,7 @@ import { StyleSheet, View, SafeAreaView, TouchableOpacity } from 'react-native'
 import React, { useLayoutEffect } from 'react'
 import { IconButton, Button, Text, Avatar, Divider} from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
+import MainTabBar from '../../components/MainTabBar/MainTabBar';
 
 // <Divider style={{ width: '86%', alignSelf: 'center', marginTop: '3.6%', paddingTop: '0.3%' }}/>
 
@@ -15,8 +16,8 @@ const AccountPage = () => {
     }, []);
 
     return (
-        <SafeAreaView style={{ backgroundColor: '#071930',}}>
-            <View style={{ backgroundColor: '#071930', width: '100%', height: '100%', zIndex: '0'}}>
+        <SafeAreaView style={{ backgroundColor: '#071930', flex: 1}}>
+            <View style={{ backgroundColor: '#071930', width: '100%', height: '100%', zIndex: '0', flex: 3}}>
                 <View style={{ alignItems: 'center' }}>
                     <View style={{zIndex: '1', flexDirection: 'row', display: 'flex', alignItems: 'flex-start'}}>
                         <IconButton icon='cog' iconColor='#000000' backgroundColor='#FFFFFF' size={34} />
@@ -65,6 +66,11 @@ const AccountPage = () => {
                         <Text style={styles.text9}>Start Now</Text>
                     </View>
                 </TouchableOpacity>
+                
+                <Divider style={{ width: '86%', alignSelf: 'center', marginTop: '7%', paddingTop: '0.3%' }}/>
+            </View>
+            <View style={{ zIndex: '1', alignItems: 'center', flex: .26}}>
+                <MainTabBar />
             </View>
         </SafeAreaView>
     )
