@@ -69,9 +69,6 @@ const AccountPage = () => {
                 
                 <Divider style={{ width: '86%', alignSelf: 'center', marginTop: '7%', paddingTop: '0.3%' }}/>
             </View>
-            <View style={{ zIndex: '1', alignItems: 'center', flex: .26}}>
-                <MainTabBar />
-            </View>
         </SafeAreaView>
     )
 }
