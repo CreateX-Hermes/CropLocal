@@ -28,9 +28,6 @@ const HomePage = () => {
                 <View style={{ zIndex: '1' }}>
                 </View>
             </View>
-            <View style={{ flex: 0.26, zIndex: '1' }}>
-                <MainTabBar />
-            </View>
         </SafeAreaView>
     );
 }
