@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  SafeAreaView,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, View, TextInput, SafeAreaView, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import HomePage from '../HomePage/HomePage';
 import ForgotPassword from './ForgotPassword';
@@ -25,7 +18,7 @@ const Login = () => {
             <Text style={styles.brandName}>Hermes</Text>
           </View>
 
-          <Text style={styles.loginContinueTxt}>Login in to continue</Text>
+          <Text style={styles.loginContinueTxt}>Login</Text>
           <TextInput style={styles.input} placeholder="Email" />
           <TextInput style={styles.input} placeholder="Password" />
 
@@ -33,7 +26,7 @@ const Login = () => {
               {/******************** LOGIN BUTTON *********************/}
               <TouchableOpacity
                 onPress={() => navigation.navigate(BottomTabNavigator)}
-                activeOpacity={0.7}
+                
                 style={styles.loginBtn}>
                 <Text style={styles.loginText}>Log In</Text>
               </TouchableOpacity>
@@ -48,7 +41,7 @@ const Login = () => {
 
         <View style={styles.footer}>
           <Text style={styles.footerText}> Don't have an account? </Text>
-          {/******************** REGISTER BUTTON *********************/}
+          {/******************** Signup BUTTON *********************/}
           <TouchableOpacity
           onPress={() => navigation.navigate(Signup)}>
             <Text style={styles.signupBtn}>Sign Up</Text>
@@ -66,10 +59,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 16,
+    padding: '16%',
   },
   container: {
-    padding: 15,
+    padding: '5%',
     width: '100%',
     position: 'relative',
     flex: 1,
@@ -77,39 +70,31 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   brandName: {
-    fontSize: 42,
+    fontSize: '42em',
     textAlign: 'center',
     fontWeight: 'bold',
-    color: '#000000',
+    color: '#E5B07A',
     opacity: 0.9,
   },
   loginContinueTxt: {
-    fontSize: 21,
+    fontSize: '21em',
     textAlign: 'center',
     color: '#000000',
-    marginBottom: 16,
+    marginBottom: '10%',
     fontWeight: 'bold',
   },
   input: {
     borderWidth: 1,
     borderColor: '#000000',
-    padding: 15,
-    marginVertical: 10,
-    borderRadius: 5,
-    height: 55,
-    paddingVertical: 0,
+    padding: '5%',
+    marginVertical: '3%',
+    borderRadius: 10,
+    height: '12%',
   },
   // Login Btn Styles
   loginBtnWrapper: {
-    height: 55,
-    marginTop: 12,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.4,
-    shadowRadius: 3,
+    height: '13%',
+    marginTop: '5%',
     elevation: 5,
   },
   linearGradient: {
@@ -120,19 +105,22 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
-    height: 55,
+    alignSelf: 'center',
+    width: '60%',
+    height: '86%',
+    backgroundColor: '#000000',
+    borderRadius: 50
   },
   loginText: {
     color: '#FFFFFF',
-    fontSize: 16,
+    fontSize: '16em',
     fontWeight: '400',
   },
   forgotPassText: {
     color: '#000000',
     textAlign: 'center',
     fontWeight: 'bold',
-    marginTop: 15,
+    marginTop: '3%',
   },
   // footer
   footer: {
@@ -146,7 +134,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   signupBtn: {
-    color: '#000000',
+    color: '#E5B07A',
     fontWeight: 'bold',
   },
   // utils
@@ -157,9 +145,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 20,
+    marginBottom: '10%',
   },
   mr7: {
-    marginRight: 7,
+    marginRight: '7%',
   },
 });
