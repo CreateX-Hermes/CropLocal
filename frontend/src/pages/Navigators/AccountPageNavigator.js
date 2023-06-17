@@ -30,17 +30,20 @@ const AccountPageNavigator = () => {
         name="Settings"
         component={Settings}
       />
-      <Stack.Screen name="FindFriends" 
-       component={FindFriends} 
+      <Stack.Screen
+        name="FindFriends"
+        component={FindFriends}
       />
        <Stack.Screen name="Messages" 
        component={Messages} 
       />
-      <Stack.Screen name="MyFriends" 
-       component={MyFriends} 
+      <Stack.Screen
+        name="MyFriends"
+        component={MyFriends}
       />
-      <Stack.Screen name="BecomeALocal" 
-       component={BecomeALocal} 
+      <Stack.Screen
+        name="BecomeALocal"
+        component={BecomeALocal}
       />
     </Stack.Navigator>
   );

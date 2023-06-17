@@ -2,11 +2,11 @@ import React, { useLayoutEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomePage from "../HomePage/HomePage.js";
 import PlusPopup from "../PlusPopup/PlusPopup.js";
-import AccountPage from "../AccountPage/AccountPage.js";
 import { View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import { IconButton, Button, Text } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import HomePageNavigator from "./HomePageNavigator.js";
+import AccountPageNavigator from "./AccountPageNavigator.js";
 
 
 const Tab = createBottomTabNavigator();
@@ -68,7 +68,7 @@ const BottomTabNavigator = () => {
           )
         }}
         />
-        <Tab.Screen name="Account" component={AccountPage}
+        <Tab.Screen name="AccountPageNavigator" component={AccountPageNavigator}
         options={{
           tabBarIcon: () => (
             <View style={{ justifyContent: 'center', top: '50%' }}>

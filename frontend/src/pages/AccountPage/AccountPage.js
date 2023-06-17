@@ -6,8 +6,9 @@ import MainTabBar from '../../components/MainTabBar/MainTabBar';
 import Messages from '../Messages/Messages';
 import Settings from '../Settings/Settings';
 import FindFriends from '../FindFriends/FindFriends';
-import MyFriends from '../MyFriends/MyFriends.js';
-import BecomeALocal from '../BecomeALocal/BecomeALocal.js';
+import BecomeALocal from '../BecomeALocal/BecomeALocal';
+import MyFriends from '../MyFriends/MyFriends';
+
 
 
 // <Divider style={{ width: '86%', alignSelf: 'center', marginTop: '3.6%', paddingTop: '0.3%' }}/>
@@ -50,11 +51,14 @@ const AccountPage = () => {
                         <Text style={styles.text2}>
                             @GregMadar1
                         </Text>
-                        <Text style={ styles.text4 }>176 friends</Text>
+                        <TouchableOpacity
+                        onPress={() => navigation.navigate(MyFriends)}>
+                            <Text style={ styles.text4 }>176 friends</Text>
+                        </TouchableOpacity>
                     </View>
                     <View style={{ flexDirection: 'column', marginLeft: '14%'}}>
                         <TouchableOpacity 
-                        
+                        onPress={() => navigation.navigate(FindFriends)}
                         style={{ paddingTop: '16%'}}>
                             <View style={{ backgroundColor: '#FFFFFF', borderRadius: 20, alignItems: 'center', paddingVertical: '8.6%', paddingHorizontal: '3.6%'}}>
                                 <Text style={styles.text5}>Find Friends</Text>
@@ -77,7 +81,9 @@ const AccountPage = () => {
                 place you call home. Become a Local guide below 
                 and start working for yourself...
                 </Text>
-                <TouchableOpacity style={{ paddingTop: '7%'}}>
+                <TouchableOpacity 
+                onPress={() => navigation.navigate(BecomeALocal)}
+                style={{ paddingTop: '7%'}}>
                     <View style={{ backgroundColor: '#E5B07A', borderRadius: 20, alignItems: 'center', width: '28%', alignSelf: 'center', paddingVertical: '2.8%'}}>
                         <Text style={styles.text9}>Start Now</Text>
                     </View>
