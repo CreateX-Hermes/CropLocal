@@ -3,11 +3,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Login from '../Auth/Login.js'
 import Signup from '../Auth/Signup';
 import ForgotPassword from '../Auth/ForgotPassword';
-import HomePage from '../HomePage/HomePage';
 import BottomTabNavigator from './BottomTabNavigator.js';
 
 const Stack = createStackNavigator();
-// Navigator, Screen, Group
 
 const AuthNavigator = () => {
   return (

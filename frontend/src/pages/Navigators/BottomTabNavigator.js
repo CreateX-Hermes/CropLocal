@@ -6,6 +6,7 @@ import AccountPage from "../AccountPage/AccountPage.js";
 import { View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import { IconButton, Button, Text } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
+import HomePageNavigator from "./HomePageNavigator.js";
 
 
 const Tab = createBottomTabNavigator();
@@ -35,7 +36,7 @@ const BottomTabNavigator = () => {
           }
         }}
       >
-        <Tab.Screen name="Home" component={HomePage}
+        <Tab.Screen name="Home" component={HomePageNavigator}
         options={{
           tabBarIcon: () => (
             <View style={{ justifyContent: 'center', top: '50%' }}>

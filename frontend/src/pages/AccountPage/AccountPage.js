@@ -3,6 +3,12 @@ import React, { useLayoutEffect } from 'react'
 import { IconButton, Button, Text, Avatar, Divider} from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import MainTabBar from '../../components/MainTabBar/MainTabBar';
+import Messages from '../Messages/Messages';
+import Settings from '../Settings/Settings';
+import FindFriends from '../FindFriends/FindFriends';
+import MyFriends from '../MyFriends/MyFriends.js';
+import BecomeALocal from '../BecomeALocal/BecomeALocal.js';
+
 
 // <Divider style={{ width: '86%', alignSelf: 'center', marginTop: '3.6%', paddingTop: '0.3%' }}/>
 
@@ -20,11 +26,19 @@ const AccountPage = () => {
             <View style={{ backgroundColor: '#071930', width: '100%', height: '100%', zIndex: '0', flex: 3}}>
                 <View style={{ alignItems: 'center' }}>
                     <View style={{zIndex: '1', flexDirection: 'row', display: 'flex', alignItems: 'flex-start'}}>
-                        <IconButton icon='cog' iconColor='#000000' backgroundColor='#FFFFFF' size={34} />
+                    <IconButton 
+                    onPress={() => navigation.navigate(Settings)}
+                    icon='cog' iconColor='#000000' 
+                    backgroundColor='#FFFFFF' 
+                    size={34} />
                         <View style={{display: 'flex', marginHorizontal: '5.5%', borderColor: '#FFFFFF', borderWidth: '5%', borderRadius: 100, marginTop: '5%'}}>
                             <Avatar.Image backgroundColor='#FFFFFF' size={176} source={require('../../assets/tempProfilePic.png')} style={{ zIndex: '1',}} />
                         </View>
-                        <IconButton icon='email' iconColor='#000000' backgroundColor='#FFFFFF' size={34}/>
+                    <IconButton 
+                    onPress={() => navigation.navigate(Messages)} 
+                    icon='email' iconColor='#000000' 
+                    backgroundColor='#FFFFFF' 
+                    size={34} />
                     </View>
                 </View>
                 
@@ -39,7 +53,9 @@ const AccountPage = () => {
                         <Text style={ styles.text4 }>176 friends</Text>
                     </View>
                     <View style={{ flexDirection: 'column', marginLeft: '14%'}}>
-                        <TouchableOpacity style={{ paddingTop: '16%'}}>
+                        <TouchableOpacity 
+                        
+                        style={{ paddingTop: '16%'}}>
                             <View style={{ backgroundColor: '#FFFFFF', borderRadius: 20, alignItems: 'center', paddingVertical: '8.6%', paddingHorizontal: '3.6%'}}>
                                 <Text style={styles.text5}>Find Friends</Text>
                             </View>

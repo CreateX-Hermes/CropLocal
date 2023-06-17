@@ -1,18 +1,16 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const SignUp = () => {
+const HomePageFilter = () => {
   return (
     <View>
-      <Text>SignUp</Text>
+      <Text>HomePageFilter</Text>
     </View>
   )
 }
 
-export default SignUp
+export default HomePageFilter
 
 const styles = StyleSheet.create({
-    text1: {
-        
-    }
+    
 })
