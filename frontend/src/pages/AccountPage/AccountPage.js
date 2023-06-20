@@ -81,13 +81,18 @@ const AccountPage = () => {
                 place you call home. Become a Local guide below 
                 and start working for yourself...
                 </Text>
+                <View style={{ paddingTop: '6%',alignSelf: 'center' }}>
                 <TouchableOpacity 
                 onPress={() => navigation.navigate(BecomeALocal)}
-                style={{ paddingTop: '7%'}}>
-                    <View style={{ backgroundColor: '#E5B07A', borderRadius: 20, alignItems: 'center', width: '28%', alignSelf: 'center', paddingVertical: '2.8%'}}>
+                style={{ 
+                    backgroundColor: '#E5B07A',
+                    borderRadius: 50,
+                    paddingVertical: '4%'
+                }}>
                         <Text style={styles.text9}>Start Now</Text>
-                    </View>
                 </TouchableOpacity>
+                </View>
+                
                 
                 <Divider style={{ width: '86%', alignSelf: 'center', marginTop: '7%', paddingTop: '0.3%' }}/>
             </View>
@@ -160,5 +165,6 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontWeight: '600',
         fontSize: '12em',
+        paddingHorizontal: '14%',
       },
 })
