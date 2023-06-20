@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomePage from "../HomePage/HomePage.js";
-import PlusPopup from "../PlusPopup/PlusPopup.js";
+import PlusPopupNavigator from "./PlusPopupNavigator.js";
 import { View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import { IconButton, Button, Text } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
@@ -39,7 +39,7 @@ const BottomTabNavigator = () => {
         <Tab.Screen name="Home" component={HomePageNavigator}
         options={{
           tabBarIcon: () => (
-            <View style={{ justifyContent: 'center', top: '50%' }}>
+            <View style={{ justifyContent: 'center', top: '50%', }}>
               <Image
                     source={require('../../assets/Home.png')}
                     resizeMode='contain'
@@ -52,7 +52,7 @@ const BottomTabNavigator = () => {
           )
         }}
         />
-        <Tab.Screen name="Popup" component={PlusPopup}
+        <Tab.Screen name="Popup" component={PlusPopupNavigator}
         options={{
           tabBarIcon: () => (
             <View style={{ justifyContent: 'center', top: '50%' }}>
