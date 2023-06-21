@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import AccountPage from '../AccountPage/AccountPage';
-import Settings from '../Settings/Settings.js';
+import SettingsPageNavigator from './SettingsPageNavigator';
 import MyFriends from '../MyFriends/MyFriends.js';
 import BecomeALocal from '../BecomeALocal/BecomeALocal.js';
 import Messages from '../Messages/Messages.js';
@@ -28,7 +28,7 @@ const AccountPageNavigator = () => {
         options={{headerShown: false}} />
       <Stack.Screen
         name="Settings"
-        component={Settings}
+        component={SettingsPageNavigator}
       />
       <Stack.Screen
         name="FindFriends"
