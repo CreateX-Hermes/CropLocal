@@ -1,10 +1,14 @@
 import React, { useLayoutEffect } from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomePage from '../HomePage/HomePage';
-import Settings from '../Settings/Settings.js';
 import HomePageFilter from '../HomePageFilter/HomePageFilter.js';
 import Messages from '../Messages/Messages.js';
 import { useNavigation } from '@react-navigation/native';
+import EditProfile from '../EditProfile/EditProfile';
+import MyWallet from '../MyWallet/MyWallet';
+import Help from '../Help/Help';
+import Login from '../Auth/Login';
+import BecomeALocal from '../BecomeALocal/BecomeALocal';
 
 const Stack = createStackNavigator();
 
@@ -24,15 +28,29 @@ const HomePageNavigator = () => {
         name="HomePage"
         component={HomePage}
         options={{headerShown: false}} />
-      <Stack.Screen
-        name="Settings"
-        component={Settings}
-      />
       <Stack.Screen name="HomePageFilter" 
        component={HomePageFilter} 
       />
        <Stack.Screen name="Messages" 
        component={Messages} 
+      />
+      <Stack.Screen
+        name="BecomeALocal"
+        component={BecomeALocal}
+      />
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfile}
+      />
+       <Stack.Screen name="MyWallet" 
+       component={MyWallet} 
+      />
+      <Stack.Screen name="Help" 
+       component={Help} 
+      />
+      <Stack.Screen name="Login" 
+       component={Login} 
+       options={{headerShown: false}}
       />
     </Stack.Navigator>
   );
