@@ -1,16 +1,19 @@
-import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import React, { useLayoutEffect } from 'react';
+import { View, StyleSheet, TouchableOpacity, Image, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AccountPage from '../../pages/AccountPage/AccountPage';
-
-const Stack = createNativeStackNavigator();
+import PlusPopup from '../../pages/PlusPopup/PlusPopup.js';
+import AccountPage from '../../pages/AccountPage/AccountPage.js';
+import HomePage from '../../pages/HomePage/HomePage.js';
+import { useNavigation } from '@react-navigation/native';
 
 const MainTabBar = () => {
+    const navigation = useNavigation();
 
     return (
-        <View style={styles.MainTabBarStyle}>
-            <TouchableOpacity>
+        <View >
+            <View style={styles.MainTabBarStyle}>
+                <TouchableOpacity >
                 <Image
                     source={require('../../assets/Home.png')}
                     style={styles.barImageLeft}
@@ -22,12 +25,14 @@ const MainTabBar = () => {
                     style={styles.barImageMiddle}
                 />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity >
                 <Image
                     source={require('../../assets/User.png')}
                     style={styles.barImageRight}
                 />
             </TouchableOpacity>
+        </View>
+        <View style={{ zIndex: '4', backgroundColor: '#071930', height: '100%',  bottom: '24%', width: '150%', alignSelf:'center' }} />
         </View>
     )
 }
@@ -46,18 +51,19 @@ const styles = StyleSheet.create({
     },
     barImageMiddle: {
         position: 'relative',
-        width: 30,
-        height: 30,
+        width: 34,
+        height: 34,
     },
     MainTabBarStyle: {
         backgroundColor: 'white',
-        minWidth: '72%',
-        maxWidth: '72%',
-        minHeight: '8%',
         flexDirection: 'row',
+        alignSelf: 'center',
         alignItems: 'center',
         borderRadius: '100%',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        paddingVertical: '5%',
+        paddingHorizontal: '8%',
+        zIndex: '5',
     }
 });
 
