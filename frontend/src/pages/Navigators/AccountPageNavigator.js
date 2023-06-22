@@ -1,12 +1,15 @@
 import React, { useLayoutEffect } from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import AccountPage from '../AccountPage/AccountPage';
-import SettingsPageNavigator from './SettingsPageNavigator';
 import MyFriends from '../MyFriends/MyFriends.js';
 import BecomeALocal from '../BecomeALocal/BecomeALocal.js';
 import Messages from '../Messages/Messages.js';
 import { useNavigation } from '@react-navigation/native';
-import FindFriends from '../FindFriends/FindFriends.js'
+import FindFriends from '../FindFriends/FindFriends.js';
+import EditProfile from '../EditProfile/EditProfile';
+import MyWallet from '../MyWallet/MyWallet';
+import Help from '../Help/Help';
+import Login from '../Auth/Login';
 
 const Stack = createStackNavigator();
 
@@ -27,10 +30,6 @@ const AccountPageNavigator = () => {
         component={AccountPage}
         options={{headerShown: false}} />
       <Stack.Screen
-        name="Settings"
-        component={SettingsPageNavigator}
-      />
-      <Stack.Screen
         name="FindFriends"
         component={FindFriends}
       />
@@ -44,6 +43,20 @@ const AccountPageNavigator = () => {
       <Stack.Screen
         name="BecomeALocal"
         component={BecomeALocal}
+      />
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfile}
+      />
+       <Stack.Screen name="MyWallet" 
+       component={MyWallet} 
+      />
+      <Stack.Screen name="Help" 
+       component={Help} 
+      />
+      <Stack.Screen name="Login" 
+       component={Login} 
+       options={{headerShown: false}}
       />
     </Stack.Navigator>
   );
