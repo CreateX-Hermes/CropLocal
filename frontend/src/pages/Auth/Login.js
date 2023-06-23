@@ -18,7 +18,7 @@ const Login = () => {
             <Text style={styles.brandName}>Hermes</Text>
           </View>
 
-          <Text style={styles.loginContinueTxt}>Login</Text>
+          <Text style={styles.loginContinueTxt}>Log In</Text>
           <TextInput style={styles.input} placeholder="Email" />
           <TextInput style={styles.input} placeholder="Password" />
 
@@ -70,26 +70,30 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   brandName: {
-    fontSize: '42em',
+    fontSize: '48em',
     textAlign: 'center',
     fontWeight: 'bold',
     color: '#E5B07A',
     opacity: 0.9,
   },
   loginContinueTxt: {
-    fontSize: '21em',
+    fontSize: '20em',
     textAlign: 'center',
-    color: '#000000',
+    color: '#071930',
     marginBottom: '10%',
-    fontWeight: 'bold',
+    fontWeight: 600,
+    bottom: '6%'
   },
   input: {
-    borderWidth: 1,
-    borderColor: '#000000',
+    borderWidth: 1.5,
+    borderColor: '#071930',
     padding: '5%',
     marginVertical: '3%',
-    borderRadius: 10,
+    borderRadius: '100%',
     height: '12%',
+    fontSize: '16.5em',
+    fontWeight: '400',
+    paddingLeft: '7%'
   },
   // Login Btn Styles
   loginBtnWrapper: {
@@ -106,18 +110,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    width: '60%',
-    height: '86%',
-    backgroundColor: '#000000',
+    width: '36%',
+    height: '68%',
+    backgroundColor: '#071930',
     borderRadius: 50
   },
   loginText: {
     color: '#FFFFFF',
     fontSize: '16em',
-    fontWeight: '400',
+    fontWeight: '500',
   },
   forgotPassText: {
-    color: '#000000',
+    color: '#071930',
     textAlign: 'center',
     fontWeight: 'bold',
     marginTop: '3%',
@@ -125,12 +129,12 @@ const styles = StyleSheet.create({
   // footer
   footer: {
     position: 'absolute',
-    bottom: 20,
+    bottom: '3%',
     textAlign: 'center',
     flexDirection: 'row',
   },
   footerText: {
-    color: '#000000',
+    color: '#071930',
     fontWeight: 'bold',
   },
   signupBtn: {
