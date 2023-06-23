@@ -1,10 +1,27 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-import React from 'react'
-import { Divider} from 'react-native-paper';
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native'
+import React, { useLayoutEffect, useState } from 'react'
+import { Divider, IconButton,} from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 
 const Help = () => {
+  const navigation = useNavigation();
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerShown: false,
+        });
+    }, []);
+
+
   return (
+    <SafeAreaView style={{ backgroundColor: '#FFFFFF' }}>
     <View style={{ backgroundColor: '#FFFFFF', height: '100%' }}>
+    <IconButton 
+      onPress={() => navigation.goBack()}
+      icon='arrow-left' iconColor='#000000' 
+      backgroundColor='#F5F5F5' 
+      size={32}
+       style={{ marginLeft: '6%'}} />
       <Text style={styles.text1}>
           Help
       </Text>
@@ -27,6 +44,7 @@ const Help = () => {
         </Text>
       </View>
     </View>
+    </SafeAreaView>
   )
 }
 
@@ -37,7 +55,7 @@ const styles = StyleSheet.create({
     color: '#000000',
     fontWeight: '600',
     fontSize: '36em',
-    paddingTop: '10%',
+    paddingTop: '2%',
     paddingLeft: '7%'
   }, 
   text2: {
@@ -77,4 +95,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     paddingLeft: '4%'
   }, 
+  text7: {
+    width: 18,
+    height: 18,
+    alignSelf: 'center',
+  },
 })
