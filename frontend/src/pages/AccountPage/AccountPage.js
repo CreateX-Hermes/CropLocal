@@ -146,32 +146,32 @@ const AccountPage = () => {
                         onPress={toggleModal}
                         icon='window-close' iconColor='#000000' 
                         backgroundColor='#FFFFFF' 
-                        size={34}
+                        size={32}
                         style={{ marginLeft: '6%'}} />
                         
                         <View style={{ alignSelf: 'center', width: '86%', paddingTop: '4%'}}>
-                            <TouchableOpacity style={{ backgroundColor: '#FFFFFF', alignItems: 'center', paddingVertical: '4%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}
+                            <TouchableOpacity style={{ backgroundColor: '#FFFFFF', alignItems: 'center', paddingVertical: '3.6%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}
                             onPress={handleEditProfilePress}  >
                                 <Image source={require('../../assets/profileUser.png')} style={ styles.text15 }/>
                                 <Text style={styles.text19}>Edit Profile</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={{ alignSelf: 'center', width: '86%', paddingTop: '3%'}}>
-                            <TouchableOpacity style={{ backgroundColor: '#FFFFFF', alignItems: 'center', paddingVertical: '4%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}
+                            <TouchableOpacity style={{ backgroundColor: '#FFFFFF', alignItems: 'center', paddingVertical: '3.6%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}
                             onPress={handleBecomeALocalPress}>
                                 <Image source={require('../../assets/write.png')} style={ styles.text15 }/>
                                 <Text style={styles.text19}>Become A Local</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={{ alignSelf: 'center', width: '86%', paddingTop: '3%'}}>
-                            <TouchableOpacity style={{ backgroundColor: '#FFFFFF', alignItems: 'center', paddingVertical: '4%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}
+                            <TouchableOpacity style={{ backgroundColor: '#FFFFFF', alignItems: 'center', paddingVertical: '3.6%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}
                             onPress={handleMyWalletPress}>
                                 <Image source={require('../../assets/dollar.png')} style={ styles.text15 }/>
                                 <Text style={styles.text19}>My Wallet</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={{ alignSelf: 'center', width: '86%', paddingTop: '3%'}}>
-                            <TouchableOpacity style={{  backgroundColor: '#FFFFFF', alignItems: 'center', paddingVertical: '4%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}
+                            <TouchableOpacity style={{  backgroundColor: '#FFFFFF', alignItems: 'center', paddingVertical: '3.6%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}
                             onPress={handleHelpPress}>
                                 <Image source={require('../../assets/communication.png')} style={ styles.text15 }/>
                                 <Text style={styles.text19}>Help</Text>
