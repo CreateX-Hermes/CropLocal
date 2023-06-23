@@ -118,12 +118,19 @@ const HomePage = () => {
                 <Modal visible={isModalVisible} animationType="fade" >
                     <SafeAreaView  backgroundColor='#071930'>
                     <View backgroundColor='#071930' height='100%'>
-                    <IconButton 
-                        onPress={toggleModal}
-                        icon='window-close' iconColor='#000000' 
-                        backgroundColor='#FFFFFF' 
-                        size={32}
-                        style={{ marginLeft: '6%'}} />
+                    <TouchableOpacity 
+                                onPress={toggleModal}
+                                style={{ 
+                                backgroundColor: '#F5F5F5',
+                                borderRadius: 100,
+                                justifyContent: 'center',
+                                height: '6.6%',
+                                width: '13%',
+                                marginLeft: '6%',
+                                marginTop: '1.6%'
+                                }}>
+                                    <Image source={require('../../assets/closeCancel.png')} style={ styles.text14 }/>
+                                </TouchableOpacity>
                         
                         <View style={{ alignSelf: 'center', width: '86%', paddingTop: '4%'}}>
                             <TouchableOpacity style={{ backgroundColor: '#FFFFFF', alignItems: 'center', paddingVertical: '3.6%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}
@@ -164,12 +171,19 @@ const HomePage = () => {
                 <Modal visible={isFilterModalVisible} animationType="fade">
                     <SafeAreaView  backgroundColor='#FFFFFF'>
                         <View backgroundColor='#FFFFFF' height='100%'>
-                            <IconButton 
-                            onPress={toggleFilterModal}
-                            icon='window-close' iconColor='#000000' 
-                            backgroundColor='#F5F5F5' 
-                            size={32}
-                            style={{ marginLeft: '6%'}} />
+                        <TouchableOpacity 
+                                onPress={toggleFilterModal}
+                                style={{ 
+                                backgroundColor: '#F5F5F5',
+                                borderRadius: 100,
+                                justifyContent: 'center',
+                                height: '6.6%',
+                                width: '13%',
+                                marginLeft: '6%',
+                                marginTop: '1.6%'
+                                }}>
+                                    <Image source={require('../../assets/closeCancel.png')} style={ styles.text14 }/>
+                                </TouchableOpacity>
 
                             <Text style={styles.text17}>Where are you traveling?</Text>
                             <TextInput style={styles.input} placeholder="Paris, France" />
@@ -262,8 +276,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
       },
           text14: {
-            width: 18,
-            height: 18,
+            width: 20,
+            height: 20,
             alignSelf: 'center',
           },
           text15: {

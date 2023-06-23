@@ -142,12 +142,19 @@ const AccountPage = () => {
                 <Modal visible={isModalVisible} animationType="fade" >
                     <SafeAreaView backgroundColor='#071930'>
                     <View backgroundColor='#071930' height='100%'>
-                    <IconButton 
-                        onPress={toggleModal}
-                        icon='window-close' iconColor='#000000' 
-                        backgroundColor='#FFFFFF' 
-                        size={32}
-                        style={{ marginLeft: '6%'}} />
+                    <TouchableOpacity 
+                                onPress={toggleModal}
+                                style={{ 
+                                backgroundColor: '#F5F5F5',
+                                borderRadius: 100,
+                                justifyContent: 'center',
+                                height: '6.6%',
+                                width: '13%',
+                                marginLeft: '6%',
+                                marginTop: '1.6%'
+                                }}>
+                                    <Image source={require('../../assets/closeCancel.png')} style={ styles.text14 }/>
+                                </TouchableOpacity>
                         
                         <View style={{ alignSelf: 'center', width: '86%', paddingTop: '4%'}}>
                             <TouchableOpacity style={{ backgroundColor: '#FFFFFF', alignItems: 'center', paddingVertical: '3.6%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}
@@ -266,6 +273,11 @@ const styles = StyleSheet.create({
             fontWeight: '700',
             fontSize: '20em',
             position: 'relative',
+            alignSelf: 'center',
+          },
+          text14: {
+            width: 20,
+            height: 20,
             alignSelf: 'center',
           },
           text19: {
