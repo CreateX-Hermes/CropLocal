@@ -1,10 +1,34 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, TouchableOpacity, Image, SafeAreaView } from 'react-native'
+import React, { useLayoutEffect} from 'react'
 import { Divider} from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 
 const MyWallet = () => {
+  const navigation = useNavigation();
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerShown: false,
+        });
+    }, []);
+
+
   return (
+    <SafeAreaView style={{ backgroundColor: '#FFFFFF' }}>
     <View style={{ backgroundColor: '#FFFFFF', height: '100%' }}>
+    <TouchableOpacity 
+      onPress={() => navigation.goBack()}
+      style={{ 
+      backgroundColor: '#F5F5F5',
+      borderRadius: 100,
+      justifyContent: 'center',
+      height: '6.6%',
+      width: '13%',
+      marginLeft: '6%',
+      marginTop: '1.6%'
+      }}>
+          <Image source={require('../../assets/left.png')} style={ styles.text10 }/>
+      </TouchableOpacity>
       <Text style={styles.text1}>
           My Wallet
       </Text>
@@ -41,6 +65,7 @@ const MyWallet = () => {
                 </TouchableOpacity>
                 </View>
     </View>
+    </SafeAreaView>
   )
 }
 
@@ -51,7 +76,7 @@ const styles = StyleSheet.create({
     color: '#000000',
     fontWeight: '600',
     fontSize: '36em',
-    paddingTop: '10%',
+    paddingTop: '2%',
     paddingLeft: '7%'
   }, 
   text2: {
@@ -110,5 +135,10 @@ const styles = StyleSheet.create({
     height: 38,
     alignSelf: 'center',
     marginLeft: '7%'
+  },
+  text10: {
+    width: 28,
+    height: 28,
+    alignSelf: 'center',
   },
 })

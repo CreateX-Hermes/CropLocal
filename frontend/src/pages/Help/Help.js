@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native'
-import React, { useLayoutEffect, useState } from 'react'
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image } from 'react-native'
+import React, { useLayoutEffect} from 'react'
 import { Divider, IconButton,} from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 
@@ -16,12 +16,19 @@ const Help = () => {
   return (
     <SafeAreaView style={{ backgroundColor: '#FFFFFF' }}>
     <View style={{ backgroundColor: '#FFFFFF', height: '100%' }}>
-    <IconButton 
+    <TouchableOpacity 
       onPress={() => navigation.goBack()}
-      icon='arrow-left' iconColor='#000000' 
-      backgroundColor='#F5F5F5' 
-      size={32}
-       style={{ marginLeft: '6%'}} />
+      style={{ 
+      backgroundColor: '#F5F5F5',
+      borderRadius: 100,
+      justifyContent: 'center',
+      height: '6.6%',
+      width: '13%',
+      marginLeft: '6%',
+      marginTop: '1.6%'
+      }}>
+          <Image source={require('../../assets/left.png')} style={ styles.text7 }/>
+      </TouchableOpacity>
       <Text style={styles.text1}>
           Help
       </Text>
@@ -96,8 +103,8 @@ const styles = StyleSheet.create({
     paddingLeft: '4%'
   }, 
   text7: {
-    width: 18,
-    height: 18,
+    width: 28,
+    height: 28,
     alignSelf: 'center',
   },
 })
