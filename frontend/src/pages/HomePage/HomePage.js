@@ -42,6 +42,8 @@ const HomePage = () => {
 
     const [isFilterModalVisible, setFilterModalVisible] = useState(false);
 
+    const [isExtraSearchModalVisible, setExtraSearchModalVisible] = useState(false);
+
     const toggleFilterModal = () => {
         setFilterModalVisible(!isFilterModalVisible);
     };
@@ -49,6 +51,10 @@ const HomePage = () => {
 
     const toggleModal = () => {
         setModalVisible(!isModalVisible);
+    };
+
+    const toggleExtraSearchModal = () => {
+        setExtraSearchModalVisible(!isExtraSearchModalVisible);
     };
 
     const handleSearchPress = () => {
@@ -186,7 +192,8 @@ const HomePage = () => {
                                 </TouchableOpacity>
 
                             <Text style={styles.text17}>Where are you traveling?</Text>
-                            <TextInput style={styles.input} placeholder="Paris, France" />
+                            <TextInput style={styles.input} placeholder="Paris, France" onPressIn={toggleExtraSearchModal} />
+ 
                                 
                             <Divider style={{ width: '86%', alignSelf: 'center', marginTop: '4%', paddingTop: '0.3%' }}/>
 
@@ -245,7 +252,34 @@ const HomePage = () => {
                                 </View>
                         </View>
                     </SafeAreaView>
+
+                    {/*/ ExtraSearchModal */}
+                <Modal visible={isExtraSearchModalVisible} animationType="fade">
+                    <SafeAreaView  backgroundColor='#FFFFFF'>
+                        <View backgroundColor='#FFFFFF' height='100%'>
+                        <TouchableOpacity 
+                                onPress={toggleExtraSearchModal}
+                                style={{ 
+                                backgroundColor: '#F5F5F5',
+                                borderRadius: 100,
+                                justifyContent: 'center',
+                                height: '6.6%',
+                                width: '13%',
+                                marginLeft: '6%',
+                                marginTop: '1.6%'
+                                }}>
+                                    <Image source={require('../../assets/closeCancel.png')} style={ styles.text14 }/>
+                                </TouchableOpacity>
+
+                            <Text style={styles.text17}>Where are you traveling?</Text>
+                            <TextInput style={styles.input} placeholder="Paris, France" onEndEditing={toggleExtraSearchModal}/>
+ 
+                        </View>
+                    </SafeAreaView>
+                    </Modal>
                 </Modal>
+
+                
 
             </View>
         </SafeAreaView>

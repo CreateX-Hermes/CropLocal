@@ -50,6 +50,8 @@ const Help = () => {
           hermeshelp@gmail.com
         </Text>
       </View>
+      
+      <View style={{ backgroundColor: '#071930', width: '100%', height: '200%', position: 'absolute', top: '96%' }} />
     </View>
     </SafeAreaView>
   )
