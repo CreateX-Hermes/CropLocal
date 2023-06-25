@@ -64,6 +64,7 @@ const MyWallet = () => {
                         <Text style={styles.text7}>Edit Payment</Text>
                 </TouchableOpacity>
                 </View>
+        <View style={{ backgroundColor: '#071930', width: '100%', height: '200%', position: 'absolute', top: '96%' }} />
     </View>
     </SafeAreaView>
   )
