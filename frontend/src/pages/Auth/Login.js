@@ -5,8 +5,12 @@ import HomePage from '../HomePage/HomePage';
 import ForgotPassword from './ForgotPassword';
 import Signup from './Signup';
 import BottomTabNavigator from '../Navigators/BottomTabNavigator';
+import { useState } from "react";
+
 
 const Login = () => {
+  const [ email, setEmail ] = useState("")
+  const [ password, setPassword ] = useState("")
   // const {navigation} = props;
   const navigation = useNavigation();
 
@@ -19,8 +23,16 @@ const Login = () => {
           </View>
 
           <Text style={styles.loginContinueTxt}>Log In</Text>
-          <TextInput style={styles.input} placeholder="Email" />
-          <TextInput style={styles.input} placeholder="Password" />
+          <TextInput 
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            style={styles.input} placeholder="Email" />
+
+          <TextInput
+            value={password}
+            onChangeText={(password) => setPassword(password)}
+            secureTextEntry={true}
+            style={styles.input} placeholder="Password" />
 
           <View style={styles.loginBtnWrapper}>
               {/******************** LOGIN BUTTON *********************/}

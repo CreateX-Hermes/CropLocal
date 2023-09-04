@@ -22,7 +22,8 @@ const Signup = () => {
           </View>
 
           <Text style={styles.loginContinueTxt}>Sign Up</Text>
-          <TextInput style={styles.input} placeholder="Full Name" />
+          <TextInput style={styles.input} placeholder="First Name" />
+          <TextInput style={styles.input} placeholder="Last Name" />
           <TextInput style={styles.input} placeholder="Email" />
           <TextInput style={styles.input} placeholder="Create a Password" />
 
