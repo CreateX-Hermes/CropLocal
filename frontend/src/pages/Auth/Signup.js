@@ -18,20 +18,12 @@ const Signup = () => {
       firstName: firstName,
       lastName: lastName,
       email: email,
-      password: password
+      prepassword: password
     }
-    // console.log("test")
-    // axios.post("http://localhost:8000/register", user).then((response) => {
-    //   console.log("test2")
-    //   console.log(response)
-    // }).catch((error) => {
-    //   console.log(error)
-    // })
+
 
     try {
-      console.log("test1")
-      response = await axios.post("http://localhost:8000/register", user)
-      console.log("test2")
+      response = await axios.post("http://localhost:8000/user/register", user)
       console.log(response)
     } catch (error) {
       console.log(error)
