@@ -6,6 +6,7 @@ import ForgotPassword from './ForgotPassword';
 import Signup from './Signup';
 import BottomTabNavigator from '../Navigators/BottomTabNavigator';
 import { useState } from "react";
+import axios from 'axios';
 
 
 const Login = () => {
@@ -13,6 +14,21 @@ const Login = () => {
   const [ password, setPassword ] = useState("")
   // const {navigation} = props;
   const navigation = useNavigation();
+
+  const handleLogin = async () => {
+    const user = {
+      email: email,
+      prepassword: password
+    }
+
+    try {
+      response = await axios.post("http://localhost:8000/user/login", user)
+      console.log(response.data.token)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   return (
     <SafeAreaView style={styles.main}>
@@ -37,7 +53,7 @@ const Login = () => {
           <View style={styles.loginBtnWrapper}>
               {/******************** LOGIN BUTTON *********************/}
               <TouchableOpacity
-                onPress={() => navigation.navigate(BottomTabNavigator)}
+                onPress={() => {handleLogin()}}
                 
                 style={styles.loginBtn}>
                 <Text style={styles.loginText}>Log In</Text>
