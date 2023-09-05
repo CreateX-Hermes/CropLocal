@@ -1,11 +1,43 @@
 import {StyleSheet, Text, View, TextInput, SafeAreaView, TouchableOpacity} from 'react-native';
-import React, { useLayoutEffect, useState } from 'react'
+import React, { useLayoutEffect, useState } from 'react';
 import {useNavigation} from '@react-navigation/native';
 import BottomTabNavigator from '../Navigators/BottomTabNavigator';
+import axios from 'axios';
+import ForgotPassword from './ForgotPassword';
 
 const Signup = () => {
+  const [ firstName, setFirstName ] = useState("")
+  const [ lastName, setLastName ] = useState("")
+  const [ email, setEmail ] = useState("")
+  const [ password, setPassword ] = useState("")
   // const {navigation} = props;
   const navigation = useNavigation();
+
+  const handleRegister = async () => {
+    const user = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password
+    }
+    // console.log("test")
+    // axios.post("http://localhost:8000/register", user).then((response) => {
+    //   console.log("test2")
+    //   console.log(response)
+    // }).catch((error) => {
+    //   console.log(error)
+    // })
+
+    try {
+      console.log("test1")
+      response = await axios.post("http://localhost:8000/register", user)
+      console.log("test2")
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -22,15 +54,35 @@ const Signup = () => {
           </View>
 
           <Text style={styles.loginContinueTxt}>Sign Up</Text>
-          <TextInput style={styles.input} placeholder="First Name" />
-          <TextInput style={styles.input} placeholder="Last Name" />
-          <TextInput style={styles.input} placeholder="Email" />
-          <TextInput style={styles.input} placeholder="Create a Password" />
+
+          <TextInput
+            value={firstName}
+            onChangeText={(text) => setFirstName(text)}
+            style={styles.input} placeholder="First Name" />
+
+          <TextInput
+            value={lastName}
+            onChangeText={(text) => setLastName(text)}
+            style={styles.input} placeholder="Last Name" />
+
+          <TextInput
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            style={styles.input} placeholder="Email" />
+
+          <TextInput 
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+            secureTextEntry={true}
+            style={styles.input} placeholder="Create a Password" />
 
           <View style={styles.loginBtnWrapper}>
               {/******************** SIGNUP BUTTON *********************/}
               <TouchableOpacity
-                onPress={() => navigation.navigate(BottomTabNavigator)}
+                onPress={() => {
+                  handleRegister()
+                }}
+                //onPress={() => navigation.navigate(BottomTabNavigator)}
                 style={styles.loginBtn}>
                 <Text style={styles.loginText}>Sign Up</Text>
               </TouchableOpacity>
