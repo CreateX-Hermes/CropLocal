@@ -2,6 +2,7 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const passport = require("passport")
 const LocalStrategy = require("passport-local").Strategy
+require('dotenv').config()
 
 const app = express()
 const mongoose = require("mongoose")
@@ -19,10 +20,7 @@ const User = require("./models/user")
 const Stand = require("./models/stand")
 const Item = require("./models/item")
 
-
-DB_URL = "mongodb+srv://croplocaldb:ewtY4y0ybOFLDFfy@croplocal.ua4sout.mongodb.net/CropLocalDB"
-
-mongoose.connect(DB_URL, 
+mongoose.connect(process.env.DB_URL, 
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
