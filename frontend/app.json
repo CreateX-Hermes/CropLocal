@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "HermesApp",
+    "slug": "HermesApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.anonymous.HermesApp"
+    }
+  },
+  "name": "HermesApp"
+}
