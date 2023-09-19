@@ -44,18 +44,18 @@ export const styles = StyleSheet.create({
       bottom: '6%'
     },
     input: {
-      borderWidth: 1.5,
-      borderColor: '#071930',
-      backgroundColor: 'white',
-      color: 'black',
-      padding: '5%',
-      marginVertical: '3%',
-      borderRadius: '100%',
-      height: '12%',
-      fontSize: '16.5em',
-      fontWeight: '400',
-      paddingLeft: '7%'
-    },
+        borderWidth: 1.5,
+        borderColor: '#071930',
+        backgroundColor: 'white',
+        color: 'black',
+        padding: '5%',
+        marginVertical: '3%',
+        borderRadius: '100%',
+        height: '15%',
+        fontSize: '16.5em',
+        fontWeight: '400',
+        paddingLeft: '7%'
+      },
     linearGradient: {
       width: '100%',
       borderRadius: 50,
