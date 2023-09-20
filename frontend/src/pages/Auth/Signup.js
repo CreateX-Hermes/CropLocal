@@ -1,26 +1,52 @@
 import {StyleSheet, Text, View, TextInput, SafeAreaView, TouchableOpacity} from 'react-native';
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useState, useEffect } from 'react';
 import {useNavigation} from '@react-navigation/native';
 import BottomTabNavigator from '../Navigators/BottomTabNavigator';
 import axios from 'axios';
 import ForgotPassword from './ForgotPassword';
+import * as Location from 'expo-location'
 
 const Signup = () => {
   const [ firstName, setFirstName ] = useState("")
   const [ lastName, setLastName ] = useState("")
   const [ email, setEmail ] = useState("")
   const [ password, setPassword ] = useState("")
+  const [location, setLocation] = useState("")
+
   // const {navigation} = props;
   const navigation = useNavigation();
 
+  // useEffect(() => {
+  //   const getPermissions = async () => {
+  //     let {status} = await Location.requestForegroundPermissionsAsync()
+  //     if (status !== 'granted') {
+  //       console.log("please grant location")
+  //       return
+  //     }
+
+  //     let currentLocation = await Location.getCurrentPositionAsync({})
+  //     setLocation(currentLocation)
+  //   }
+
+  //   getPermissions()
+    
+  // }, [])
+
   const handleRegister = async () => {
+    // const reverseGeoCode = async () => {
+    //   const reverseGeoCodeAddress = await Location.reverseGeocodeAsync({
+    //     latitude: location.coords.latitude,
+    //     longitude: location.coords.longitude
+    //   })
+    //   return(reverseGeoCodeAddress)
+    // }
+    // reverseGeoCode()
     const user = {
       firstName: firstName,
       lastName: lastName,
       email: email,
       prepassword: password
     }
-
 
     try {
       response = await axios.post("http://localhost:8000/user/register", user)

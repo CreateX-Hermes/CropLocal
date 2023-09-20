@@ -23,6 +23,23 @@ const userSchema = new mongoose.Schema({
     }],
     profilePicture: {
         type: String
+    },
+    location: {
+        type: {
+            latitude: String,
+            longitude: String,
+            city: String,
+        },
+        default: {
+            latitude: "40.7128 N",
+            longitude: "74.0060 W",
+            city: "New York"
+        }
+    },
+    reviews: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: "Review",
+        default: []
     }
 })
 

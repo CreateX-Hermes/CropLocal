@@ -23,7 +23,7 @@ const Login = () => {
 
     try {
       response = await axios.post("http://localhost:8000/user/login", user)
-      console.log(response.data.token)
+      console.log(response.data)
     } catch (error) {
       console.log(error)
     }

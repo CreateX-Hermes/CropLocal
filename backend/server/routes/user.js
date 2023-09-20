@@ -17,7 +17,7 @@ router.post("/register", async (req, res) => {
 
 
         if (old){
-            return res.status(500).json({message: "User already exists, login instead"})
+            return res.status(501).json({message: "User already exists, login instead"})
         }
         await newUser.save()
 
