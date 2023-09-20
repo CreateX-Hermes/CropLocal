@@ -2,7 +2,9 @@ import {StyleSheet, Text, View, TextInput, SafeAreaView, TouchableOpacity} from 
 import React, { useLayoutEffect, useState, useEffect } from 'react';
 import {useNavigation} from '@react-navigation/native';
 import BottomTabNavigator from '../Navigators/BottomTabNavigator';
+import { Colors } from "../../Styles.js";
 import axios from 'axios';
+import { styles } from './loginStyles.js';
 import ForgotPassword from './ForgotPassword';
 import * as Location from 'expo-location'
 
@@ -74,35 +76,51 @@ const Signup = () => {
       <View style={styles.container}>
         <View style={styles.wFull}>
           <View style={styles.row}>
-            <Text style={styles.brandName}>Hermes</Text>
+            <Text style={styles2.brandName}>Sign up</Text>
           </View>
 
-          <Text style={styles.loginContinueTxt}>Sign Up</Text>
+          <View style={styles2.field}>
+            <Text style={styles.label}>Email Address</Text>
+            <TextInput
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+              style={styles.input} placeholder="Email" />
+          </View>
 
-          <TextInput
-            value={firstName}
-            onChangeText={(text) => setFirstName(text)}
-            style={styles.input} placeholder="First Name" />
+          <View style={styles2.field}>
+            <Text style={styles.label}>First Name</Text>
+            <TextInput
+              value={firstName}
+              onChangeText={(text) => setFirstName(text)}
+              style={styles.input} placeholder="First Name" />
+          </View>
+          
+          <View style={styles2.field}>
+            <Text style={styles.label}>Last Name</Text>
+            <TextInput
+              value={lastName}
+              onChangeText={(text) => setLastName(text)}
+              style={styles.input} placeholder="Last Name" />
+          </View>
 
-          <TextInput
-            value={lastName}
-            onChangeText={(text) => setLastName(text)}
-            style={styles.input} placeholder="Last Name" />
-
-          <TextInput
-            value={email}
-            onChangeText={(text) => setEmail(text)}
-            style={styles.input} placeholder="Email" />
-
-          <TextInput 
-            value={password}
-            onChangeText={(text) => setPassword(text)}
-            secureTextEntry={true}
-            style={styles.input} placeholder="Create a Password" />
-
-          <View style={styles.loginBtnWrapper}>
-              {/******************** SIGNUP BUTTON *********************/}
+          <View style={styles2.field}>
+            <Text style={styles.label}>Create a Password</Text>
+            <TextInput 
+              value={password}
+              onChangeText={(text) => setPassword(text)}
+              secureTextEntry={true}
+              style={styles.input} placeholder="Create a Password" />
               <TouchableOpacity
+                onPress={() => navigation.goBack()}
+                >
+                <Text style={styles2.loginBtn}>Log in (Already have an Account)</Text>
+              </TouchableOpacity>
+          </View>
+        </View>
+
+        <View style={styles.footer}>
+          {/******************** Signup BUTTON *********************/}
+          <TouchableOpacity
                 onPress={() => {
                   handleRegister()
                 }}
@@ -110,25 +128,6 @@ const Signup = () => {
                 style={styles.loginBtn}>
                 <Text style={styles.loginText}>Sign Up</Text>
               </TouchableOpacity>
-          </View>
-
-          {/***************** FORGOT PASSWORD BUTTON *****************/}
-          <TouchableOpacity
-          onPress={() => navigation.navigate(ForgotPassword)}>
-            <Text style={styles.forgotPassText}>Forgot Password?</Text>
-          </TouchableOpacity>
-
-
-        </View>
-
-        <View style={styles.footer}>
-          <Text style={styles.footerText}> Already have an account? </Text>
-          {/******************** Signup BUTTON *********************/}
-          <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          >
-            <Text style={styles.signupBtn}>Log In</Text>
-          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
@@ -137,27 +136,32 @@ const Signup = () => {
 
 export default Signup;
 
-const styles = StyleSheet.create({
+const styles2 = StyleSheet.create({
   main: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: '16%',
   },
+  field: {
+    marginTop: "4%",
+    height: "15%"
+  },
   container: {
     padding: '5%',
     width: '100%',
     position: 'relative',
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   brandName: {
     fontSize: '48em',
     textAlign: 'center',
     fontWeight: 'bold',
-    color: '#E5B07A',
+    color: 'white',
+    paddingLeft: '8%',
     opacity: 0.9,
+    marginBottom: '2%',
+    marginTop: '10%',
   },
   loginContinueTxt: {
     fontSize: '20em',
@@ -189,14 +193,11 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   loginBtn: {
-    textAlign: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    width: '36%',
-    height: '62%',
-    backgroundColor: '#E5B07A',
-    borderRadius: 50
+    color: '#E5B07A',
+      fontWeight: 'bold',
+      paddingLeft: '8%',
+      marginTop: '0%',
+      textDecorationLine: 'underline'
   },
   loginText: {
     color: '#FFFFFF',
