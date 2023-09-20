@@ -10,25 +10,31 @@ const standSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    items: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Item'
-    }],
+    items: {
+        type: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Item',
+        }],
+        default: []
+    },
     pictures: {
-        type: [String]
+        type: [String],
+        default: []
     },
     location: {
         type: {
-            latitude: String,
-            longitude: String,
-            city: String,
+            coordinates:{
+                type: [Number],
+                maxItems: 2,
+                minItems: 2
+            },
+            mainType: {
+                type: String,
+                enum: ["Point"], // Specify that it's a Point type
+                required: true
+              }
         },
-        default: {
-            latitude: "40.7128 N",
-            longitude: "74.0060 W",
-            city: "New York"
-        }
-    }
+    },
 
 })
 

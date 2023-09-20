@@ -16,23 +16,25 @@ const Signup = () => {
   // const {navigation} = props;
   const navigation = useNavigation();
 
-  // useEffect(() => {
-  //   const getPermissions = async () => {
-  //     let {status} = await Location.requestForegroundPermissionsAsync()
-  //     if (status !== 'granted') {
-  //       console.log("please grant location")
-  //       return
-  //     }
+  useEffect(() => {
+    const getPermissions = async () => {
+      let {status} = await Location.requestForegroundPermissionsAsync()
+      if (status !== 'granted') {
+        console.log("please grant location")
+        return
+      }
 
-  //     let currentLocation = await Location.getCurrentPositionAsync({})
-  //     setLocation(currentLocation)
-  //   }
+      let currentLocation = await Location.getCurrentPositionAsync({})
+      setLocation(currentLocation)
+    }
 
-  //   getPermissions()
+    getPermissions()
     
-  // }, [])
+  }, [])
+
 
   const handleRegister = async () => {
+    
     // const reverseGeoCode = async () => {
     //   const reverseGeoCodeAddress = await Location.reverseGeocodeAsync({
     //     latitude: location.coords.latitude,
@@ -40,12 +42,16 @@ const Signup = () => {
     //   })
     //   return(reverseGeoCodeAddress)
     // }
-    // reverseGeoCode()
+
+    userLocation = {coordinates: [location.coords.longitude, location.coords.latitude], mainType: "Point"}
+    console.log(userLocation)
+
     const user = {
       firstName: firstName,
       lastName: lastName,
       email: email,
-      prepassword: password
+      prepassword: password,
+      location: userLocation
     }
 
     try {

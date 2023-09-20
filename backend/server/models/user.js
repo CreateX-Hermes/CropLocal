@@ -26,15 +26,15 @@ const userSchema = new mongoose.Schema({
     },
     location: {
         type: {
-            latitude: String,
-            longitude: String,
-            city: String,
+            coordinates:{
+                type: [Number],
+            },
+            mainType: {
+                type: String,
+                enum: ["Point"], // Specify that it's a Point type
+                required: true
+              }
         },
-        default: {
-            latitude: "40.7128 N",
-            longitude: "74.0060 W",
-            city: "New York"
-        }
     },
     reviews: {
         type: [mongoose.Schema.Types.ObjectId],
