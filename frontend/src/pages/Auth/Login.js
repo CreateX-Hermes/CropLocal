@@ -6,6 +6,10 @@ import ForgotPassword from './ForgotPassword';
 import Signup from './Signup';
 import BottomTabNavigator from '../Navigators/BottomTabNavigator';
 import { useState } from "react";
+<<<<<<< HEAD
+import { styles } from "./loginStyles.js";
+=======
+>>>>>>> origin/main
 import axios from 'axios';
 
 
@@ -24,6 +28,10 @@ const Login = () => {
     try {
       response = await axios.post("http://localhost:8000/user/login", user)
       console.log(response.data.token)
+<<<<<<< HEAD
+      navigation.navigate(BottomTabNavigator)
+=======
+>>>>>>> origin/main
     } catch (error) {
       console.log(error)
     }
@@ -35,6 +43,35 @@ const Login = () => {
       <View style={styles.container}>
         <View style={styles.wFull}>
           <View style={styles.row}>
+<<<<<<< HEAD
+            <Text style={styles.brandName}>Log in</Text>
+          </View>
+
+          <View style={styles.field}>
+            <Text style={styles.label}>Email Address</Text>
+            <TextInput
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+              style={styles.input} placeholder="Email" />
+          </View>
+          <TouchableOpacity
+              onPress={() => navigation.navigate(Signup)}>
+                <Text style={styles.signupBtn}>Create an Acccount</Text>
+          </TouchableOpacity>
+          
+          <View style={styles.field}>
+            <Text style={styles.label}>Password</Text>
+            <TextInput
+              value={password}
+              onChangeText={(password) => setPassword(password)}
+              secureTextEntry={true}
+              style={styles.input} placeholder="Password" />
+          </View>
+          <TouchableOpacity
+                onPress={() => navigation.navigate(ForgotPassword)}>
+                {/***************** FORGOT PASSWORD BUTTON *****************/}
+              <Text style={styles.forgotPassText}>Forgot Password? (Reset Password)</Text>
+=======
             <Text style={styles.brandName}>Hermes</Text>
           </View>
 
@@ -64,16 +101,26 @@ const Login = () => {
           <TouchableOpacity
           onPress={() => navigation.navigate(ForgotPassword)}>
             <Text style={styles.forgotPassText}>Forgot Password?</Text>
+>>>>>>> origin/main
           </TouchableOpacity>
         </View>
 
         <View style={styles.footer}>
+<<<<<<< HEAD
+          {/******************** LOGIN BUTTON *********************/}
+          <TouchableOpacity
+                onPress={() => {handleLogin()}}
+                style={styles.loginBtn}>
+                <Text style={styles.loginText}>Log In</Text>
+              </TouchableOpacity>
+=======
           <Text style={styles.footerText}> Don't have an account? </Text>
           {/******************** Signup BUTTON *********************/}
           <TouchableOpacity
           onPress={() => navigation.navigate(Signup)}>
             <Text style={styles.signupBtn}>Sign Up</Text>
           </TouchableOpacity>
+>>>>>>> origin/main
         </View>
       </View>
     </SafeAreaView>
@@ -82,6 +129,8 @@ const Login = () => {
 
 export default Login;
 
+<<<<<<< HEAD
+=======
 const styles = StyleSheet.create({
   main: {
     flex: 1,
@@ -183,3 +232,4 @@ const styles = StyleSheet.create({
     marginRight: '7%',
   },
 });
+>>>>>>> origin/main
