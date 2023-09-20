@@ -6,18 +6,20 @@ const jwt = require("jsonwebtoken")
 
 router.post("/register", async (req, res) => {
     try{
-        const {firstName, lastName, email, prepassword} = req.body
+        const {firstName, lastName, email, prepassword, location} = req.body
 
         const salt = await bcrypt.genSalt(10)
         const password = await bcrypt.hash(prepassword, salt)
 
-        const newUser = new User({firstName, lastName, email, password})
+        console.log(location)
+
+        const newUser = new User({firstName, lastName, email, password, location})
 
         const old = await User.findOne({email})
 
 
         if (old){
-            return res.status(500).json({message: "User already exists, login instead"})
+            return res.status(501).json({message: "User already exists, login instead"})
         }
         await newUser.save()
 
@@ -65,7 +67,6 @@ router.post("/login", async (req, res) => {
         return res.status(500).json({message:"Error logging in"})
     }
 
-    
 })
 
 module.exports = router
