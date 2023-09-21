@@ -19,11 +19,7 @@
     "axios": "^1.5.0",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
-<<<<<<< HEAD
     "expo": "~48.0.18",
-=======
-    "expo": "~48.0.15",
->>>>>>> origin/main
     "expo-app-loading": "^2.1.1",
     "expo-font": "^11.1.1",
     "expo-location": "~15.1.1",
@@ -35,11 +31,7 @@
     "nativewind": "^2.0.11",
     "nodemon": "^3.0.1",
     "react": "18.2.0",
-<<<<<<< HEAD
     "react-native": "0.71.8",
-=======
-    "react-native": "0.71.7",
->>>>>>> origin/main
     "react-native-gesture-handler": "~2.9.0",
     "react-native-paper": "^5.7.2",
     "react-native-reanimated": "~2.14.4",
