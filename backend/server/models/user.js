@@ -23,6 +23,23 @@ const userSchema = new mongoose.Schema({
     }],
     profilePicture: {
         type: String
+    },
+    location: {
+        type: {
+            coordinates:{
+                type: [Number],
+            },
+            mainType: {
+                type: String,
+                enum: ["Point"], // Specify that it's a Point type
+                required: true
+              }
+        },
+    },
+    reviews: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: "Review",
+        default: []
     }
 })
 

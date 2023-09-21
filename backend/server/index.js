@@ -35,7 +35,8 @@ app.listen(port, () => {
     console.log("Listening on port: ", port)
 })
 
-const registerRoute = require("./routes/user")
+const userRoute = require("./routes/user")
+app.use("/user", userRoute)
 
-app.use("/user", registerRoute)
-
+const standRoute = require("./routes/stand")
+app.use("/stand", standRoute)

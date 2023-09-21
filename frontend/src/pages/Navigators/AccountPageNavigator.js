@@ -5,7 +5,7 @@ import MyFriends from '../MyFriends/MyFriends.js';
 import BecomeALocal from '../BecomeALocal/BecomeALocal.js';
 import Messages from '../Messages/Messages.js';
 import { useNavigation } from '@react-navigation/native';
-import FindFriends from '../FindFriends/FindFriends.js';
+import FindFriends from '../FindSellers/FindSellers.js';
 import EditProfile from '../EditProfile/EditProfile';
 import MyWallet from '../MyWallet/MyWallet';
 import Help from '../Help/Help';
