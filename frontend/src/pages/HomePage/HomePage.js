@@ -1,15 +1,14 @@
 import React, { useLayoutEffect, useState } from 'react';
 import { View, StyleSheet, SafeAreaView, TouchableOpacity, Image, Modal, TextInput, } from 'react-native';
-import { IconButton, Button, Text, Divider } from 'react-native-paper';
+import { Text, Divider } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-import MainTabBar from '../../components/MainTabBar/MainTabBar';
 import Messages from '../Messages/Messages';
-import HomePageFilter from '../HomePageFilter/HomePageFilter';
 import EditProfile from '../EditProfile/EditProfile';
 import MyWallet from '../MyWallet/MyWallet';
 import Help from '../Help/Help';
 import Login from '../Auth/Login';
 import BecomeALocal from '../BecomeALocal/BecomeALocal';
+import NavigationButton from '../../components/NavigationButton/NavigationButton';
 
 
 const HomePage = () => {
@@ -97,46 +96,40 @@ const HomePage = () => {
       };
 
     return (
-        <SafeAreaView style={{ backgroundColor: '#071930', flex: 1, alignItems: 'center' }}>
-            <View style={{ backgroundColor: '#071930', zIndex: '0', alignItems: 'center', flex: 3 }}>
-                {/*/ Actual Home Page Content */}
-                <View style={{ zIndex: '1', flexDirection: 'row', display: 'flex', alignItems: 'center' }}>
-                    <IconButton 
-                    onPress={toggleModal}
-                    icon={require('../../assets/cog.png')} iconColor='#000000' 
-                    backgroundColor='#FFFFFF' 
-                    size={34} />
-                    <TouchableOpacity 
-                    onPress={toggleFilterModal}
-                    style={{ marginHorizontal: '5%' }}>
-                        <View style={{ backgroundColor: '#FFFFFF', borderRadius: 20, alignItems: 'center', justifyContent: 'center', paddingHorizontal: '12%', paddingVertical: '6%' }}>
-                            <Text style={styles.text1}>Paris, France</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <IconButton 
-                    onPress={() => navigation.navigate(Messages)} 
-                    icon='email' iconColor='#000000' 
-                    backgroundColor='#FFFFFF' 
-                    size={34} />
+        <SafeAreaView style={{ backgroundColor: '#FFFFFF', flex: 1, alignItems: 'center' }}>
+
+            <View style={{ backgroundColor: '#FFFFFF', zIndex: '0', alignItems: 'center', flex: 3 }}>
+
+                {/*/ TOP BAR IN THE HOME PAGE */}
+                <View style={{ zIndex: '1', flexDirection: 'row', display: 'flex', alignItems: 'center', marginTop: '3%' }}>
+                    <NavigationButton onPress={()=> navigation.navigate(Messages)} style={{height: 40, width: 40, flex: 0, marginLeft: 0, marginRight: 20}}>
+                        <Image source={require("../../assets/Gear-Settings-Icon.png")} style={{width: '70%', resizeMode: 'contain'}}/>
+                    </NavigationButton>
+                    <NavigationButton onPress={toggleFilterModal} style={{flex: 0, paddingHorizontal: '8%', paddingVertical: '3%'}}>
+                        <Text style={styles.text1}>Atlanta, Georgia</Text>
+                    </NavigationButton>
+                    <NavigationButton onPress={()=> navigation.navigate(Messages)} style={{height: 40, width: 40, flex: 0, marginLeft: 20, marginRight: 0}}>
+                        <Image source={require("../../assets/Search-Filter-Icon.png")} style={{width: '70%', resizeMode: 'contain'}}/>
+                    </NavigationButton>
                 </View>
 
                 {/*/ Settings Modal */}
                 <Modal visible={isModalVisible} animationType="fade" >
-                    <SafeAreaView  backgroundColor='#071930'>
+                    <SafeAreaView  backgroundColor='#F5F5F5'>
                     <View backgroundColor='#071930' height='100%'>
                     <TouchableOpacity 
-                                onPress={toggleModal}
-                                style={{ 
-                                backgroundColor: '#F5F5F5',
-                                borderRadius: 100,
-                                justifyContent: 'center',
-                                height: '6.6%',
-                                width: '13%',
-                                marginLeft: '6%',
-                                marginTop: '1.6%'
-                                }}>
-                                    <Image source={require('../../assets/closeCancel.png')} style={ styles.text14 }/>
-                                </TouchableOpacity>
+                        onPress={toggleModal}
+                        style={{ 
+                            backgroundColor: '#F5F5F5',
+                            borderRadius: 100,
+                            justifyContent: 'center',
+                            height: '6.6%',
+                            width: '13%',
+                            marginLeft: '6%',
+                            marginTop: '1.6%'
+                        }}>
+                        <Image source={require('../../assets/closeCancel.png')} style={ styles.text14 }/>
+                    </TouchableOpacity>
                         
                         <View style={{ alignSelf: 'center', width: '86%', paddingTop: '4%'}}>
                             <TouchableOpacity style={{ backgroundColor: '#FFFFFF', alignItems: 'center', paddingVertical: '3.6%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}

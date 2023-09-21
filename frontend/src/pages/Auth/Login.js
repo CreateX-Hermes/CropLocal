@@ -7,6 +7,7 @@ import Signup from './Signup';
 import BottomTabNavigator from '../Navigators/BottomTabNavigator';
 import { useState } from "react";
 
+
 import { styles } from "./loginStyles.js";
 import axios from 'axios';
 
@@ -38,7 +39,6 @@ const Login = () => {
       <View style={styles.container}>
         <View style={styles.wFull}>
           <View style={styles.row}>
-
             <Text style={styles.brandName}>Log in</Text>
           </View>
 
@@ -70,14 +70,12 @@ const Login = () => {
         </View>
 
         <View style={styles.footer}>
-
           {/******************** LOGIN BUTTON *********************/}
           <TouchableOpacity
                 onPress={() => {handleLogin()}}
                 style={styles.loginBtn}>
                 <Text style={styles.loginText}>Log In</Text>
               </TouchableOpacity>
-
         </View>
       </View>
     </SafeAreaView>

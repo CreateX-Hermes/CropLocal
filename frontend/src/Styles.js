@@ -12,12 +12,13 @@
 // }
 
 export const Colors = {
-    Main: "#91D569",
-    loginBackground: "#071930",
-    loginButton: "#288FBB",
-    loginSecondary: "E5B07A",
-    Rating: "#E39C52",
-    Cancel: "#DD0000",
+    MAIN: "#91D569",
+    LOGIN_BACKGROUND: "#071930",
+    LOGIN_BUTTON: "#288FBB",
+    LOGIN_SECONDARY: "E5B07A",
+    RATING: "#E39C52",
+    CANCEL: "#DD0000",
+    BUTTON_BACKGROUND: "#F5F5F5",
     Black: "#000000",
     White: "#FFFFFF",
     DarkGray: "#979797",
