@@ -4,13 +4,14 @@ import { IconButton, Button, Text, Avatar, Divider} from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import MainTabBar from '../../components/MainTabBar/MainTabBar';
 import Messages from '../Messages/Messages';
-import FindFriends from '../FindFriends/FindFriends';
+import FindSellers from '../FindSellers/FindSellers';
 import BecomeALocal from '../BecomeALocal/BecomeALocal';
 import MyFriends from '../MyFriends/MyFriends';
 import EditProfile from '../EditProfile/EditProfile';
 import MyWallet from '../MyWallet/MyWallet';
 import Help from '../Help/Help';
 import Login from '../Auth/Login';
+import STYLES, { Colors } from '../../Styles.js'
 
 
 // <Divider style={{ width: '86%', alignSelf: 'center', marginTop: '3.6%', paddingTop: '0.3%' }}/>
@@ -64,24 +65,24 @@ const AccountPage = () => {
         navigation.navigate(Login);
       };
     return (
-        <SafeAreaView style={{ backgroundColor: '#071930', flex: 1}}>
-            <View style={{ backgroundColor: '#071930', width: '100%', height: '100%', zIndex: '0', flex: 3}}>
+        <SafeAreaView style={{ backgroundColor: Colors.White, flex: 1}}>
+            <View style={{ backgroundColor: Colors.White, width: '100%', height: '100%', zIndex: '0', flex: 3}}>
 
                 {/*/ Actual Account Page Content */}
                 <View style={{ alignItems: 'center' }}>
                     <View style={{zIndex: '1', flexDirection: 'row', display: 'flex', alignItems: 'flex-start'}}>
                     <IconButton 
                     onPress={toggleModal}
-                    icon='cog' iconColor='#000000' 
-                    backgroundColor='#FFFFFF' 
+                    icon={require('../../assets/cog.png')} iconColor='#000000' 
+                    backgroundColor='#F5F5F5' 
                     size={34} />
-                        <View style={{display: 'flex', marginHorizontal: '5.5%', borderColor: '#FFFFFF', borderWidth: '5%', borderRadius: 100, marginTop: '5%'}}>
+                        <View style={{display: 'flex', marginHorizontal: '5.5%', borderColor: Colors.Main, borderWidth: '5%', borderRadius: 100, marginTop: '5%'}}>
                             <Avatar.Image backgroundColor='#FFFFFF' size={176} source={require('../../assets/tempProfilePic.png')} style={{ zIndex: '1',}} />
                         </View>
                     <IconButton 
                     onPress={() => navigation.navigate(Messages)} 
-                    icon='email' iconColor='#000000' 
-                    backgroundColor='#FFFFFF' 
+                    icon={require('../../assets/plan.png')} iconColor='#000000' 
+                    backgroundColor='#F5F5F5' 
                     size={34} />
                     </View>
                 </View>
@@ -92,22 +93,17 @@ const AccountPage = () => {
                             Gregory Madar
                         </Text>
                         <Text style={styles.text2}>
-                            @GregMadar1
+                            Shopper
                         </Text>
-                        <TouchableOpacity
-                        onPress={() => navigation.navigate(MyFriends)}>
-                            <Text style={ styles.text4 }>176 friends</Text>
-                        </TouchableOpacity>
                     </View>
                     <View style={{ flexDirection: 'column', marginLeft: '14%'}}>
                         <TouchableOpacity 
-                        onPress={() => navigation.navigate(FindFriends)}
+                        onPress={() => navigation.navigate(FindSellers)}
                         style={{ paddingTop: '16%'}}>
-                            <View style={{ backgroundColor: '#FFFFFF', borderRadius: 20, alignItems: 'center', paddingVertical: '8.6%', paddingHorizontal: '3.6%'}}>
-                                <Text style={styles.text5}>Find Friends</Text>
+                            <View style={{ backgroundColor: Colors.Black, borderRadius: 20, alignItems: 'center', paddingVertical: '8.6%', paddingHorizontal: '3.6%'}}>
+                                <Text style={styles.text5}>Find Sellers</Text>
                             </View>
                         </TouchableOpacity>
-                        <Text style={ styles.text6 }>Traveler</Text>
                     </View>
                 </View>
 
@@ -118,8 +114,13 @@ const AccountPage = () => {
                 </Text>
 
                 <Divider style={{ width: '86%', alignSelf: 'center', marginTop: '5%', paddingTop: '0.3%' }}/>
+                
+                <View style={{flexDirection: 'row',}}>
+                    <Text style={styles.text8}>Become a </Text>
+                    <Text style={styles.text28}>Local</Text>
+                </View>
 
-                <Text style={styles.text8}>Become a Local</Text>
+                
                 <Text style={styles.text7}>Start earning now and show other travelers around the wonderful 
                 place you call home. Become a Local guide below 
                 and start working for yourself...
@@ -128,9 +129,9 @@ const AccountPage = () => {
                 <TouchableOpacity 
                 onPress={() => navigation.navigate(BecomeALocal)}
                 style={{ 
-                    backgroundColor: '#E5B07A',
+                    backgroundColor: Colors.Main,
                     borderRadius: 50,
-                    paddingVertical: '3.6%'
+                    paddingVertical: '3.2%'
                 }}>
                         <Text style={styles.text9}>Start Now</Text>
                 </TouchableOpacity>
@@ -199,17 +200,16 @@ export default AccountPage
 
 const styles = StyleSheet.create({
     text1: {
-        color: '#FFFFFF',
+        color: Colors.Black,
         fontWeight: '700',
         fontSize: '26em',
         paddingTop: '4%'
     }, 
     text2: {
-        color: '#288FBB',
+        color: Colors.DarkGray,
         fontWeight: '400',
-        fontSize: '19em',
-        fontStyle: 'italic',
-        paddingTop: '1%'
+        fontSize: '17em',
+        paddingTop: '4%'
     },
     text3: {
         display: 'flex', 
@@ -225,9 +225,9 @@ const styles = StyleSheet.create({
       },
       text5: {
         display: 'flex',
-        color: '#000000',
+        color: Colors.White,
         fontWeight: '600',
-        fontSize: '12em',
+        fontSize: '13em',
       },
       text6: {
         display: 'flex',
@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
       },
       text7: {
         display: 'flex',
-        color: '#FFFFFF',
+        color: Colors.Black,
         fontWeight: '400',
         fontSize: '14em',
         width: '86%',
@@ -248,19 +248,27 @@ const styles = StyleSheet.create({
       },
       text8: {
         display: 'flex',
-        color: '#E5B07A',
+        color: Colors.Black,
+        fontWeight: '700',
+        fontSize: '24em',
+        marginLeft: '7%',
+        paddingTop: '5%',
+      },
+      text28: {
+        display: 'flex',
+        color: Colors.Main,
         fontWeight: '700',
         fontSize: '24em',
         width: '86%',
-        marginLeft: '7%',
         paddingTop: '5%',
+        marginLeft: '1%'
       },
       text9: {
         display: 'flex',
         color: '#FFFFFF',
-        fontWeight: '600',
-        fontSize: '13em',
-        paddingHorizontal: '10%',
+        fontWeight: '700',
+        fontSize: '14em',
+        paddingHorizontal: '9%',
       },
       text10: {
         color: '#FFFFFF',

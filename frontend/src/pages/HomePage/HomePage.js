@@ -103,7 +103,7 @@ const HomePage = () => {
                 <View style={{ zIndex: '1', flexDirection: 'row', display: 'flex', alignItems: 'center' }}>
                     <IconButton 
                     onPress={toggleModal}
-                    icon='cog' iconColor='#000000' 
+                    icon={require('../../assets/cog.png')} iconColor='#000000' 
                     backgroundColor='#FFFFFF' 
                     size={34} />
                     <TouchableOpacity 

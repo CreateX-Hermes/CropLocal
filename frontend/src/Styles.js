@@ -17,6 +17,9 @@ export const Colors = {
     loginButton: "#288FBB",
     loginSecondary: "E5B07A",
     Rating: "#E39C52",
-    Cancel: "#DD0000"
+    Cancel: "#DD0000",
+    Black: "#000000",
+    White: "#FFFFFF",
+    DarkGray: "#979797",
 }
 

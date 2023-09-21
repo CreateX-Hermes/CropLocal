@@ -28,6 +28,8 @@ const Login = () => {
     } catch (error) {
       console.log(error)
     }
+
+    navigation.navigate(BottomTabNavigator);
   }
 
 
