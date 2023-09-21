@@ -5,14 +5,7 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-<<<<<<< HEAD
-    ],
-    "ios": {
-      "bundleIdentifier": "com.anonymous.HermesApp"
-    }
-=======
     ]
->>>>>>> origin/main
   },
   "name": "HermesApp"
 }

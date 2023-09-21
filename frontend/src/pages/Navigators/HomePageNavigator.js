@@ -14,14 +14,6 @@ const Stack = createStackNavigator();
 
 const HomePageNavigator = () => {
 
-    const navigation = useNavigation();
-
-    useLayoutEffect(() => {
-        navigation.setOptions({
-            headerShown: false,
-        });
-    }, []);
-
   return (
     <Stack.Navigator >
       <Stack.Screen

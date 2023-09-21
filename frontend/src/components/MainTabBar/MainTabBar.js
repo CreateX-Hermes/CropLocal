@@ -12,7 +12,7 @@ const MainTabBar = () => {
         <View style={styles.MainTabBarStyle}>
             <TouchableOpacity>
                 <Image
-                    source={require('../../assets/Home.png')}
+                    source={require('../../assets/HomeIcon.png')}
                     style={styles.barImageLeft}
                 />
             </TouchableOpacity>
