@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       padding: '16%',
-      backgroundColor: Colors.loginBackground,
+      backgroundColor: Colors.LOGIN_BACKGROUND,
       fontSize: '16.5em'
     },
     field: {
@@ -67,7 +67,7 @@ export const styles = StyleSheet.create({
       alignSelf: 'center',
       width: '36%',
       height: '68%',
-      backgroundColor: Colors.loginButton,
+      backgroundColor: Colors.LOGIN_BUTTON,
       borderRadius: 50
     },
     loginText: {

@@ -11,7 +11,7 @@ import EditProfile from '../EditProfile/EditProfile';
 import MyWallet from '../MyWallet/MyWallet';
 import Help from '../Help/Help';
 import Login from '../Auth/Login';
-import STYLES, { Colors } from '../../Styles.js'
+import { Colors } from '../../Styles.js'
 
 
 // <Divider style={{ width: '86%', alignSelf: 'center', marginTop: '3.6%', paddingTop: '0.3%' }}/>
@@ -65,8 +65,8 @@ const AccountPage = () => {
         navigation.navigate(Login);
       };
     return (
-        <SafeAreaView style={{ backgroundColor: Colors.White, flex: 1}}>
-            <View style={{ backgroundColor: Colors.White, width: '100%', height: '100%', zIndex: '0', flex: 3}}>
+        <SafeAreaView style={{ backgroundColor: Colors.WHITE, flex: 1}}>
+            <View style={{ backgroundColor: Colors.WHITE, width: '100%', height: '100%', zIndex: '0', flex: 3}}>
 
                 {/*/ Actual Account Page Content */}
                 <View style={{ alignItems: 'center' }}>
@@ -76,7 +76,7 @@ const AccountPage = () => {
                     icon={require('../../assets/cog.png')} iconColor='#000000' 
                     backgroundColor='#F5F5F5' 
                     size={34} />
-                        <View style={{display: 'flex', marginHorizontal: '5.5%', borderColor: Colors.Main, borderWidth: '5%', borderRadius: 100, marginTop: '5%'}}>
+                        <View style={{display: 'flex', marginHorizontal: '5.5%', borderColor: Colors.MAIN, borderWidth: '5%', borderRadius: 100, marginTop: '5%'}}>
                             <Avatar.Image backgroundColor='#FFFFFF' size={176} source={require('../../assets/tempProfilePic.png')} style={{ zIndex: '1',}} />
                         </View>
                     <IconButton 
@@ -100,7 +100,7 @@ const AccountPage = () => {
                         <TouchableOpacity 
                         onPress={() => navigation.navigate(FindSellers)}
                         style={{ paddingTop: '16%'}}>
-                            <View style={{ backgroundColor: Colors.Black, borderRadius: 20, alignItems: 'center', paddingVertical: '8.6%', paddingHorizontal: '3.6%'}}>
+                            <View style={{ backgroundColor: Colors.BLACK, borderRadius: 20, alignItems: 'center', paddingVertical: '8.6%', paddingHorizontal: '3.6%'}}>
                                 <Text style={styles.text5}>Find Sellers</Text>
                             </View>
                         </TouchableOpacity>
@@ -129,7 +129,7 @@ const AccountPage = () => {
                 <TouchableOpacity 
                 onPress={() => navigation.navigate(BecomeALocal)}
                 style={{ 
-                    backgroundColor: Colors.Main,
+                    backgroundColor: Colors.MAIN,
                     borderRadius: 50,
                     paddingVertical: '3.2%'
                 }}>
@@ -200,13 +200,13 @@ export default AccountPage
 
 const styles = StyleSheet.create({
     text1: {
-        color: Colors.Black,
+        color: Colors.BLACK,
         fontWeight: '700',
         fontSize: '26em',
         paddingTop: '4%'
     }, 
     text2: {
-        color: Colors.DarkGray,
+        color: Colors.DARK_GRAY,
         fontWeight: '400',
         fontSize: '17em',
         paddingTop: '4%'
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
       },
       text5: {
         display: 'flex',
-        color: Colors.White,
+        color: Colors.WHITE,
         fontWeight: '600',
         fontSize: '13em',
       },
@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
       },
       text7: {
         display: 'flex',
-        color: Colors.Black,
+        color: Colors.BLACK,
         fontWeight: '400',
         fontSize: '14em',
         width: '86%',
@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
       },
       text8: {
         display: 'flex',
-        color: Colors.Black,
+        color: Colors.BLACK,
         fontWeight: '700',
         fontSize: '24em',
         marginLeft: '7%',
@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
       },
       text28: {
         display: 'flex',
-        color: Colors.Main,
+        color: Colors.MAIN,
         fontWeight: '700',
         fontSize: '24em',
         width: '86%',
