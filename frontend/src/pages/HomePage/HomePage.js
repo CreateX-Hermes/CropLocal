@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { View, StyleSheet, SafeAreaView, TouchableOpacity, Image, Modal, TextInput, } from 'react-native';
+import { View, StyleSheet, SafeAreaView, TouchableOpacity, Image, Modal, TextInput} from 'react-native';
 import { Text, Divider } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import Messages from '../Messages/Messages';
@@ -9,6 +9,7 @@ import Help from '../Help/Help';
 import Login from '../Auth/Login';
 import BecomeALocal from '../BecomeALocal/BecomeALocal';
 import NavigationButton from '../../components/NavigationButton/NavigationButton';
+import StandList from '../../components/Stand/StandList';
 
 
 const HomePage = () => {
@@ -112,6 +113,10 @@ const HomePage = () => {
                         <Image source={require("../../assets/Search-Filter-Icon.png")} style={{width: '70%', resizeMode: 'contain'}}/>
                     </NavigationButton>
                 </View>
+
+                {/*/ Scrollable Section Containing All the Stands*/}
+                
+                <StandList />
 
                 {/*/ Settings Modal */}
                 <Modal visible={isModalVisible} animationType="fade" >
