@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image } from 'r
 import React, { useLayoutEffect} from 'react'
 import { Divider, IconButton,} from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
+import { Colors } from '../../Styles';
 
 const Help = () => {
   const navigation = useNavigation();
@@ -47,7 +48,7 @@ const Help = () => {
           Email:
         </Text>
         <Text style={styles.text6}>
-          hermeshelp@gmail.com
+          croplocalhelp@gmail.com
         </Text>
       </View>
       
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
     paddingLeft: '7%'
   },
   text6: {
-    color: '#288FBB',
+    color: Colors.MAIN,
     fontWeight: '400',
     fontSize: '17em',
     alignSelf: 'center',

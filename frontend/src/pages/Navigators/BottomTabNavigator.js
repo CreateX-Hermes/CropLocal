@@ -4,6 +4,8 @@ import PlusPopupNavigator from "./PlusPopupNavigator.js";
 import { View, Image } from 'react-native';
 import HomePageNavigator from "./HomePageNavigator.js";
 import AccountPageNavigator from "./AccountPageNavigator.js";
+import HomePage from "../HomePage/HomePage.js";
+import AccountPage from "../AccountPage/AccountPage.js";
 
 
 const Tab = createBottomTabNavigator();
@@ -16,7 +18,7 @@ const BottomTabNavigator = () => {
           tabBarShowLabel: false
         }}
       >
-        <Tab.Screen name="Home" component={HomePageNavigator}
+        <Tab.Screen name="Home" component={HomePage}
            options={{
             tabBarIcon: () => (
               <View style={{ justifyContent: 'center', top: '50%'}}>
@@ -67,7 +69,7 @@ const BottomTabNavigator = () => {
             )
           }}
         />
-        <Tab.Screen name="AccountPageNavigator" component={AccountPageNavigator}
+        <Tab.Screen name="AccountPageNavigator" component={AccountPage}
         options={{
           tabBarIcon: () => (
             <View style={{ justifyContent: 'center', top: '50%'}}>
