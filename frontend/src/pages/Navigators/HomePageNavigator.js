@@ -9,6 +9,8 @@ import MyWallet from '../MyWallet/MyWallet';
 import Help from '../Help/Help';
 import Login from '../Auth/Login';
 import BecomeALocal from '../BecomeALocal/BecomeALocal';
+import BottomTabNavigator from './BottomTabNavigator';
+
 
 const Stack = createStackNavigator();
 
@@ -18,7 +20,7 @@ const HomePageNavigator = () => {
     <Stack.Navigator >
       <Stack.Screen
         name="HomePage"
-        component={HomePage}
+        component={BottomTabNavigator}
         options={{headerShown: false}} />
       <Stack.Screen name="HomePageFilter" 
        component={HomePageFilter} 
