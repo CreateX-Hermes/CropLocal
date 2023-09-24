@@ -6,11 +6,23 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { Colors } from '../../Styles';
 import { Divider } from 'react-native-paper';
 import { TextInput } from 'react-native-paper';
+import { StockItem } from '../../components/StockItem/StockItem';
 
 export const Seller = () => {
     const [showMore, setShowMore] = useState(false);
 
     const text = "In this one of a kind authentic Parisian experience I will show you the what it’s like to live in the City of Lights like a true Frenchman. From my favorite restaurant and cafe, to my unforgettable overlook of the city only a few know about, this will be an experience you will never forget";
+
+    const stock = [{
+        item: "Eggs",
+        price: 0.77,
+        pictures: [require('../../assets/egg1.png'), require('../../assets/egg2.png')]
+    },
+    {
+        item: "Honey",
+        price: 8.99,
+        pictures: []
+    }]
 
   return (
     <ScrollView contentContainerStyle={styles.main}>
@@ -40,7 +52,7 @@ export const Seller = () => {
       </View>
       <View style={styles.divider}></View>
       <Text style={styles.subheading}>Our <Text style={styles.greenSub}>Stock</Text></Text>
-      <TextInput underlineColorAndroid="transparent" placeholder="Search Stock" style={styles.search}/>
+      <StockItem item="Eggs" price={0.77} images={stock[0].pictures}/>
     </ScrollView>
   )
 }
@@ -118,15 +130,5 @@ const styles = StyleSheet.create({
         borderTopWidth: 2,
         width: '90%',
         marginTop: 15
-    },
-    search: {
-        width: '90%',
-        textAlign: 'center',
-        height: 30,
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20,
-        
     }
 })
