@@ -18,9 +18,11 @@ export const StockItem = (props) => {
     
     return (
         <View style={styles.main}>
-            <Text style={styles.title}>{`${props.item}:`}</Text>
             <View style={styles.pricing}>
-                <Text style={styles.price}>{`$${props.price} per 1`}</Text>
+                <View>
+                    <Text style={styles.title}>{`${props.item}:`}</Text>
+                    <Text style={styles.price}>{`$${props.price} per 1`}</Text>
+                </View>
                 <View style={styles.quantity}>
                     <TextInput style={styles.input} placeholder="0"/>
                     <Text style={styles.quant}>/Qty</Text>
@@ -35,30 +37,34 @@ export const StockItem = (props) => {
 
 const styles = StyleSheet.create({
     main: {
-        width: '95%',
-        height: '30%',
+        width: '90%',
+        height: '15%',
         position: 'relative',
-        left: '3%'
+        left: '3%',
+        marginBottom: 0
     },
     title: {
         fontWeight: '600',
-        fontSize: 20
+        fontSize: 20,
+        marginBottom: 5
     },
     quantity: {
         width: '10%',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        marginRight: '10%'
+        marginRight: '10%',
+        marginBottom: 2,
     },
     pricing: {
         width: '90%',
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginBottom: 10
     },
     price: {
-        color: '#979797' 
+        color: '#979797',
     },
     input: {
         width: 42,
@@ -77,5 +83,6 @@ const styles = StyleSheet.create({
     image: {
         width: 179,
         height: 121,
+        marginRight: 20
     }
 });
