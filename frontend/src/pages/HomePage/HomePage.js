@@ -103,13 +103,13 @@ const HomePage = () => {
 
                 {/*/ TOP BAR IN THE HOME PAGE */}
                 <View style={{ zIndex: '1', flexDirection: 'row', display: 'flex', alignItems: 'center', marginTop: '3%' }}>
-                    <NavigationButton onPress={()=> navigation.navigate(Messages)} style={{height: 40, width: 40, flex: 0, marginLeft: 0, marginRight: 20}}>
+                    <NavigationButton onPress={()=> navigation.navigate(Messages)} style={{height: 42, width: 42, flex: 0, marginLeft: 0, marginRight: 20}}>
                         <Image source={require("../../assets/Gear-Settings-Icon.png")} style={{width: '70%', resizeMode: 'contain'}}/>
                     </NavigationButton>
-                    <NavigationButton onPress={toggleFilterModal} style={{flex: 0, paddingHorizontal: '8%', paddingVertical: '3%'}}>
+                    <NavigationButton onPress={toggleFilterModal} style={{flex: 0, paddingHorizontal: '8%', paddingVertical: '4%'}}>
                         <Text style={styles.text1}>Atlanta, Georgia</Text>
                     </NavigationButton>
-                    <NavigationButton onPress={()=> navigation.navigate(Messages)} style={{height: 40, width: 40, flex: 0, marginLeft: 20, marginRight: 0}}>
+                    <NavigationButton onPress={()=> navigation.navigate(Messages)} style={{height: 42, width: 42, flex: 0, marginLeft: 20, marginRight: 0}}>
                         <Image source={require("../../assets/Search-Filter-Icon.png")} style={{width: '70%', resizeMode: 'contain'}}/>
                     </NavigationButton>
                 </View>

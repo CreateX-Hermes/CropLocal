@@ -1,16 +1,20 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import PlusPopupNavigator from "./PlusPopupNavigator.js";
-import { View, Image } from 'react-native';
+import { View, Image, Button } from 'react-native';
 import HomePageNavigator from "./HomePageNavigator.js";
-import AccountPageNavigator from "./AccountPageNavigator.js";
 import HomePage from "../HomePage/HomePage.js";
 import AccountPage from "../AccountPage/AccountPage.js";
+import { Colors } from "../../Styles.js";
+import NavigationButton from "../../components/NavigationButton/NavigationButton.js";
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
+
+    const [focussedIcon, setFocussedIcon] = React.useState("HOME")
 
     return (
         <Tab.Navigator
@@ -18,71 +22,59 @@ const BottomTabNavigator = () => {
           tabBarShowLabel: false
         }}
       >
-        <Tab.Screen name="Home" component={HomePage}
-           options={{
-            tabBarIcon: () => (
-              <View style={{ justifyContent: 'center', top: '50%'}}>
-                <Image
-                      source={require('../../assets/HomeIcon.png')}
-                      resizeMode='contain'
-                      style={{
-                        width: 33,
-                        tintColor: '#000000', 
-                        bottom: '6%'
-                      }}
-                  />
-              </View>
-            )
-          }}
-        />
-        <Tab.Screen name="Popup" component={PlusPopupNavigator}
-             options={{
-              tabBarIcon: () => (
-                <View style={{ justifyContent: 'center', top: '50%'}}>
-                  <Image
-                        source={require('../../assets/save-instagram.png')}
-                        resizeMode='contain'
-                        style={{
-                          width: 30,
-                          tintColor: '#000000',
-                          bottom: '5%'
-                        }}
-                    />
-                </View>
-              )
-            }}
-        />
-        <Tab.Screen name="Stands" component={HomePageNavigator}
-           options={{
-            tabBarIcon: () => (
-              <View style={{ justifyContent: 'center', top: '50%'}}>
-                <Image
-                      source={require('../../assets/StandIcon.png')}
-                      resizeMode='contain'
-                      style={{
-                        width: 30,
-                        tintColor: '#000000', 
-                        bottom: '5%'
-                      }}
-                  />
-              </View>
-            )
-          }}
-        />
-        <Tab.Screen name="AccountPageNavigator" component={AccountPage}
+        <Tab.Screen
+        name="Home"
+        component={HomePage}
         options={{
-          tabBarIcon: () => (
-            <View style={{ justifyContent: 'center', top: '50%'}}>
-              <Image
-                    source={require('../../assets/User.png')}
-                    resizeMode='contain'
-                    style={{
-                      width: 27,
-                      tintColor: '#000000',
-                      bottom: '5%' 
-                    }}
-                />
-            </View>
+          tabBarLabel: 'Home',
+          tabBarIconStyle: { marginTop: 17 },
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={require('../../assets/HomeIcon.png')}
+              style={{tintColor: focused ? Colors.LOGIN_BUTTON : Colors.DARK_GRAY, width: 33, height: 33}}
+            />
+          )
+        }}
+        />  
+        <Tab.Screen
+        name="Save"
+        component={PlusPopupNavigator}
+        options={{
+          tabBarLabel: 'Save',
+          tabBarIconStyle: { marginTop: 17 },
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={require('../../assets/save-instagram.png')}
+              style={{tintColor: focused ? Colors.LOGIN_BUTTON : Colors.DARK_GRAY, width: 30, height: 30}}
+            />
+          )
+        }}
+        />
+        <Tab.Screen
+        name="Stands"
+        component={AccountPage}
+        options={{
+          tabBarLabel: 'Stands',
+          tabBarIconStyle: { marginTop: 17 },
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={require('../../assets/StandIcon.png')}
+              style={{tintColor: focused ? Colors.LOGIN_BUTTON : Colors.DARK_GRAY, width: 32, height: 32}}
+            />
+          )
+        }}
+        />
+        <Tab.Screen
+        name="Account"
+        component={AccountPage}
+        options={{
+          tabBarLabel: 'Account',
+          tabBarIconStyle: { marginTop: 17 },
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={require('../../assets/User.png')}
+              style={{tintColor: focused ? Colors.LOGIN_BUTTON : Colors.DARK_GRAY, width: 30, height: 30}}
+            />
           )
         }}
         />
