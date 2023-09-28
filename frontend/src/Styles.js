@@ -19,8 +19,8 @@ export const Colors = {
     RATING: "#E39C52",
     CANCEL: "#DD0000",
     BUTTON_BACKGROUND: "#F5F5F5",
-    Black: "#000000",
-    White: "#FFFFFF",
-    DarkGray: "#979797",
+    BLACK: "#000000",
+    WHITE: "#FFFFFF",
+    DARK_GRAY: "#979797",
 }
 
