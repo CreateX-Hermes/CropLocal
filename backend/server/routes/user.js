@@ -37,7 +37,7 @@ const createToken = (userID) => {
         userID: userID
     }
 
-    const token = jwt.sign(payload, "testtest", {expiresIn: "1h"})
+    const token = jwt.sign(payload, "JohannesQian", {expiresIn: "24h"})
     return token
 }
 

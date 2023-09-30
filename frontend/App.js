@@ -12,7 +12,7 @@ import BottomTabNavigator from './src/pages/Navigators/BottomTabNavigator';
 export default function App() {
   return (
     <NavigationContainer>
-      <BottomTabNavigator />
+      <AuthNavigator />
     </NavigationContainer>
   );
 }
