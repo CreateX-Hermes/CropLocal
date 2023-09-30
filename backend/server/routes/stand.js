@@ -5,13 +5,19 @@ const User = require("../models/user")
 
 router.post("/create", async (req, res) => {
     try {
-        const {standName, userEmail, items, pictures} = req.body
+        const {standName, userID, items, pictures} = req.body
 
-        const user = await User.findOne({email: userEmail})
+        var ObjectId = require('mongodb').ObjectId
+        var newID = new ObjectId(userID)
+
+        const user = await User.findOne({_id: newID})
+        
         let location = user.location
         let owner = user._id
+        let ownerName = user.firstName
+        let city = user.city
 
-        const newStand = new Stand({standName, owner, items, pictures, location})
+        const newStand = new Stand({standName, owner, items, pictures, location, ownerName, city})
 
         const old = await Stand.findOne({owner})
 
@@ -30,11 +36,14 @@ router.post("/create", async (req, res) => {
 
 router.post("/findWithinRadius", async (req, res) => {
     try {
-        const { lat, lng, radius } = req.body;
-        const userCoordinates = [parseFloat(lng), parseFloat(lat)]; 
+        const { longitude, latitude, radius, userID} = req.body;
+        const userCoordinates = [parseFloat(longitude), parseFloat(latitude)]; 
+        var ObjectId = require('mongodb').ObjectId
+        var newID = new ObjectId(userID)
 
         // Perform a geospatial query using $geoNear and $maxDistance
-        const stands = await Stand.aggregate([
+        const stands = await Stand.aggregate(
+            [
             {
                 $geoNear: {
                     near: {
@@ -42,13 +51,19 @@ router.post("/findWithinRadius", async (req, res) => {
                         coordinates: userCoordinates,
                     },
                     distanceField: 'distance',
-                    maxDistance: parseFloat(radius) * 1000, // Convert radius to meters
+                    maxDistance: parseFloat(radius) * 1609.34, // Convert radius to miles
                     spherical: true,
                 },
             },
+            {
+                $match: {
+                    $expr: {
+                        $ne: ["$owner", newID]
+                    }
+                }
+            }
         ]);
 
-        console.log(stands)
 
         return res.status(200).json(stands);
     } catch (error) {

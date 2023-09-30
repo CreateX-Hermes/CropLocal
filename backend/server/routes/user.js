@@ -6,17 +6,14 @@ const jwt = require("jsonwebtoken")
 
 router.post("/register", async (req, res) => {
     try{
-        const {firstName, lastName, email, prepassword, location} = req.body
+        const {firstName, lastName, email, prepassword, location, city} = req.body
 
         const salt = await bcrypt.genSalt(10)
         const password = await bcrypt.hash(prepassword, salt)
 
-        console.log(location)
-
-        const newUser = new User({firstName, lastName, email, password, location})
+        const newUser = new User({firstName, lastName, email, password, location, city})
 
         const old = await User.findOne({email})
-
 
         if (old){
             return res.status(501).json({message: "User already exists, login instead"})
@@ -32,9 +29,11 @@ router.post("/register", async (req, res) => {
 })
 
 
-const createToken = (userID) => {
+const createToken = (userID, userLocation, firstName) => {
     const payload = {
-        userID: userID
+        userID: userID,
+        location: userLocation,
+        name: firstName
     }
 
     const token = jwt.sign(payload, "JohannesQian", {expiresIn: "24h"})
@@ -54,10 +53,10 @@ router.post("/login", async (req, res) => {
         const result = await bcrypt.compare(prepassword, user.password)
 
         if (!result) {
-            return res.status(403).send({message: "Incorrect Password!"})
+            return res.status(403).send({message: "Incorrect Password!"})  
         } 
 
-        const token = createToken(user._id)
+        const token = createToken(user._id, user.location.coordinates, user.firstName)
         
         return res.status(200).send({token})
 
@@ -65,6 +64,32 @@ router.post("/login", async (req, res) => {
     } catch(error) {
         console.log(error)
         return res.status(500).json({message:"Error logging in"})
+    }
+
+})
+
+router.get("/getUserLocation", async (req, res) => {
+    try{
+
+        const {userID} = req.query
+
+        var ObjectId = require('mongodb').ObjectId
+        var newID = new ObjectId(userID)
+
+        const user = await User.findOne({_id: newID})
+
+
+        if (!user){
+            return res.status(501).json({message: "User does not exist"})
+        }
+        const userLocation = user.location
+
+        return res.status(200).send(userLocation)
+
+
+    } catch(error) {
+        console.log(error)
+        return res.status(500).json({message:"Error"})
     }
 
 })

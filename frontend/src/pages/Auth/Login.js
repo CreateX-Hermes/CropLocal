@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {StyleSheet, Text, View, TextInput, SafeAreaView, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import HomePage from '../HomePage/HomePage';
@@ -6,11 +6,10 @@ import ForgotPassword from './ForgotPassword';
 import Signup from './Signup';
 import BottomTabNavigator from '../Navigators/BottomTabNavigator';
 import { useState } from "react";
-
-
 import { styles } from "./loginStyles.js";
 import axios from 'axios';
 import HomePageNavigator from '../Navigators/HomePageNavigator';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 const Login = () => {
@@ -18,6 +17,26 @@ const Login = () => {
   const [ password, setPassword ] = useState("")
   // const {navigation} = props;
   const navigation = useNavigation();
+
+  //check if user previously logged in
+  useEffect(() => {
+    const checkLoginStatus = async() => {
+      try{
+      const token = await AsyncStorage.getItem("authToken")
+
+      if (token) {
+        navigation.navigate(HomePageNavigator)
+      }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    
+    //checkLoginStatus()
+
+  }, [])
+
+
 
   const handleLogin = async () => {
     const user = {
@@ -27,6 +46,9 @@ const Login = () => {
     let response
     try {
       response = await axios.post("http://localhost:8000/user/login", user)
+      const token = response.data.token
+      AsyncStorage.setItem("authToken", token)
+
     } catch (error) {
       console.log(error)
     }

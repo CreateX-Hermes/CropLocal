@@ -37,23 +37,29 @@ const Signup = () => {
 
   const handleRegister = async () => {
     
-    // const reverseGeoCode = async () => {
-    //   const reverseGeoCodeAddress = await Location.reverseGeocodeAsync({
-    //     latitude: location.coords.latitude,
-    //     longitude: location.coords.longitude
-    //   })
-    //   return(reverseGeoCodeAddress)
-    // }
+    const reverseGeoCode = async () => {
+      if (location) {
+        const reverseGeoCodeAddress = await Location.reverseGeocodeAsync({
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude
+        })
+        return(reverseGeoCodeAddress)
+      }
+      return {city: null}
+      
+    }
 
-    userLocation = {coordinates: [location.coords.longitude, location.coords.latitude], mainType: "Point"}
-    console.log(userLocation)
+    userLocation = {coordinates: [location.coords.longitude, location.coords.latitude], type: "Point"}
+
+    const reverseLocation = await reverseGeoCode()
 
     const user = {
       firstName: firstName,
       lastName: lastName,
       email: email,
       prepassword: password,
-      location: userLocation
+      location: userLocation,
+      city: reverseLocation[0].city
     }
 
     try {
@@ -63,7 +69,6 @@ const Signup = () => {
       console.log(error)
     }
   }
-
 
   useLayoutEffect(() => {
     navigation.setOptions({
