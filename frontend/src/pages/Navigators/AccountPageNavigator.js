@@ -10,6 +10,7 @@ import EditProfile from '../EditProfile/EditProfile';
 import MyWallet from '../MyWallet/MyWallet';
 import Help from '../Help/Help';
 import Login from '../Auth/Login';
+import BottomTabNavigator from './BottomTabNavigator';
 
 const Stack = createStackNavigator();
 
@@ -17,18 +18,13 @@ const AccountPageNavigator = () => {
 
     const navigation = useNavigation();
 
-    useLayoutEffect(() => {
-        navigation.setOptions({
-            headerShown: false,
-        });
-    }, []);
 
   return (
     <Stack.Navigator >
       <Stack.Screen
         name="AccountPage"
-        component={AccountPage}
-        options={{headerShown: false}} />
+        component={BottomTabNavigator}
+        options={{headerShown: false, }} />
       <Stack.Screen
         name="FindFriends"
         component={FindFriends}

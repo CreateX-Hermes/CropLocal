@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { View, StyleSheet, SafeAreaView, TouchableOpacity, Image, Modal, TextInput, } from 'react-native';
+import { View, StyleSheet, SafeAreaView, TouchableOpacity, Image, Modal, TextInput} from 'react-native';
 import { Text, Divider } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import Messages from '../Messages/Messages';
@@ -9,6 +9,7 @@ import Help from '../Help/Help';
 import Login from '../Auth/Login';
 import BecomeALocal from '../BecomeALocal/BecomeALocal';
 import NavigationButton from '../../components/NavigationButton/NavigationButton';
+import StandList from '../../components/Stand/StandList';
 
 
 const HomePage = () => {
@@ -102,16 +103,20 @@ const HomePage = () => {
 
                 {/*/ TOP BAR IN THE HOME PAGE */}
                 <View style={{ zIndex: '1', flexDirection: 'row', display: 'flex', alignItems: 'center', marginTop: '3%' }}>
-                    <NavigationButton onPress={()=> navigation.navigate(Messages)} style={{height: 40, width: 40, flex: 0, marginLeft: 0, marginRight: 20}}>
+                    <NavigationButton onPress={()=> navigation.navigate(Messages)} style={{height: 42, width: 42, flex: 0, marginLeft: 0, marginRight: 20}}>
                         <Image source={require("../../assets/Gear-Settings-Icon.png")} style={{width: '70%', resizeMode: 'contain'}}/>
                     </NavigationButton>
-                    <NavigationButton onPress={toggleFilterModal} style={{flex: 0, paddingHorizontal: '8%', paddingVertical: '3%'}}>
+                    <NavigationButton onPress={toggleFilterModal} style={{flex: 0, paddingHorizontal: '8%', paddingVertical: '4%'}}>
                         <Text style={styles.text1}>Atlanta, Georgia</Text>
                     </NavigationButton>
-                    <NavigationButton onPress={()=> navigation.navigate(Messages)} style={{height: 40, width: 40, flex: 0, marginLeft: 20, marginRight: 0}}>
+                    <NavigationButton onPress={()=> navigation.navigate(Messages)} style={{height: 42, width: 42, flex: 0, marginLeft: 20, marginRight: 0}}>
                         <Image source={require("../../assets/Search-Filter-Icon.png")} style={{width: '70%', resizeMode: 'contain'}}/>
                     </NavigationButton>
                 </View>
+
+                {/*/ Scrollable Section Containing All the Stands*/}
+                
+                <StandList />
 
                 {/*/ Settings Modal */}
                 <Modal visible={isModalVisible} animationType="fade" >

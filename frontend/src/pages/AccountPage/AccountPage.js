@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import MainTabBar from '../../components/MainTabBar/MainTabBar';
 import Messages from '../Messages/Messages';
 import FindSellers from '../FindSellers/FindSellers';
-import BecomeALocal from '../BecomeALocal/BecomeALocal';
+import BecomeASeller from '../BecomeALocal/BecomeALocal';
 import MyFriends from '../MyFriends/MyFriends';
 import EditProfile from '../EditProfile/EditProfile';
 import MyWallet from '../MyWallet/MyWallet';
@@ -40,11 +40,11 @@ const AccountPage = () => {
         navigation.navigate(EditProfile);
       };
 
-      const handleBecomeALocalPress = () => {
+      const handleBecomeASellerPress = () => {
         // Close Modal
         setModalVisible(!isModalVisible);
         // Navigate to Become A Local Page
-        navigation.navigate(BecomeALocal);
+        navigation.navigate(BecomeASeller);
       };
       const handleMyWalletPress = () => {
         // Close Modal
@@ -117,7 +117,7 @@ const AccountPage = () => {
                 
                 <View style={{flexDirection: 'row',}}>
                     <Text style={styles.text8}>Become a </Text>
-                    <Text style={styles.text28}>Local</Text>
+                    <Text style={styles.text28}>Seller</Text>
                 </View>
 
                 
@@ -127,7 +127,7 @@ const AccountPage = () => {
                 </Text>
                 <View style={{ paddingTop: '6%',alignSelf: 'center' }}>
                 <TouchableOpacity 
-                onPress={() => navigation.navigate(BecomeALocal)}
+                onPress={() => navigation.navigate(BecomeASeller)}
                 style={{ 
                     backgroundColor: Colors.MAIN,
                     borderRadius: 50,
@@ -141,8 +141,8 @@ const AccountPage = () => {
 
                 {/*/ Settings Modal */}
                 <Modal visible={isModalVisible} animationType="fade" >
-                    <SafeAreaView backgroundColor='#071930'>
-                    <View backgroundColor='#071930' height='100%'>
+                    <SafeAreaView backgroundColor={Colors.WHITE}>
+                    <View backgroundColor= {Colors.WHITE} height='100%'>
                     <TouchableOpacity 
                                 onPress={toggleModal}
                                 style={{ 
@@ -158,34 +158,27 @@ const AccountPage = () => {
                                 </TouchableOpacity>
                         
                         <View style={{ alignSelf: 'center', width: '86%', paddingTop: '4%'}}>
-                            <TouchableOpacity style={{ backgroundColor: '#FFFFFF', alignItems: 'center', paddingVertical: '3.6%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}
+                            <TouchableOpacity style={{ backgroundColor: Colors.BUTTON_BACKGROUND, alignItems: 'center', paddingVertical: '3.6%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}
                             onPress={handleEditProfilePress}  >
                                 <Image source={require('../../assets/profileUser.png')} style={ styles.text15 }/>
                                 <Text style={styles.text19}>Edit Profile</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={{ alignSelf: 'center', width: '86%', paddingTop: '3%'}}>
-                            <TouchableOpacity style={{ backgroundColor: '#FFFFFF', alignItems: 'center', paddingVertical: '3.6%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}
-                            onPress={handleBecomeALocalPress}>
+                            <TouchableOpacity style={{ backgroundColor: Colors.BUTTON_BACKGROUND, alignItems: 'center', paddingVertical: '3.6%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}
+                            onPress={handleBecomeASellerPress}>
                                 <Image source={require('../../assets/write.png')} style={ styles.text15 }/>
-                                <Text style={styles.text19}>Become A Local</Text>
+                                <Text style={styles.text19}>Become A Seller</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={{ alignSelf: 'center', width: '86%', paddingTop: '3%'}}>
-                            <TouchableOpacity style={{ backgroundColor: '#FFFFFF', alignItems: 'center', paddingVertical: '3.6%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}
-                            onPress={handleMyWalletPress}>
-                                <Image source={require('../../assets/dollar.png')} style={ styles.text15 }/>
-                                <Text style={styles.text19}>My Wallet</Text>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{ alignSelf: 'center', width: '86%', paddingTop: '3%'}}>
-                            <TouchableOpacity style={{  backgroundColor: '#FFFFFF', alignItems: 'center', paddingVertical: '3.6%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}
+                            <TouchableOpacity style={{  backgroundColor: Colors.BUTTON_BACKGROUND, alignItems: 'center', paddingVertical: '3.6%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}
                             onPress={handleHelpPress}>
                                 <Image source={require('../../assets/communication.png')} style={ styles.text15 }/>
                                 <Text style={styles.text19}>Help</Text>
                             </TouchableOpacity>
                         </View>
-                        <TouchableOpacity onPress={handleSignOutPress} style={{ backgroundColor: '#288FBB', width: '30%', borderRadius: 50, paddingVertical: '3.4%', marginTop: '12%', alignSelf: 'center', top: '36%' }}>
+                        <TouchableOpacity onPress={handleSignOutPress} style={{ backgroundColor: Colors.RATING, width: '30%', borderRadius: 50, paddingVertical: '3.4%', marginTop: '2%', alignSelf: 'center', top: '50%' }}>
                             <Text style={ styles.text10}>Sign out</Text>
                         </TouchableOpacity>  
                     </View>
