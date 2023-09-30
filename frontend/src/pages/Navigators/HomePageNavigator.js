@@ -17,13 +17,14 @@ const Stack = createStackNavigator();
 const HomePageNavigator = () => {
 
   return (
-    <Stack.Navigator >
+    <Stack.Navigator screenOptions={{headerShown: true}}>
       <Stack.Screen
         name="HomePage"
         component={BottomTabNavigator}
         options={{headerShown: false}} />
       <Stack.Screen name="HomePageFilter" 
        component={HomePageFilter} 
+       options={{headerShown: false}}
       />
        <Stack.Screen name="Messages" 
        component={Messages} 

@@ -25,7 +25,7 @@ const AccountPageNavigator = () => {
       <Stack.Screen
         name="AccountPage"
         component={BottomTabNavigator}
-        options={{headerShown: false, }} />
+        options={{headerShown: false }} />
       <Stack.Screen
         name="FindFriends"
         component={FindFriends}

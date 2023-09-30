@@ -19,7 +19,8 @@ const BottomTabNavigator = () => {
     return (
         <Tab.Navigator
         screenOptions={{
-          tabBarShowLabel: false
+          tabBarShowLabel: false,
+          headerShown: false
         }}
       >
         <Tab.Screen
