@@ -1,8 +1,10 @@
-import { StyleSheet, Text, View, Image, SafeAreaView,} from 'react-native'
+import { StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity,} from 'react-native'
 import React, { useLayoutEffect, useState } from 'react'
 import NavigationButton from '../../components/NavigationButton/NavigationButton'
 import { useNavigation } from '@react-navigation/native';
-import { Colors } from '../../Styles.js'
+import { Colors } from '../../Styles.js';
+import BecomeASellerOneNavigator from '../Navigators/BecomeASellerOneNavigator';
+import BecomeASellerOne from './BecomeASellerOne';
 
 const BecomeALocal = () => {
   const navigation = useNavigation();
@@ -26,7 +28,32 @@ const BecomeALocal = () => {
           <View style={styles.inputtwo}>
             <Text style={styles.text13}>Hello and welcome to the Hermes family. Become a Seller today and start getting paid for showing other travelers around the wonderful place you call home. Become a Local guide below and start working for yourself and become your own boss...</Text>
           </View>
+
+          <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: '10%', paddingTop: '4%'  }}>
+            <Image source={require('../../assets/farmer.jpeg')} style={{borderRadius: 200, width: 120, height: 120}}/>
+            <Image source={require('../../assets/farmer2.jpeg')} style={{borderRadius: 200, width: 140, height: 140}}/>
+          </View>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingLeft: '8%', paddingTop: '5%', paddingRight: '6%'  }}>
+            <Image source={require('../../assets/farmer3.jpeg')} style={{borderRadius: 200, width: 140, height: 140}}/>
+            <Image source={require('../../assets/farmer4.jpeg')} style={{borderRadius: 200, width: 120, height: 120}}/>
+          </View>
           
+          <View style={{ backgroundColor: Colors.BLACK, width: '100%', height: '200%', position: 'absolute', top: '95%' }} />
+
+          <View style={{ position: 'absolute', top: '92%', alignSelf: 'center' }}>
+            <TouchableOpacity 
+              style={{ 
+                backgroundColor: Colors.RATING,
+                borderRadius: 50,
+                paddingVertical: '10%',
+                alignSelf: 'center',
+                zIndex: 5,
+                borderColor: Colors.WHITE,
+                borderWidth: '4%',
+              }} onPress={BecomeASellerOne}>
+              <Text style={styles.text22}>Begin</Text>
+            </TouchableOpacity>
+            </View>
         </View>
       </SafeAreaView>
     </View>
@@ -76,5 +103,12 @@ const styles = StyleSheet.create({
         paddingRight: '6%',
         paddingTop: '5%',
         paddingBottom: '5%'
+      },
+      text22: {
+        display: 'flex',
+        color: Colors.WHITE,
+        fontWeight: '600',
+        fontSize: '15em',
+        paddingHorizontal: '13%',
       },
 })
