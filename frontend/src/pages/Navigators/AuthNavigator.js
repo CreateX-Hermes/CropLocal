@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Login from '../Auth/Login.js'
 import Signup from '../Auth/Signup';
 import ForgotPassword from '../Auth/ForgotPassword';
-import BottomTabNavigator from './BottomTabNavigator.js';
+import HomePageNavigator from './HomePageNavigator.js';
 
 const Stack = createStackNavigator();
 
@@ -20,7 +20,7 @@ const AuthNavigator = () => {
       />
       <Stack.Screen name="Signup" 
        component={Signup} />
-       <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator}/>
+       <Stack.Screen name="HomePageNavigator" component={HomePageNavigator}/>
     </Stack.Navigator>
   );
 }

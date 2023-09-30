@@ -48,10 +48,10 @@ export const styles = StyleSheet.create({
         borderColor: '#071930',
         backgroundColor: 'white',
         color: 'black',
-        padding: '5%',
+        padding: '0%',
         marginVertical: '3%',
         borderRadius: '100%',
-        height: '15%',
+        height: '55%',
         fontSize: '16.5em',
         fontWeight: '400',
         paddingLeft: '7%'

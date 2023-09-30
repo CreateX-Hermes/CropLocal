@@ -11,6 +11,7 @@ import MyWallet from '../MyWallet/MyWallet';
 import Help from '../Help/Help';
 import Login from '../Auth/Login';
 import BottomTabNavigator from './BottomTabNavigator';
+import AuthNavigator from './AuthNavigator';
 
 const Stack = createStackNavigator();
 
@@ -51,7 +52,7 @@ const AccountPageNavigator = () => {
        component={Help} 
       />
       <Stack.Screen name="Login" 
-       component={Login} 
+       component={AuthNavigator} 
        options={{headerShown: false}}
       />
     </Stack.Navigator>

@@ -10,6 +10,7 @@ import { useState } from "react";
 
 import { styles } from "./loginStyles.js";
 import axios from 'axios';
+import HomePageNavigator from '../Navigators/HomePageNavigator';
 
 
 const Login = () => {
@@ -31,7 +32,7 @@ const Login = () => {
     }
     let loggedIn
     if (response && response.status == 200) {
-      navigation.navigate(BottomTabNavigator)
+      navigation.navigate(HomePageNavigator)
     } else {
       loggedIn = false;
     }

@@ -3,8 +3,8 @@ import React, { useLayoutEffect, useState } from 'react'
 import NavigationButton from '../../components/NavigationButton/NavigationButton'
 import { useNavigation } from '@react-navigation/native';
 import { Colors } from '../../Styles.js';
-import BecomeASellerOneNavigator from '../Navigators/BecomeASellerOneNavigator';
-import BecomeASellerOne from './BecomeASellerOne';
+// import BecomeASellerOneNavigator from '../Navigators/BecomeASellerOneNavigator';
+// import BecomeASellerOne from './BecomeASellerOne';
 
 const BecomeALocal = () => {
   const navigation = useNavigation();
