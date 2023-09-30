@@ -22,18 +22,16 @@ const standSchema = new mongoose.Schema({
         default: []
     },
     location: {
-        type: {
-            coordinates:{
-                type: [Number],
-                maxItems: 2,
-                minItems: 2
-            },
-            mainType: {
-                type: String,
-                enum: ["Point"], // Specify that it's a Point type
-                required: true
-              }
+        coordinates:{
+            type: [Number],
+            maxItems: 2,
+            minItems: 2
         },
+        type: {
+            type: String,
+            enum: ["Point"], // Specify that it's a Point type
+            required: true
+        }
     },
 
 })

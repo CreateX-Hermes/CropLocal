@@ -23,14 +23,20 @@ const Login = () => {
       email: email,
       prepassword: password
     }
-
+    let response
     try {
       response = await axios.post("http://localhost:8000/user/login", user)
     } catch (error) {
       console.log(error)
     }
-
-    navigation.navigate(BottomTabNavigator);
+    let loggedIn
+    if (response && response.status == 200) {
+      navigation.navigate(BottomTabNavigator)
+    } else {
+      loggedIn = false;
+    }
+    //Navigate to the homepage if loggedIn, display error message if loggedIn = false.
+    //navigation.navigate(BottomTabNavigator);
   }
 
 
@@ -72,7 +78,9 @@ const Login = () => {
         <View style={styles.footer}>
           {/******************** LOGIN BUTTON *********************/}
           <TouchableOpacity
-                onPress={() => {handleLogin()}}
+                onPress={() => {
+                  handleLogin()
+                }}
                 style={styles.loginBtn}>
                 <Text style={styles.loginText}>Log In</Text>
               </TouchableOpacity>
