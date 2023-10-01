@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity,} from 'react-native'
+import { StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity, Modal} from 'react-native'
 import React, { useLayoutEffect, useState } from 'react'
 import NavigationButton from '../../components/NavigationButton/NavigationButton'
 import { useNavigation } from '@react-navigation/native';
 import { Colors } from '../../Styles.js';
-// import BecomeASellerOneNavigator from '../Navigators/BecomeASellerOneNavigator';
-// import BecomeASellerOne from './BecomeASellerOne';
+import ModalSellerOne from './ModalSellerOne';
+import HomePage from '../HomePage/HomePage';
 
 const BecomeALocal = () => {
   const navigation = useNavigation();
@@ -15,12 +15,18 @@ const BecomeALocal = () => {
     });
 }, []);
 
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  }
+
   return (
-    <View>
+    <Modal  animationType="slide">
       <SafeAreaView style={{ backgroundColor: Colors.WHITE}}>
         <View style={{ backgroundColor: Colors.WHITE, width: '100%', height: '100%', zIndex: '0'}}>
           <NavigationButton onPress={() => navigation.goBack()} style={{height: 50, width: 50, flex: 0, marginLeft: '6%', top: '15%'}}>
-            <Image source={require('../../assets/left.png')} style={{width: '140%', resizeMode: 'contain'}}/>
+            <Image source={require('../../assets/close.png')} style={{width: '90%', resizeMode: 'contain'}}/>
           </NavigationButton>
           <View style={{flexDirection: 'row', marginTop: '7%'}}>
             <Text style={styles.text8}>Become a <Text style={styles.text28}>Seller</Text> Today.</Text>
@@ -50,13 +56,14 @@ const BecomeALocal = () => {
                 zIndex: 5,
                 borderColor: Colors.WHITE,
                 borderWidth: '4%',
-              }} onPress={BecomeASellerOne}>
+              }} onPress={() => navigation.navigate(ModalSellerOne)}>
               <Text style={styles.text22}>Begin</Text>
             </TouchableOpacity>
             </View>
+
         </View>
       </SafeAreaView>
-    </View>
+    </Modal>
   )
 }
 
