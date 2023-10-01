@@ -12,6 +12,8 @@ import Help from '../Help/Help';
 import Login from '../Auth/Login';
 import BottomTabNavigator from './BottomTabNavigator';
 import AuthNavigator from './AuthNavigator';
+import BecomeASellerNavigator from './BecomeASellerNavigator';
+import ModalSellerOne from '../BecomeALocal/ModalSellerOne';
 
 const Stack = createStackNavigator();
 
@@ -24,23 +26,22 @@ const AccountPageNavigator = () => {
     <Stack.Navigator >
       <Stack.Screen
         name="AccountPage"
-        component={BottomTabNavigator}
+        component={AccountPage}
         options={{headerShown: false }} />
       <Stack.Screen
         name="FindFriends"
         component={FindFriends}
       />
-       <Stack.Screen name="Messages" 
-       component={Messages} 
-      />
       <Stack.Screen
         name="MyFriends"
         component={MyFriends}
       />
-      <Stack.Screen
-        name="BecomeALocal"
-        component={BecomeALocal}
-      />
+      <Stack.Screen 
+        mode = "Modal"
+        name = "BecomeASellerNavigator"
+        component={BecomeASellerNavigator}
+        options={{headerShown: false, presentation: 'modal'}}
+        />
       <Stack.Screen
         name="EditProfile"
         component={EditProfile}

@@ -12,6 +12,8 @@ import MyWallet from '../MyWallet/MyWallet';
 import Help from '../Help/Help';
 import Login from '../Auth/Login';
 import { Colors } from '../../Styles.js'
+import BecomeASellerNavigator from '../Navigators/BecomeASellerNavigator';
+import BecomeALocal from '../BecomeALocal/BecomeALocal';
 
 
 // <Divider style={{ width: '86%', alignSelf: 'center', marginTop: '3.6%', paddingTop: '0.3%' }}/>
@@ -32,6 +34,7 @@ const AccountPage = () => {
     const toggleModal = () => {
         setModalVisible(!isModalVisible);
     };
+
 
     const handleEditProfilePress = () => {
         // Close Modal
@@ -127,7 +130,7 @@ const AccountPage = () => {
                 </Text>
                 <View style={{ paddingTop: '6%',alignSelf: 'center' }}>
                 <TouchableOpacity 
-                onPress={() => navigation.navigate(BecomeASeller)}
+                onPress={() => navigation.navigate(BecomeASellerNavigator)}
                 style={{ 
                     backgroundColor: Colors.MAIN,
                     borderRadius: 50,

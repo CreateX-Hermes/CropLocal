@@ -8,6 +8,7 @@ import AccountPage from "../AccountPage/AccountPage.js";
 import { Colors } from "../../Styles.js";
 import NavigationButton from "../../components/NavigationButton/NavigationButton.js";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import AccountPageNavigator from "./AccountPageNavigator.js";
 
 
 const Tab = createBottomTabNavigator();
@@ -67,7 +68,7 @@ const BottomTabNavigator = () => {
         />
         <Tab.Screen
         name="Account"
-        component={AccountPage}
+        component={AccountPageNavigator}
         options={{
           tabBarLabel: 'Account',
           tabBarIconStyle: { marginTop: 17 },
