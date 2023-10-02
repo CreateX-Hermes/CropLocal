@@ -38,7 +38,7 @@ export const StockItem = (props) => {
 const styles = StyleSheet.create({
     main: {
         width: '90%',
-        height: '15%',
+        height: '12%',
         position: 'relative',
         left: '3%',
         marginBottom: 0

@@ -83,6 +83,16 @@ export const Seller = () => {
             </View>
         </View>
         <Review name={"Nathaniel Drew"} rating={4.97} description={review}/>
+        <Review name={"Nathaniel Drew"} rating={4.97} description={review}/>
+        <View style={styles.buttonRow}>
+            <TouchableOpacity style={styles.more}>
+                <Text style={styles.moreText}>Read More</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.plus}>
+                <Image style={styles.plusImage} source={require('../../assets/add.png')}/>
+            </TouchableOpacity>
+        </View>
+        <View style={styles.divider}></View>
     </ScrollView>
   )
 }
@@ -197,5 +207,37 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         width: '90%'
+    },
+    buttonRow: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center'
+    },
+    more: {
+        backgroundColor: 'black',
+        width: 120,
+        height: 35,
+        borderRadius: 20,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    moreText: {
+        color: 'white',
+        fontSize: 13,
+        fontWeight: '600'
+    },
+    plus: {
+        width: 40,
+        height: 40,
+        backgroundColor: Colors.BUTTON_BACKGROUND,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: '50%',
+        marginLeft: 15
+    },
+    plusImage: {
+        width: 20,
+        height: 20,
     }
 })
