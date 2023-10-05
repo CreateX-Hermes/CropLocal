@@ -9,6 +9,7 @@ import { Colors } from "../../Styles.js";
 import NavigationButton from "../../components/NavigationButton/NavigationButton.js";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AccountPageNavigator from "./AccountPageNavigator.js";
+import SellerManagerPage from "../SellerManagerPage/SellerManagerPage.js";
 
 
 const Tab = createBottomTabNavigator();
@@ -54,7 +55,7 @@ const BottomTabNavigator = () => {
         />
         <Tab.Screen
         name="Stands"
-        component={AccountPage}
+        component={SellerManagerPage}
         options={{
           tabBarLabel: 'Stands',
           tabBarIconStyle: { marginTop: 17 },
