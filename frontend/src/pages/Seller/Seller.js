@@ -4,12 +4,11 @@ import React from 'react'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Colors } from '../../Styles';
-import { Divider } from 'react-native-paper';
-import { TextInput } from 'react-native-paper';
 import { StockItem } from '../../components/StockItem/StockItem';
 import { Review } from '../../components/Review/Review';
 
-export const Seller = () => {
+
+const Seller = ({route}) => {
     const [showMore, setShowMore] = useState(false);
 
     const text = "In this one of a kind authentic Parisian experience I will show you the what it’s like to live in the City of Lights like a true Frenchman. From my favorite restaurant and cafe, to my unforgettable overlook of the city only a few know about, this will be an experience you will never forget";
@@ -31,16 +30,16 @@ export const Seller = () => {
         pictures: [require('../../assets/egg1.png'), require('../../assets/egg2.png')]
     }]
 
+    let {_id, standName, city, distance, rating, description, ownerName, picture} = route.params
+
   return (
     <ScrollView contentContainerStyle={styles.main}>
-      <Image
-        source={require('./image.png')} 
-      />
-      <Text style={styles.title}>Urban Gardens</Text>
+      <Image source={{uri: picture}} defaultSource={require('../../assets/market_stand.png')} style={{width: 400, height: 250}}></Image>
+      <Text style={styles.title}>{standName}</Text>
       <Text style={styles.subtitle}>Produce</Text>
       <View style={styles.ratingContainer}>
         <Image resizeMode='contain' style={styles.icon} source={require('../../assets/star.png')}/>
-        <Text style={styles.rating}>4.93</Text>
+        <Text style={styles.rating}>{rating}</Text>
       </View>
       
       <Text style={styles.description}>
@@ -55,7 +54,7 @@ export const Seller = () => {
       </Text>
       <View style={styles.locationContainer}>
         <Image resizeMode='contain' style={styles.icon} source={require('../../assets/location.png')}/>
-        <Text style={styles.location}>Johns Creek, Georgia</Text>
+        <Text style={styles.location}>{city}</Text>
       </View>
       <View style={styles.divider}></View>
       <Text style={styles.subheading}>Our <Text style={styles.greenSub}>Stock</Text></Text>
@@ -241,3 +240,5 @@ const styles = StyleSheet.create({
         height: 20,
     }
 })
+
+export default Seller
