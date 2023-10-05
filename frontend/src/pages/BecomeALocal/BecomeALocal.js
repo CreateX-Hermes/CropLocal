@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Colors } from '../../Styles.js';
 import ModalSellerOne from './ModalSellerOne';
 import HomePage from '../HomePage/HomePage';
+import BecomeASellerNavigatorOne from '../Navigators/BecomeASellerNavigatorOne';
 
 const BecomeALocal = () => {
   const navigation = useNavigation();

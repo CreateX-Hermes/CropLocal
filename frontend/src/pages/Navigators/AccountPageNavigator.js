@@ -37,10 +37,9 @@ const AccountPageNavigator = () => {
         component={MyFriends}
       />
       <Stack.Screen 
-        mode = "Modal"
         name = "BecomeASellerNavigator"
         component={BecomeASellerNavigator}
-        options={{headerShown: false, presentation: 'modal'}}
+        options={{headerShown: false}}
         />
       <Stack.Screen
         name="EditProfile"

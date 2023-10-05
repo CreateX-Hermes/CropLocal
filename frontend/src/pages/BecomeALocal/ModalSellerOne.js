@@ -13,7 +13,7 @@ const ModalSellerOne = props => {
     <Modal animationType="slide" >
         <SafeAreaView backgroundColor={Colors.WHITE}>
             <View backgroundColor= {Colors.WHITE} height='100%'>
-            <NavigationButton onPress={() => navigation.navigate(BecomeALocal)} style={{height: 50, width: 50, flex: 0, marginLeft: '6%', top: '15%'}}>
+            <NavigationButton onPress={() => navigation.goBack()} style={{height: 50, width: 50, flex: 0, marginLeft: '6%', top: '15%'}}>
             <Image source={require('../../assets/close.png')} style={{width: '90%', resizeMode: 'contain'}}/>
           </NavigationButton>
                         
