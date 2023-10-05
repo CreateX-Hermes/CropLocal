@@ -14,7 +14,7 @@ import AccountPageNavigator from './src/pages/Navigators/AccountPageNavigator';
 export default function App() {
   return (
     <NavigationContainer>
-      <Seller />
+      <AuthNavigator />
     </NavigationContainer>
   );
 }

@@ -6,6 +6,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { Colors } from '../../Styles';
 import { StockItem } from '../../components/StockItem/StockItem';
 import { Review } from '../../components/Review/Review';
+import { Modal } from 'react-native';
 
 
 const Seller = ({route}) => {
@@ -33,6 +34,26 @@ const Seller = ({route}) => {
     let {_id, standName, city, distance, rating, description, ownerName, picture} = route.params
 
   return (
+    <View>
+    <View style={styles.modal}>
+        <View style={styles.reserveContainer}>
+            <View styles={styles.checkout}>
+                <Text style={styles.d}>Items:<Text style={{fontWeight:'bold'}}>4</Text></Text>
+                <Text style={styles.d}>Total:<Text style={{fontWeight:'bold'}}>$49</Text></Text>
+            </View>
+            <TouchableOpacity style={styles.rButton}>
+                <Text style={{color:'white', fontWeight:'bold', fontSize:15}}>Reserve</Text>
+            </TouchableOpacity>
+        </View>
+    </View>
+    <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.iconContainer1}>
+                <Image style={styles.icon1} source={require('../../assets/left.png')}/>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.iconContainer2}>
+                <Image style={styles.icon2} source={require('../../assets/save-instagram.png')}/>
+            </TouchableOpacity >
+        </View>
     <ScrollView contentContainerStyle={styles.main}>
       <Image source={{uri: picture}} defaultSource={require('../../assets/market_stand.png')} style={{width: 400, height: 250}}></Image>
       <Text style={styles.title}>{standName}</Text>
@@ -93,6 +114,7 @@ const Seller = ({route}) => {
         </View>
         <View style={styles.divider}></View>
     </ScrollView>
+    </View>
   )
 }
 
@@ -103,6 +125,7 @@ const styles = StyleSheet.create({
     },
     main: {
         display: 'flex',
+        position: 'fixed',
         alignItems: 'center',
         flexDirection: 'column',
         paddingBottom: '100%'
@@ -207,38 +230,88 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '90%'
     },
-    buttonRow: {
+    buttonContainer: {
+        width: '100%',
+        position: 'absolute',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 50,
+        zIndex: 1,
+    },
+    icon1: {
+        position: 'absolute',
+        width: 26,
+        height: 26,
+        marginLeft: 15
+    },
+    icon2: {
+        position: 'absolute',
+        width: 26,
+        height: 26,
+    },
+    iconContainer1: {
+        width: 45,
+        height: 45,
+        borderRadius: '50%',
+        backgroundColor: Colors.BUTTON_BACKGROUND,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: '15%'
+    },
+    iconContainer2: {
+        width: 45,
+        height: 45,
+        borderRadius: '50%',
+        backgroundColor: Colors.BUTTON_BACKGROUND,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: '5%'
+    },
+    modal: {
+        position: 'absolute',
+        bottom: '0%',
+        width: '100%',
+        height: '8%',
+        backgroundColor: 'black',
+        zIndex: 1,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center'
     },
-    more: {
-        backgroundColor: 'black',
-        width: 120,
-        height: 35,
-        borderRadius: 20,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    moreText: {
-        color: 'white',
-        fontSize: 13,
-        fontWeight: '600'
-    },
-    plus: {
-        width: 40,
-        height: 40,
-        backgroundColor: Colors.BUTTON_BACKGROUND,
+    rButton: {
+        width: 150,
+        height: '80%',
+        backgroundColor: '#91D569',
+        borderRadius: '50%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: '50%',
-        marginLeft: 15
+        marginRight: 7
     },
-    plusImage: {
-        width: 20,
-        height: 20,
+    checkout: {
+        width: '40%',
+        height: 'auto',
+    },
+    d: {
+        marginLeft: '15%',
+        fontSize: 15
+    },
+    reserveContainer: {
+        position: 'relative',
+        bottom: '50%',
+        borderRadius: '50%',
+        width: '80%',
+        backgroundColor: 'white',
+        display: 'flex',
+        flexDirection:'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
     }
-})
+});
 
 export default Seller
