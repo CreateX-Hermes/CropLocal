@@ -1,15 +1,14 @@
 import React, { useLayoutEffect } from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import HomePage from '../HomePage/HomePage';
 import HomePageFilter from '../HomePageFilter/HomePageFilter.js';
 import Messages from '../Messages/Messages.js';
-import { useNavigation } from '@react-navigation/native';
 import EditProfile from '../EditProfile/EditProfile';
 import MyWallet from '../MyWallet/MyWallet';
 import Help from '../Help/Help';
 import Login from '../Auth/Login';
 import BecomeALocal from '../BecomeALocal/BecomeALocal';
 import BottomTabNavigator from './BottomTabNavigator';
+import Seller from '../Seller/Seller';
 
 
 const Stack = createStackNavigator();
@@ -28,6 +27,9 @@ const HomePageNavigator = () => {
       />
        <Stack.Screen name="Messages" 
        component={Messages} 
+      />
+      <Stack.Screen name="Seller" 
+       component={Seller} 
       />
       <Stack.Screen
         name="BecomeALocal"

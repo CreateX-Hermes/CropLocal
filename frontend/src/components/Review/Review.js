@@ -26,14 +26,16 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.BUTTON_BACKGROUND,
         borderRadius: 20,
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginBottom: 20
     },
     ratingContainer: {
         width: '90%',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: 5
+        marginTop: 3,
+        marginBottom: 3
     },
     icon: {
         width: 13,
@@ -42,14 +44,15 @@ const styles = StyleSheet.create({
     rating: {
         fontWeight: '600',
         color: Colors.RATING,
-        marginLeft: 3
+        marginLeft: 3,
     },
     heading: {
         fontSize: 17,
         fontWeight: '600',
+        marginTop: 10
     },
     info: {
-        width: '65%'
+        width: '65%',
     },
     reviewPic: {
         margin: 10,
