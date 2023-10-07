@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import BecomeALocal from '../BecomeALocal/BecomeALocal';
 import ModalSellerOne from '../BecomeALocal/ModalSellerOne';
 import BecomeASellerNavigatorOne from './BecomeASellerNavigatorOne';
+import AccountPageNavigator from './AccountPageNavigator';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,12 @@ const BecomeASellerNavigator = () => {
         component={ModalSellerOne}
         options={{headerShown: false}}
         />
+        <Stack.Screen 
+        name = "AccountPageNavigator"
+        component={AccountPageNavigator}
+        options={{headerShown: false}}
+        />
+
     </Stack.Navigator>
   )
 }
