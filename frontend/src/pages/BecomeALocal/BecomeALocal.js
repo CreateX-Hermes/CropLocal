@@ -14,16 +14,16 @@ const BecomeALocal = () => {
     navigation.setOptions({
         headerShown: false,
     });
-}, []);
+  }, []);
 
-  const [isModalVisible, setModalVisible] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(true);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   }
 
   return (
-    <Modal  animationType="slide">
+    <Modal animationType="slide" visible={isModalVisible}>
       <SafeAreaView style={{ backgroundColor: Colors.WHITE}}>
         <View style={{ backgroundColor: Colors.WHITE, width: '100%', height: '100%', zIndex: '0'}}>
           <NavigationButton onPress={() => navigation.goBack()} style={{height: 50, width: 50, flex: 0, marginLeft: '6%', top: '15%'}}>
@@ -57,7 +57,11 @@ const BecomeALocal = () => {
                 zIndex: 5,
                 borderColor: Colors.WHITE,
                 borderWidth: '4%',
-              }} onPress={() => navigation.navigate(ModalSellerOne)}>
+              }} onPress={() => {
+                toggleModal()
+                navigation.navigate(ModalSellerOne)
+              }
+                }>
               <Text style={styles.text22}>Begin</Text>
             </TouchableOpacity>
             </View>
