@@ -35,7 +35,7 @@ const PlusPopup = () => {
           <View style={{ alignSelf: 'center', width: '86%', paddingTop: '3%'}}>
                 <TouchableOpacity style={{ backgroundColor: '#FFFFFF', alignItems: 'center', paddingVertical: '5%', borderRadius: 50, flexDirection: 'row', paddingHorizontal: '9%'}}
                 onPress={() => navigation.navigate(SavedLocals)}>
-                  <Image source={require('../../assets/save-instagram.png')} style={ styles.text15 }/>
+                  <Image source={require('../../assets/SaveIconUnfilled.png')} style={ styles.text15 }/>
                   <Text style={styles.text9}>Saved Locals</Text>
                 </TouchableOpacity>
           </View>

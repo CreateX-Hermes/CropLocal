@@ -33,7 +33,7 @@ const HomePageListingComponent = (props) => {
                 <View style={{ flexDirection:'row' }}>
                     <Text style={ styles.text2 }>{props.listingTitle}</Text>
                     <TouchableOpacity style={{ paddingTop: '1%' }}>
-                      <Image source={require('../../assets/save-instagram.png')} style={ styles.text15 }/>
+                      <Image source={require('../../assets/SaveIconUnfilled.png')} style={ styles.text15 }/>
                     </TouchableOpacity>
                 </View> 
                 <View style= { styles.text3 }>

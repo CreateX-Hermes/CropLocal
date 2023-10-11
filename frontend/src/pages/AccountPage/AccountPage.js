@@ -1,20 +1,16 @@
 import { StyleSheet, View, SafeAreaView, TouchableOpacity, Modal, Image } from 'react-native'
 import React, { useLayoutEffect, useState } from 'react'
-import { IconButton, Button, Text, Avatar, Divider} from 'react-native-paper';
+import { IconButton, Text, Avatar, Divider} from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-import MainTabBar from '../../components/MainTabBar/MainTabBar';
 import Messages from '../Messages/Messages';
 import FindSellers from '../FindSellers/FindSellers';
 import BecomeASeller from '../BecomeALocal/BecomeALocal';
-import MyFriends from '../MyFriends/MyFriends';
 import EditProfile from '../EditProfile/EditProfile';
 import MyWallet from '../MyWallet/MyWallet';
 import Help from '../Help/Help';
 import Login from '../Auth/Login';
 import { Colors } from '../../Styles.js'
 import BecomeASellerNavigator from '../Navigators/BecomeASellerNavigator';
-import BecomeALocal from '../BecomeALocal/BecomeALocal';
-
 
 // <Divider style={{ width: '86%', alignSelf: 'center', marginTop: '3.6%', paddingTop: '0.3%' }}/>
 

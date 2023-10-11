@@ -1,15 +1,24 @@
 import { StyleSheet, Text, View, Image, Button } from 'react-native'
-import { useState } from 'react';
+import { useState, useLayoutEffect } from 'react';
 import React from 'react'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Colors } from '../../Styles';
 import { StockItem } from '../../components/StockItem/StockItem';
 import { Review } from '../../components/Review/Review';
-import { Modal } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 
 const Seller = ({route}) => {
+
+    const navigation = useNavigation();
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerShown: false,
+        });
+    }, []);
+
     const [showMore, setShowMore] = useState(false);
 
     const text = "In this one of a kind authentic Parisian experience I will show you the what it’s like to live in the City of Lights like a true Frenchman. From my favorite restaurant and cafe, to my unforgettable overlook of the city only a few know about, this will be an experience you will never forget";
@@ -47,11 +56,11 @@ const Seller = ({route}) => {
         </View>
     </View>
     <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.iconContainer1}>
+            <TouchableOpacity style={styles.iconContainer1} onPress={() => navigation.goBack()}>
                 <Image style={styles.icon1} source={require('../../assets/left.png')}/>
             </TouchableOpacity>
             <TouchableOpacity style={styles.iconContainer2}>
-                <Image style={styles.icon2} source={require('../../assets/save-instagram.png')}/>
+                <Image style={styles.icon2} source={require('../../assets/SaveIconUnfilled.png')}/>
             </TouchableOpacity >
         </View>
     <ScrollView contentContainerStyle={styles.main}>
