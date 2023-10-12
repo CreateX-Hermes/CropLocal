@@ -10,6 +10,7 @@ import NavigationButton from "../../components/NavigationButton/NavigationButton
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AccountPageNavigator from "./AccountPageNavigator.js";
 import SellerManagerPage from "../SellerManagerPage/SellerManagerPage.js";
+import SellerManagerPageNavigator from "./SellerManagerPageNavigator.js";
 
 
 const Tab = createBottomTabNavigator();
@@ -55,7 +56,7 @@ const BottomTabNavigator = () => {
         />
         <Tab.Screen
         name="Stands"
-        component={SellerManagerPage}
+        component={SellerManagerPageNavigator}
         options={{
           tabBarLabel: 'Stands',
           tabBarIconStyle: { marginTop: 17 },
