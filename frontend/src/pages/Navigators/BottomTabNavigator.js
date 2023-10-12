@@ -6,6 +6,7 @@ import HomePage from "../HomePage/HomePage.js";
 import { Colors } from "../../Styles.js";
 import AccountPageNavigator from "./AccountPageNavigator.js";
 import SellerManagerPage from "../SellerManagerPage/SellerManagerPage.js";
+import SellerManagerPageNavigator from "./SellerManagerPageNavigator.js";
 
 
 const Tab = createBottomTabNavigator();
@@ -61,7 +62,7 @@ const BottomTabNavigator = () => {
         />
         <Tab.Screen
         name="Stands"
-        component={SellerManagerPage}
+        component={SellerManagerPageNavigator}
         options={{
           tabBarLabel: 'Stands',
           tabBarIconStyle: { marginTop: 17 },

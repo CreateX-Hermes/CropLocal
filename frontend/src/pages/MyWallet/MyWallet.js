@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, SafeAreaView } from 'r
 import React, { useLayoutEffect} from 'react'
 import { Divider} from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
+import { Colors } from '../../Styles';
 
 const MyWallet = () => {
   const navigation = useNavigation();
@@ -14,8 +15,8 @@ const MyWallet = () => {
 
 
   return (
-    <SafeAreaView style={{ backgroundColor: '#FFFFFF' }}>
-    <View style={{ backgroundColor: '#FFFFFF', height: '100%' }}>
+    <SafeAreaView style={{ backgroundColor: Colors.WHITE }}>
+    <View style={{ backgroundColor: Colors.WHITE, height: '100%' }}>
     <TouchableOpacity 
       onPress={() => navigation.goBack()}
       style={{ 
@@ -29,9 +30,7 @@ const MyWallet = () => {
       }}>
           <Image source={require('../../assets/left.png')} style={ styles.text10 }/>
       </TouchableOpacity>
-      <Text style={styles.text1}>
-          My Wallet
-      </Text>
+      <Text style={styles.text1}>My <Text style={styles.text11}>Wallet</Text></Text>
       <View style={{ backgroundColor: '#F5F5F5', height: '7%', borderRadius: 50, width: '86%', alignSelf: 'center', marginTop: '8%', flexDirection: 'row' }}>
       <Image source={require('../../assets/visa.png')} style={ styles.text9 }/>
         <Text style={styles.text6}>
@@ -57,14 +56,13 @@ const MyWallet = () => {
       <View style={{ paddingTop: '6%', width: '35%', marginLeft: '7%' }}>
                 <TouchableOpacity 
                 style={{ 
-                    backgroundColor: '#288FBB',
+                    backgroundColor: Colors.MAIN,
                     borderRadius: 50,
                     paddingVertical: '8%'
                 }}>
                         <Text style={styles.text7}>Edit Payment</Text>
                 </TouchableOpacity>
                 </View>
-        <View style={{ backgroundColor: '#071930', width: '100%', height: '200%', position: 'absolute', top: '96%' }} />
     </View>
     </SafeAreaView>
   )
@@ -141,5 +139,12 @@ const styles = StyleSheet.create({
     width: 28,
     height: 28,
     alignSelf: 'center',
+  },
+  text11: {
+    color: Colors.MAIN,
+    fontWeight: '600',
+    fontSize: '36em',
+    paddingTop: '2%',
+    paddingLeft: '7%'
   },
 })
