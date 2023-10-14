@@ -3,27 +3,20 @@ import React, { useLayoutEffect, useState } from 'react'
 import {createStackNavigator} from '@react-navigation/stack';
 import BecomeALocal from '../BecomeALocal/BecomeALocal';
 import ModalSellerOne from '../BecomeALocal/ModalSellerOne';
-import BecomeASellerNavigatorOne from './BecomeASellerNavigatorOne';
-import AccountPageNavigator from './AccountPageNavigator';
+import SellerTwo from '../BecomeALocal/SellerTwo';
 
 const Stack = createStackNavigator();
 
-const BecomeASellerNavigator = () => {
+const BecomeASellerNavigatorTwo = () => {
   return (
     <Stack.Navigator> 
-       <Stack.Screen 
-        name = "BecomeALocal"
-        component={BecomeALocal}
-        options={{headerShown: false}}
-        />
         <Stack.Screen 
-        name = "BecomeASellerNavigatorOne"
-        component={BecomeASellerNavigatorOne}
+        name = "SellerTwo"
+        component={SellerTwo}
         options={{headerShown: false}}
         />
-
     </Stack.Navigator>
   )
 }
 
-export default BecomeASellerNavigator
+export default BecomeASellerNavigatorTwo

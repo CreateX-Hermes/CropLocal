@@ -3,23 +3,16 @@ import React, { useLayoutEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { Colors } from '../../Styles.js'
 import NavigationButton from '../../components/NavigationButton/NavigationButton'
-import BecomeALocal from './BecomeALocal.js';
-import AccountPageNavigator from '../Navigators/AccountPageNavigator.js';
 import { Divider, IconButton, Avatar} from 'react-native-paper';
 import BecomeASellerNavigatorTwo from '../Navigators/BecomeASellerNavigatorTwo.js';
 
-const ModalSellerOne = () => {
-  
-  const navigation = useNavigation();
 
-  const [isModalVisible, setModalVisible] = useState(true);
 
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  }
+const SellerTwo = () => {
+    const navigation = useNavigation();
 
   return (
-        <SafeAreaView backgroundColor={Colors.WHITE}>
+    <SafeAreaView backgroundColor={Colors.WHITE}>
             <View backgroundColor= {Colors.WHITE} height='100%'>
 
             <View style={{position: 'absolute', marginLeft: '6%'}}>
@@ -30,7 +23,7 @@ const ModalSellerOne = () => {
           </View>
 
           <ScrollView style={{paddingTop: '14%', zIndex: -2}}>
-                <Text style={styles.text8}>Check Profile Details</Text>
+                <Text style={styles.text8}>Create Your Stand</Text>
 
             
                 <View style={{ alignItems: 'center', marginTop: '15%' }}>
@@ -84,10 +77,7 @@ const ModalSellerOne = () => {
                 zIndex: 5,
                 borderColor: Colors.WHITE,
                 borderWidth: '4%',
-              }} onPress={() => {
-                navigation.navigate(BecomeASellerNavigatorTwo)
-              }
-                }>
+              }} >
               <Text style={styles.text22}>Next</Text>
             </TouchableOpacity>
             </View>
@@ -96,7 +86,7 @@ const ModalSellerOne = () => {
   )
 }
 
-export default ModalSellerOne
+export default SellerTwo
 
 const styles = StyleSheet.create({
     text14: {

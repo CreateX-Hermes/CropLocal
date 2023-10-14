@@ -4,6 +4,7 @@ import SellerManagerPage from '../SellerManagerPage/SellerManagerPage.js';
 import MyWallet from '../MyWallet/MyWallet.js';
 import { useNavigation } from '@react-navigation/native';
 import MyPlans from '../MyPlans/MyPlans.js';
+import Seller from '../Seller/Seller.js';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,10 @@ const SellerManagerPageNavigator = () => {
         <Stack.Screen
         name="MyPlans"
         component={MyPlans}
+        options={{headerShown: false}} />
+        <Stack.Screen
+        name="Seller"
+        component={Seller}
         options={{headerShown: false}} />
     </Stack.Navigator>
   )

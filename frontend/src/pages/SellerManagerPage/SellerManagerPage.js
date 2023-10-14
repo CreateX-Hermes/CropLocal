@@ -5,6 +5,7 @@ import { Colors } from '../../Styles.js'
 import NavigationButton from '../../components/NavigationButton/NavigationButton'
 import MyWallet from '../MyWallet/MyWallet.js';
 import MyPlans from '../MyPlans/MyPlans.js';
+import Seller from '../Seller/Seller.js';
 
 const SellerManagerPage = () => {
 
@@ -39,7 +40,8 @@ const SellerManagerPage = () => {
               <Text style={ styles.text22 }>Edit Listing</Text>
             </View>
           </View>
-          <TouchableOpacity 
+          <TouchableOpacity
+            // onPress={() => navigation.navigate(Seller)}
             style={{backgroundColor: Colors.BLACK, borderRadius: 50,paddingVertical: '3%', width: '30%', alignSelf: 'center', marginTop: '6%'}}>
             <Text style={styles.text23}>View Listing</Text>
             </TouchableOpacity>
