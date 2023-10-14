@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Text, View, StyleSheet } from 'react-native';
+import { Image, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import NavigationButton from '../NavigationButton/NavigationButton';
 import { Colors } from '../../Styles';
 import { useNavigation } from '@react-navigation/native';
@@ -16,8 +16,8 @@ const Stand = (props) => {
 
     const styles = StyleSheet.create({
         HEADING_TEXT: {
-            fontSize: 17,
-            fontWeight: 'bold'
+            fontSize: 15,
+            fontWeight: 'bold',
         },
         SUBHEADING_TEXT: {
             fontSize: 10,
@@ -46,7 +46,8 @@ const Stand = (props) => {
 
     let {_id, standName, city, distance, rating, description, ownerName, picture} = props.data
 
-    
+    const [isSaved, setIsSaved] = React.useState(false)
+
     if (rating == -1) {
         rating = "Not Rated Yet"
     }
@@ -55,9 +56,18 @@ const Stand = (props) => {
 
     return (
         <NavigationButton style={{flex: 0, flexDirection: 'row', width: 350, height: 160, borderRadius: 20, marginVertical: '1.5%'}} onPress={() => navigation.navigate('Seller', {...props.data})}>
-            <Image source={{uri: picture}} defaultSource={require('../../assets/market_stand.png')} style={{width: 100, height: 100, borderRadius: '50%'}}></Image>
-            <View style={{flex: 2, width: 200, height: 150, flexDirection: 'column', marginHorizontal: '5%', paddingVertical: '3%'}}>
-                <Text style={styles.HEADING_TEXT}>{standName}</Text>
+            <Image source={{uri: picture}} defaultSource={require('../../assets/market_stand.png')} style={{width: '37%', height: '90%', borderRadius: '20%'}}></Image>
+            <View style={{flex: 2, width: 300, height: 150, flexDirection: 'column', marginHorizontal: '5%', paddingVertical: '3%'}}>
+                <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '110%'}}>
+                    <Text style={styles.HEADING_TEXT}>{standName}</Text>
+                    <NavigationButton style={{position: 'relative'}} onPress={() => setIsSaved((oldVal) => !oldVal)}>
+                        { isSaved ? 
+                            <Image source={require('../../assets/SaveIconFilled.png')} style={{width: 17, height: 17, tintColor: Colors.RATING}}></Image>
+                            :
+                            <Image source={require('../../assets/SaveIconUnfilled.png')} style={{width: 17, height: 17}}></Image>
+                        }
+                    </NavigationButton>
+                </View>
                 <Text style={styles.SUBHEADING_TEXT}>{ownerName}</Text>
                 <View style={{flex: 0, flexDirection: 'row', alignItems: 'center', paddingTop: '2%'}}>
                     <Image source={require('../../assets/star.png')} style={{width: 12, height: 12}}/>
