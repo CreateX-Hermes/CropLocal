@@ -5,7 +5,6 @@ import { Image } from 'react-native';
 import HomePage from "../HomePage/HomePage.js";
 import { Colors } from "../../Styles.js";
 import AccountPageNavigator from "./AccountPageNavigator.js";
-import SellerManagerPage from "../SellerManagerPage/SellerManagerPage.js";
 import SellerManagerPageNavigator from "./SellerManagerPageNavigator.js";
 
 
