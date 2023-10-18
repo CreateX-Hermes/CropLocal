@@ -29,13 +29,13 @@ router.post("/register", async (req, res) => {
 })
 
 
-const createToken = (userID, userLocation, firstName) => {
+const createToken = (userID, userLocation, firstName, lastName) => {
     const payload = {
         userID: userID,
         location: userLocation,
-        name: firstName
+        name: firstName,
+        lname: lastName
     }
-
     const token = jwt.sign(payload, "JohannesQian", {expiresIn: "24h"})
     return token
 }
@@ -56,8 +56,8 @@ router.post("/login", async (req, res) => {
             return res.status(403).send({message: "Incorrect Password!"})  
         } 
 
-        const token = createToken(user._id, user.location.coordinates, user.firstName)
-        
+        const token = createToken(user._id, user.location.coordinates, user.firstName + " " + user.lastName)
+        // console.log("First and last name logs ",user.firstName + " " + user.lastName)
         return res.status(200).send({token})
 
 
@@ -93,5 +93,4 @@ router.get("/getUserLocation", async (req, res) => {
     }
 
 })
-
 module.exports = router
