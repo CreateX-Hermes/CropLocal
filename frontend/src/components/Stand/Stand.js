@@ -48,6 +48,16 @@ const Stand = (props) => {
 
     const [isSaved, setIsSaved] = React.useState(false)
 
+    const updateFavoriteList = async () => {
+        const token = await AsyncStorage.getItem("authToken")
+
+        //console.log(jwt_decode(token))
+
+        const {userID} = jwt_decode(token)
+
+        await axios.post("http://localhost:8000/stand/updateFavoriteStands", {userID: userID, standID: _id})
+    }
+    
     if (rating == -1) {
         rating = "Not Rated Yet"
     }
@@ -63,7 +73,7 @@ const Stand = (props) => {
                     <NavigationButton style={{position: 'relative'}} onPress={
                         () =>{
                             setIsSaved((oldVal) => !oldVal)
-
+                            updateFavoriteList()
                         } 
                         }>
                         { isSaved ? 
