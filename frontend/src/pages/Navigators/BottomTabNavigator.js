@@ -6,6 +6,8 @@ import HomePage from "../HomePage/HomePage.js";
 import { Colors } from "../../Styles.js";
 import AccountPageNavigator from "./AccountPageNavigator.js";
 import SellerManagerPageNavigator from "./SellerManagerPageNavigator.js";
+import HomePageNavigator from "./HomePageNavigator.js";
+import SavedLocals from "../SavedLocals/SavedLocals.js";
 
 
 const Tab = createBottomTabNavigator();
