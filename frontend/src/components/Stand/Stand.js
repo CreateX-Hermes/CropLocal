@@ -60,7 +60,12 @@ const Stand = (props) => {
             <View style={{flex: 2, width: 300, height: 150, flexDirection: 'column', marginHorizontal: '5%', paddingVertical: '3%'}}>
                 <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '110%'}}>
                     <Text style={styles.HEADING_TEXT}>{standName}</Text>
-                    <NavigationButton style={{position: 'relative'}} onPress={() => setIsSaved((oldVal) => !oldVal)}>
+                    <NavigationButton style={{position: 'relative'}} onPress={
+                        () =>{
+                            setIsSaved((oldVal) => !oldVal)
+
+                        } 
+                        }>
                         { isSaved ? 
                             <Image source={require('../../assets/SaveIconFilled.png')} style={{width: 17, height: 17, tintColor: Colors.RATING}}></Image>
                             :
