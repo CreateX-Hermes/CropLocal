@@ -108,9 +108,10 @@ const styles = StyleSheet.create({
         display: 'flex',
         color: Colors.BLACK,
         fontWeight: '600',
-        fontSize: '40em',
+        fontSize: '36em',
         marginLeft: '7%',
         paddingTop: '5%',
+        width: '70%'
       },
       text10: {
         display: 'flex',
