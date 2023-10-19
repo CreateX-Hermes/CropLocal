@@ -93,4 +93,41 @@ router.get("/getUserLocation", async (req, res) => {
     }
 
 })
+
+router.post("/updateFavoriteStands", async (req, res) => {
+    try {
+
+        let {userID, standID} = req.body
+        var ObjectId = require('mongodb').ObjectId
+        userID = new ObjectId(userID)
+        standID = new ObjectId(standID)
+
+
+        await User.updateOne(
+            {_id:userID},
+            [
+                {
+                  $addFields: {
+                    favoriteStands: {
+                      $cond: {
+                        if: { $in: [standID, "$favoriteStands"] },
+                        then: { $setDifference: ["$favoriteStands", [standID]] },
+                        else: { $concatArrays: ["$favoriteStands", [standID]] }
+                      }
+                    }
+                  }
+                }
+              ]
+        )
+        
+        return res.status(200).json({message:"Success"})
+
+    } catch(error) {
+        console.log(error)
+        return res.status(500).json({message:"Error"})
+    }
+})
+
+
+
 module.exports = router
