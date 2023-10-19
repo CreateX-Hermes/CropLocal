@@ -3,6 +3,9 @@ import { Image, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import NavigationButton from '../NavigationButton/NavigationButton';
 import { Colors } from '../../Styles';
 import { useNavigation } from '@react-navigation/native';
+import jwt_decode from 'jwt-decode'
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from 'axios';
 
 const Stand = (props) => {
 
@@ -44,10 +47,25 @@ const Stand = (props) => {
         }
     })
 
-    let {_id, standName, city, distance, rating, description, ownerName, picture} = props.data
+    let {_id, standName, city, distance, rating, description, ownerName, picture, favorite} = props.data
 
-    const [isSaved, setIsSaved] = React.useState(false)
 
+
+    // if _id is in saved list
+
+    const [isSaved, setIsSaved] = React.useState(favorite)
+
+    const updateFavoriteList = async () => {
+        const token = await AsyncStorage.getItem("authToken")
+
+        //console.log(jwt_decode(token))
+
+        const {userID} = jwt_decode(token)
+
+        await axios.post("http://localhost:8000/user/updateFavoriteStands", {userID: userID, standID: _id})
+
+    }
+    
     if (rating == -1) {
         rating = "Not Rated Yet"
     }
@@ -60,7 +78,12 @@ const Stand = (props) => {
             <View style={{flex: 2, width: 300, height: 150, flexDirection: 'column', marginHorizontal: '5%', paddingVertical: '3%'}}>
                 <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '110%'}}>
                     <Text style={styles.HEADING_TEXT}>{standName}</Text>
-                    <NavigationButton style={{position: 'relative'}} onPress={() => setIsSaved((oldVal) => !oldVal)}>
+                    <NavigationButton style={{position: 'relative'}} onPress={
+                        () =>{
+                            setIsSaved((oldVal) => !oldVal)
+                            updateFavoriteList()
+                        } 
+                        }>
                         { isSaved ? 
                             <Image source={require('../../assets/SaveIconFilled.png')} style={{width: 17, height: 17, tintColor: Colors.RATING}}></Image>
                             :

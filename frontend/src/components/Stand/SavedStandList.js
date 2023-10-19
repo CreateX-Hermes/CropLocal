@@ -18,7 +18,7 @@ const StandList = () => {
 
             const {location, userID} = jwt_decode(token)
 
-            const fetchedData = await axios.post("http://localhost:8000/stand/findWithinRadius", {longitude: location[0], latitude: location[1], radius: 15, userID: userID})
+            const fetchedData = await axios.post("http://localhost:8000/stand/findFavoriteWithinRadius", {longitude: location[0], latitude: location[1], radius: 15, userID: userID})
             setStandData(fetchedData.data)
 
         }
