@@ -85,5 +85,63 @@ router.post("/findWithinRadius", async (req, res) => {
     }
 })
 
+router.post("/findFavoriteWithinRadius", async (req, res) => {
+    try {
+        const { longitude, latitude, radius, userID} = req.body;
+        const userCoordinates = [parseFloat(longitude), parseFloat(latitude)]; 
+        var ObjectId = require('mongodb').ObjectId
+        var newID = new ObjectId(userID)
+
+        let user = await User.findOne(
+            {_id : userID}
+        )
+        
+
+        const objectIdsToCheck = user.favoriteStands;
+        console.log(objectIdsToCheck)
+
+        // Perform a geospatial query using $geoNear and $maxDistance
+        const stands = await Stand.aggregate(
+            [
+            {
+                $geoNear: {
+                    near: {
+                        mainType: 'Point',
+                        coordinates: userCoordinates,
+                    },
+                    distanceField: 'distance',
+                    maxDistance: parseFloat(radius) * 1609.34, // Convert radius to miles
+                    spherical: true,
+                },
+            },
+            {
+                $match: {
+                    $expr: {
+                        $and: [
+                            { $ne: ["$owner", newID]},
+                            { $in: ["$_id", objectIdsToCheck]}
+                        ]
+                    }
+                }
+            }
+        ]);
+
+        
+
+        const standsWithExistence = stands.map(stand => {
+        const favorite = objectIdsToCheck.includes(stand._id.toString());
+        return { ...stand, favorite };
+        });
+
+
+        return res.status(200).json(standsWithExistence);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Error finding stands within radius" });
+    }
+})
+
+
+
 
 module.exports = router
