@@ -11,6 +11,23 @@ import BecomeASellerNavigatorTwo from '../Navigators/BecomeASellerNavigatorTwo.j
 const SellerTwo = () => {
     const navigation = useNavigation();
 
+    var [travelersCount, setTravelersCount] = useState(0);
+
+    const subtractTravelersCount = () => {
+      if (travelersCount > 0) {
+          travelersCount = travelersCount - 1;
+      }
+     
+      setTravelersCount(travelersCount);
+  };
+
+  const addTravelersCount = () => {
+      if (travelersCount < 25) {
+          travelersCount = travelersCount + 1;
+      }
+      setTravelersCount(travelersCount);
+  };
+
   return (
     <SafeAreaView backgroundColor={Colors.WHITE}>
             <View backgroundColor= {Colors.WHITE} height='100%'>
@@ -24,44 +41,47 @@ const SellerTwo = () => {
 
           <ScrollView style={{paddingTop: '14%', zIndex: -2}}>
                 <Text style={styles.text8}>Create Your Stand</Text>
-
-            
-                <View style={{ alignItems: 'center', marginTop: '15%' }}>
-          <View style={{zIndex: '1', display: 'flex', alignItems: 'flex-start', flexDirection: 'column', justifyContent: 'flex-start', position: 'absolute'}}>
-          <View style={{display: 'flex', borderColor: Colors.MAIN, borderWidth: '5%', borderRadius: 100, bottom: '24%', }}>
-            <Image source={require('../../assets/tempProfilePic.png')} />
-          </View>
-          
-          <View style={{ alignSelf: 'center', bottom: '20%', zIndex: 7 }}>
-            <TouchableOpacity 
-            style={{ 
-            backgroundColor: Colors.BLACK,
-            borderRadius: 50,
-            paddingVertical: '4%',
-            alignSelf: 'center',
-            zIndex: 5,
-            }}>
-            <Text style={styles.text10}>Edit</Text>
-            </TouchableOpacity>
-            </View>
-      </View>
-      
-    </View>
                     
-    <Text style={styles.text11}>Full Name</Text>
+    <Text style={styles.text11}>Title</Text>
     <TextInput style={styles.input} placeholder="jSmith23@gmail.com" placeholderTextColor={Colors.BLACK} />
 
-    <Text style={styles.text12}>Username</Text>
-    <TextInput style={styles.input} placeholder="smithjohnTx2" placeholderTextColor={Colors.BLACK} />
-
-    <Divider style={{ width: '86%', alignSelf: 'center', marginTop: '6%', paddingTop: '0.3%', marginBottom: '5%' }}/>
-
-
-    <Text style={styles.text13}>Bio</Text>
+    <Text style={styles.text13}>Description</Text>
     <TextInput style={styles.inputtwo} placeholder="Hello, I am Greg! I am originally from Cleveland, Ohio but now I live 
     in Boston. Meeting to new people and seeing new places  is some of my favorite memories growing up, and I want to 
     continue to do so. I think sharing our cultures is one of best ways to grow as a person." placeholderTextColor='#000000'
     multiline={true} />
+
+    <Text style={styles.text11}>Number of Items</Text>
+    <View style={{flexDirection: 'row'}}>
+    <TouchableOpacity 
+                                onPress={subtractTravelersCount}
+                                style={{ 
+                                backgroundColor: '#F5F5F5',
+                                borderRadius: 100,
+                                marginTop: '7%',
+                                justifyContent: 'center',
+                                paddingVertical:'2%',
+                                paddingHorizontal: '2%',
+                                marginLeft: '8%'
+                                }}>
+                                    <Image source={require('../../assets/minus.png')} style={ styles.text14 }/>
+                                </TouchableOpacity>
+
+                                <Text style={styles.text20}>{travelersCount}</Text>
+
+                                <TouchableOpacity 
+                                onPress={addTravelersCount}
+                                style={{ 
+                                backgroundColor: '#F5F5F5',
+                                borderRadius: 100,
+                                marginTop: '7%',
+                                justifyContent: 'center',
+                                paddingVertical:'2.8%',
+                                paddingHorizontal: '2.8%',
+                                }}>
+                                    <Image source={require('../../assets/add.png')} style={ styles.text14 }/>
+                                </TouchableOpacity>
+                            </View>
         
     </ScrollView>
 
@@ -98,9 +118,10 @@ const styles = StyleSheet.create({
         display: 'flex',
         color: Colors.BLACK,
         fontWeight: '600',
-        fontSize: '40em',
+        fontSize: '36em',
         marginLeft: '7%',
         paddingTop: '5%',
+        width: '70%'
       },
       text10: {
         display: 'flex',
@@ -114,7 +135,7 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         fontSize: '18em',
         paddingLeft: '9%',
-        marginTop: '40.6%'
+        marginTop: '8.6%',
       }, 
       text12: {
         color: Colors.BLACK,
@@ -127,12 +148,26 @@ const styles = StyleSheet.create({
         color: Colors.BLACK,
         fontWeight: '600',
         fontSize: '18em',
-        paddingLeft: '9%'
+        paddingLeft: '9%',
+        marginTop: '8.6%'
       },  
       text15: {
         width: 24,
         height: 24,
         alignSelf: 'center',
+      },
+      text14: {
+        width: 20,
+        height: 20,
+        alignSelf: 'center',
+      },
+      text20: {
+        fontWeight: '500',
+        fontSize: '24em',
+        paddingTop: '6%',
+        paddingHorizontal: '4%',
+        alignSelf: 'center',
+        color: Colors.MAIN
       },
       input: {
         borderWidth: 0,
@@ -144,7 +179,8 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         paddingLeft: '7%',
         backgroundColor: Colors.BUTTON_BACKGROUND,
-        marginHorizontal: '7%'
+        marginHorizontal: '7%',
+        paddingVertical: '4%'
       },
       inputtwo: {
         borderWidth: 0,

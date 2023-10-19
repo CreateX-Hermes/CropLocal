@@ -21,7 +21,7 @@ const HomePage = () => {
         });
     }, []);
 
-    var [travelersCount, setTravelersCount] = useState(1);
+    var [travelersCount, setTravelersCount] = useState(0);
 
     const subtractTravelersCount = () => {
         if (travelersCount > 1) {
