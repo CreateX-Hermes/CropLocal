@@ -3,6 +3,9 @@ import { Image, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import NavigationButton from '../NavigationButton/NavigationButton';
 import { Colors } from '../../Styles';
 import { useNavigation } from '@react-navigation/native';
+import jwt_decode from 'jwt-decode'
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from 'axios';
 
 const Stand = (props) => {
 
