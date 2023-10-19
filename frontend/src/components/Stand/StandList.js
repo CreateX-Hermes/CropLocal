@@ -17,8 +17,9 @@ const StandList = () => {
             //console.log(jwt_decode(token))
 
             const {location, userID} = jwt_decode(token)
-
+            
             const fetchedData = await axios.post("http://localhost:8000/stand/findWithinRadius", {longitude: location[0], latitude: location[1], radius: 15, userID: userID})
+
             setStandData(fetchedData.data)
 
         }

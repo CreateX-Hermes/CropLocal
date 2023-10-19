@@ -47,9 +47,13 @@ const Stand = (props) => {
         }
     })
 
-    let {_id, standName, city, distance, rating, description, ownerName, picture} = props.data
+    let {_id, standName, city, distance, rating, description, ownerName, picture, favorite} = props.data
 
-    const [isSaved, setIsSaved] = React.useState(false)
+
+
+    // if _id is in saved list
+
+    const [isSaved, setIsSaved] = React.useState(favorite)
 
     const updateFavoriteList = async () => {
         const token = await AsyncStorage.getItem("authToken")
@@ -58,7 +62,8 @@ const Stand = (props) => {
 
         const {userID} = jwt_decode(token)
 
-        await axios.post("http://localhost:8000/stand/updateFavoriteStands", {userID: userID, standID: _id})
+        await axios.post("http://localhost:8000/user/updateFavoriteStands", {userID: userID, standID: _id})
+
     }
     
     if (rating == -1) {

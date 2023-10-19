@@ -64,8 +64,21 @@ router.post("/findWithinRadius", async (req, res) => {
             }
         ]);
 
+        let user = await User.findOne(
+            {_id : userID}
+        )
+        
 
-        return res.status(200).json(stands);
+        const objectIdsToCheck = user.favoriteStands;
+        console.log(objectIdsToCheck)
+
+        const standsWithExistence = stands.map(stand => {
+        const favorite = objectIdsToCheck.includes(stand._id.toString());
+        return { ...stand, favorite };
+        });
+
+
+        return res.status(200).json(standsWithExistence);
     } catch (error) {
         console.error(error);
         return res.status(500).json({ message: "Error finding stands within radius" });

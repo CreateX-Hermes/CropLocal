@@ -102,6 +102,8 @@ router.post("/updateFavoriteStands", async (req, res) => {
         userID = new ObjectId(userID)
         standID = new ObjectId(standID)
 
+        console.log(userID)
+        console.log(standID)
 
         await User.updateOne(
             {_id:userID},
@@ -121,6 +123,26 @@ router.post("/updateFavoriteStands", async (req, res) => {
         )
         
         return res.status(200).json({message:"Success"})
+
+    } catch(error) {
+        console.log(error)
+        return res.status(500).json({message:"Error"})
+    }
+})
+
+router.post("/getUserInfo", async (req, res) => {
+    try {
+
+        let {userID} = req.body
+        var ObjectId = require('mongodb').ObjectId
+        userID = new ObjectId(userID)
+
+
+        let user = await User.findOne(
+            {_id : userID}
+        )
+        
+        return res.status(200).json(user)
 
     } catch(error) {
         console.log(error)
