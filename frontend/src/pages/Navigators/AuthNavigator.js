@@ -20,7 +20,7 @@ const AuthNavigator = () => {
       />
       <Stack.Screen name="Signup" 
        component={Signup} />
-       <Stack.Screen name="HomePageNavigator" component={HomePageNavigator}/>
+      <Stack.Screen name="HomePageNavigator" component={HomePageNavigator}/>
     </Stack.Navigator>
   );
 }
