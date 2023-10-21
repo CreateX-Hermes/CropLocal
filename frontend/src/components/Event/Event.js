@@ -16,13 +16,16 @@ export const Event = (props) => {
             <View style={styles.content}>
                 <View style={styles.segment}>
                     <Image style={styles.label} source={require('../../assets/calender.png')} />
+                    <Text style={styles.info}>{`${props.data.startDate} - ${props.data.endDate}`}</Text> 
                 </View>
-                <View>
+                <View style={styles.row}>
                     <View style={styles.segment}>
-
+                        <Image style={styles.label} source={require('../../assets/clock.png')} />
+                        <Text style={styles.info}>{`${props.data.startTime} - ${props.data.endTime}`}</Text>
                     </View>
                     <View style={styles.segment}>
-
+                        <Image style={styles.stand} source={require('../../assets/store2.png')} />
+                        <Text style={styles.info}>{`${props.data.stands} stands`}</Text>
                     </View>
                 </View>
             </View>
@@ -34,8 +37,16 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     label: {
-        width: 30,
+        width: 25,
+        height: 25
+    },
+    stand: {
+        width: 25,
         height: 30
+    },
+    row: {
+        display: 'flex',
+        flexDirection: 'row'
     },
     event: {
         height: 125,
@@ -74,5 +85,20 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5F5F5',
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
+        display: 'flex',
+        flexDirection: 'column'
+    },
+    segment: {
+        display: 'flex',
+        flexDirection: 'row',
+        marginLeft: 20,
+        marginTop: 15,
+        alignItems: 'center'
+    },
+    info: {
+        fontSize: 16,
+        fontWeight: 500,
+        marginLeft: 5,
+        height: 20,
     }
 })

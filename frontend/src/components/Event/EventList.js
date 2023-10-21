@@ -12,7 +12,8 @@ export const EventList = () => {
             startDate: 'Tue, June 21 ',
             endDate: 'Sun, June 26',
             startTime: '6:00',
-            endTime: '8:00pm'
+            endTime: '8:00 pm',
+            stands: 30
         },
         {}
     ]
