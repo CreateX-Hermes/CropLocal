@@ -9,6 +9,9 @@ import Login from '../Auth/Login';
 import BecomeALocal from '../BecomeALocal/BecomeALocal';
 import BottomTabNavigator from './BottomTabNavigator';
 import Seller from '../Seller/Seller';
+import SellerOne from '../BecomeALocal/SellerOne.js';
+import SellerTwo from '../BecomeALocal/SellerTwo.js';
+import SavedLocals from '../SavedLocals/SavedLocals.js';
 
 
 const Stack = createStackNavigator();
@@ -34,6 +37,15 @@ const HomePageNavigator = () => {
       <Stack.Screen
         name="BecomeALocal"
         component={BecomeALocal}
+        // component={BecomeALocal}
+      />
+      <Stack.Screen
+        name="SellerOne"
+        component={SellerOne}
+      />
+      <Stack.Screen
+        name="SellerTwo"
+        component={SellerTwo}
       />
       <Stack.Screen
         name="EditProfile"
@@ -44,10 +56,6 @@ const HomePageNavigator = () => {
       />
       <Stack.Screen name="Help" 
        component={Help} 
-      />
-      <Stack.Screen name="Login" 
-       component={Login} 
-       options={{headerShown: false}}
       />
     </Stack.Navigator>
   );

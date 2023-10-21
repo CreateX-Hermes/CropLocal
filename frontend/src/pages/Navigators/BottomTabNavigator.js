@@ -4,10 +4,11 @@ import PlusPopupNavigator from "./PlusPopupNavigator.js";
 import { Image } from 'react-native';
 import HomePage from "../HomePage/HomePage.js";
 import { Colors } from "../../Styles.js";
-import AccountPageNavigator from "./AccountPageNavigator.js";
 import SellerManagerPageNavigator from "./SellerManagerPageNavigator.js";
 import HomePageNavigator from "./HomePageNavigator.js";
 import SavedLocals from "../SavedLocals/SavedLocals.js";
+import AccountPage from "../AccountPage/AccountPage.js";
+import PlusPopup from "../PlusPopup/PlusPopup.js";
 
 
 const Tab = createBottomTabNavigator();
@@ -77,7 +78,7 @@ const BottomTabNavigator = () => {
         />
         <Tab.Screen
         name="Account"
-        component={AccountPageNavigator}
+        component={AccountPage}
         options={{
           tabBarLabel: 'Account',
           tabBarIconStyle: { marginTop: 17 },

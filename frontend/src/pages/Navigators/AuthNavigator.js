@@ -16,11 +16,11 @@ const AuthNavigator = () => {
         options={{headerShown: false}} />
       <Stack.Screen
         name="ForgotPassword"
-        component={ForgotPassword}
-      />
+        component={ForgotPassword}/>
       <Stack.Screen name="Signup" 
-       component={Signup} />
-      <Stack.Screen name="HomePageNavigator" component={HomePageNavigator}/>
+        component={Signup}/>
+      <Stack.Screen name="HomePageNavigator"
+        component={HomePageNavigator}/>
     </Stack.Navigator>
   );
 }

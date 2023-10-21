@@ -6,7 +6,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import AuthNavigator from './src/pages/Navigators/AuthNavigator';
 import HomePageNavigator from './src/pages/Navigators/HomePageNavigator';
 import BottomTabNavigator from './src/pages/Navigators/BottomTabNavigator';
-import AccountPageNavigator from './src/pages/Navigators/AccountPageNavigator';
 
 
 // Use "npx expo start" and the Expo Go app to run the app on your phone
