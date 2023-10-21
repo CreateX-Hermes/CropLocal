@@ -15,14 +15,28 @@ export const EventList = () => {
             endTime: '8:00 pm',
             stands: 30
         },
-        {}
-    ]
-    ;
+        {
+            name: 'Ponce City Market',
+            location: 'Atlanta, GA',
+            image: require('./ponce.png'),
+            startDate: 'Tue, June 21 ',
+            endDate: 'Sun, June 26',
+            startTime: '6:00',
+            endTime: '8:00 pm',
+            stands: 29
+        }
+    ];
+
+    const stands = [];
+
+    for (let i = 0; i < dummyData.length; i++) {
+        stands.push(<Event key={i} data={dummyData[i]}/>)
+    }
 
     return (
         <View style={styles.container}>
             <ScrollView style={styles.main}>
-                <Event data={dummyData[0]}/>
+                {stands}
             </ScrollView>
         </View>
     )

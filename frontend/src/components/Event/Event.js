@@ -35,6 +35,7 @@ export const Event = (props) => {
 const styles = StyleSheet.create({
     container: {
         width: '100%',
+        marginTop: 30
     },
     label: {
         width: 25,
@@ -97,7 +98,6 @@ const styles = StyleSheet.create({
     },
     info: {
         fontSize: 16,
-        fontWeight: 500,
         marginLeft: 5,
         height: 20,
     }
