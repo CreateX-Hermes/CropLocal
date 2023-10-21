@@ -4,6 +4,7 @@ import PlusPopupNavigator from "./PlusPopupNavigator.js";
 import { Image } from 'react-native';
 import HomePage from "../HomePage/HomePage.js";
 import { Colors } from "../../Styles.js";
+import { Events } from "../Events/Events.js";
 import AccountPageNavigator from "./AccountPageNavigator.js";
 import SellerManagerPageNavigator from "./SellerManagerPageNavigator.js";
 import HomePageNavigator from "./HomePageNavigator.js";
@@ -43,7 +44,7 @@ const BottomTabNavigator = () => {
         />  
         <Tab.Screen
         name="Save"
-        component={PlusPopupNavigator}
+        component={Events}
         options={{
           tabBarLabel: 'Save',
           tabBarIconStyle: { marginTop: 17 },

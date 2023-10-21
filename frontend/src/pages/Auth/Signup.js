@@ -66,7 +66,8 @@ const Signup = () => {
       response = await axios.post("http://localhost:8000/user/register", user)
       console.log(response)
     } catch (error) {
-      console.log(error)
+      console.log(error);
+      console.error(error.response.data);
     }
   }
 

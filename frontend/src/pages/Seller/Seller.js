@@ -9,7 +9,7 @@ import { Review } from '../../components/Review/Review';
 import { useNavigation } from '@react-navigation/native';
 
 
-const Seller = ({route}) => {
+export const Seller = ({route}) => {
 
     const navigation = useNavigation();
 
@@ -41,6 +41,7 @@ const Seller = ({route}) => {
     }]
 
     let {_id, standName, city, distance, rating, description, ownerName, picture} = route.params
+    
 
   return (
     <View>
