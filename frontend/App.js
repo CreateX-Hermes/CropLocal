@@ -5,7 +5,6 @@ import AuthNavigator from './src/pages/Navigators/AuthNavigator';
 import HomePageNavigator from './src/pages/Navigators/HomePageNavigator';
 import BottomTabNavigator from './src/pages/Navigators/BottomTabNavigator';
 
-
 // Use "npx expo start" and the Expo Go app to run the app on your phone
 
 export default function App() {
@@ -15,4 +14,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-

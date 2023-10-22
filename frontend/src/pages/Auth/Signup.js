@@ -1,81 +1,80 @@
-import {StyleSheet, Text, View, TextInput, SafeAreaView, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, TextInput, SafeAreaView, TouchableOpacity } from 'react-native';
 import React, { useLayoutEffect, useState, useEffect } from 'react';
-import {useNavigation} from '@react-navigation/native';
-import BottomTabNavigator from '../Navigators/BottomTabNavigator';
-import { Colors } from "../../Styles.js";
+import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
+import * as Location from 'expo-location';
+import BottomTabNavigator from '../Navigators/BottomTabNavigator';
+import { Colors } from '../../Styles.js';
 import { styles } from './loginStyles.js';
 import ForgotPassword from './ForgotPassword';
-import * as Location from 'expo-location'
 
-const Signup = () => {
-  const [ firstName, setFirstName ] = useState("")
-  const [ lastName, setLastName ] = useState("")
-  const [ email, setEmail ] = useState("")
-  const [ password, setPassword ] = useState("")
-  const [location, setLocation] = useState("")
+function Signup() {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [location, setLocation] = useState('');
 
   // const {navigation} = props;
   const navigation = useNavigation();
 
   useEffect(() => {
     const getPermissions = async () => {
-      let {status} = await Location.requestForegroundPermissionsAsync()
+      const { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
-        console.log("please grant location")
-        return
+        console.log('please grant location');
+        return;
       }
 
-      let currentLocation = await Location.getCurrentPositionAsync({})
-      setLocation(currentLocation)
-    }
+      const currentLocation = await Location.getCurrentPositionAsync({});
+      setLocation(currentLocation);
+    };
 
-    getPermissions()
-    
-  }, [])
-
+    getPermissions();
+  }, []);
 
   const handleRegister = async () => {
-    
     const reverseGeoCode = async () => {
       if (location) {
         const reverseGeoCodeAddress = await Location.reverseGeocodeAsync({
           latitude: location.coords.latitude,
-          longitude: location.coords.longitude
-        })
-        return(reverseGeoCodeAddress)
+          longitude: location.coords.longitude,
+        });
+        return reverseGeoCodeAddress;
       }
-      return {city: null}
-      
-    }
+      return { city: null };
+    };
 
-    userLocation = {coordinates: [location.coords.longitude, location.coords.latitude], type: "Point"}
+    userLocation = {
+      coordinates: [location.coords.longitude, location.coords.latitude],
+      type: 'Point',
+    };
 
-    const reverseLocation = await reverseGeoCode()
+    const reverseLocation = await reverseGeoCode();
 
     const user = {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
+      firstName,
+      lastName,
+      email,
       prepassword: password,
       location: userLocation,
-      city: reverseLocation[0].city
-    }
+      city: reverseLocation[0].city,
+    };
 
     try {
-      response = await axios.post("http://localhost:8000/user/register", user)
-      console.log(response)
+      response = await axios.post('http://localhost:8000/user/register', user);
+      console.log(response);
     } catch (error) {
       console.log(error);
       console.error(error.response.data);
     }
-  }
+  };
 
   useLayoutEffect(() => {
     navigation.setOptions({
-        headerShown: false,
+      headerShown: false,
     });
-}, []);
+  }, []);
 
   return (
     <SafeAreaView style={styles.main}>
@@ -90,7 +89,9 @@ const Signup = () => {
             <TextInput
               value={email}
               onChangeText={(text) => setEmail(text)}
-              style={styles.input} placeholder="Email" />
+              style={styles.input}
+              placeholder="Email"
+            />
           </View>
 
           <View style={styles2.field}>
@@ -98,47 +99,52 @@ const Signup = () => {
             <TextInput
               value={firstName}
               onChangeText={(text) => setFirstName(text)}
-              style={styles.input} placeholder="First Name" />
+              style={styles.input}
+              placeholder="First Name"
+            />
           </View>
-          
+
           <View style={styles2.field}>
             <Text style={styles.label}>Last Name</Text>
             <TextInput
               value={lastName}
               onChangeText={(text) => setLastName(text)}
-              style={styles.input} placeholder="Last Name" />
+              style={styles.input}
+              placeholder="Last Name"
+            />
           </View>
 
           <View style={styles2.field}>
             <Text style={styles.label}>Create a Password</Text>
-            <TextInput 
+            <TextInput
               value={password}
               onChangeText={(text) => setPassword(text)}
-              secureTextEntry={true}
-              style={styles.input} placeholder="Create a Password" />
-              <TouchableOpacity
-                onPress={() => navigation.goBack()}
-                >
-                <Text style={styles2.loginBtn}>Log in (Already have an Account)</Text>
-              </TouchableOpacity>
+              secureTextEntry
+              style={styles.input}
+              placeholder="Create a Password"
+            />
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Text style={styles2.loginBtn}>Log in (Already have an Account)</Text>
+            </TouchableOpacity>
           </View>
         </View>
 
         <View style={styles.footer}>
-          {/******************** Signup BUTTON *********************/}
+          {/** ****************** Signup BUTTON ******************** */}
           <TouchableOpacity
-                onPress={() => {
-                  handleRegister()
-                }}
-                //onPress={() => navigation.navigate(BottomTabNavigator)}
-                style={styles.loginBtn}>
-                <Text style={styles.loginText}>Sign Up</Text>
-              </TouchableOpacity>
+            onPress={() => {
+              handleRegister();
+            }}
+            // onPress={() => navigation.navigate(BottomTabNavigator)}
+            style={styles.loginBtn}
+          >
+            <Text style={styles.loginText}>Sign Up</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
   );
-};
+}
 
 export default Signup;
 
@@ -150,8 +156,8 @@ const styles2 = StyleSheet.create({
     padding: '16%',
   },
   field: {
-    marginTop: "4%",
-    height: "15%"
+    marginTop: '4%',
+    height: '15%',
   },
   container: {
     padding: '5%',
@@ -175,7 +181,7 @@ const styles2 = StyleSheet.create({
     color: '#071930',
     marginBottom: '10%',
     fontWeight: 600,
-    bottom: '6%'
+    bottom: '6%',
   },
   input: {
     borderWidth: 1.5,
@@ -186,7 +192,7 @@ const styles2 = StyleSheet.create({
     height: '10.6%',
     fontSize: 16.5,
     fontWeight: '400',
-    paddingLeft: '7%'
+    paddingLeft: '7%',
   },
   // Login Btn Styles
   loginBtnWrapper: {
@@ -200,10 +206,10 @@ const styles2 = StyleSheet.create({
   },
   loginBtn: {
     color: '#E5B07A',
-      fontWeight: 'bold',
-      paddingLeft: '8%',
-      marginTop: '0%',
-      textDecorationLine: 'underline'
+    fontWeight: 'bold',
+    paddingLeft: '8%',
+    marginTop: '0%',
+    textDecorationLine: 'underline',
   },
   loginText: {
     color: '#FFFFFF',
