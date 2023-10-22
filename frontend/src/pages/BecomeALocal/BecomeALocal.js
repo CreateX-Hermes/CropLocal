@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         color: Colors.BLACK,
         fontWeight: '600',
-        fontSize: '40em',
+        fontSize: 40,
         marginLeft: '7%',
         paddingTop: '5%',
       },
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         color: Colors.MAIN,
         fontWeight: '600',
-        fontSize: '40em',
+        fontSize: 40,
         width: '86%',
         paddingTop: '5%',
         marginLeft: '1%'
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
       text13: {
         color: '#000000',
         fontWeight: '400',
-        fontSize: '15em',
+        fontSize: 15,
         paddingLeft: '9%',
         width: '96%'
       }, 
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         color: Colors.WHITE,
         fontWeight: '600',
-        fontSize: '15em',
+        fontSize: 15,
         paddingHorizontal: '13%',
       },
 })

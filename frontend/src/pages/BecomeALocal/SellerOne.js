@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         color: Colors.BLACK,
         fontWeight: '600',
-        fontSize: '36em',
+        fontSize: 36,
         marginLeft: '7%',
         paddingTop: '5%',
         width: '70%'
@@ -116,27 +116,27 @@ const styles = StyleSheet.create({
         display: 'flex',
         color: '#FFFFFF',
         fontWeight: '600',
-        fontSize: '15em',
+        fontSize: 15,
         paddingHorizontal: '7%',
       },
       text11: {
         color: Colors.BLACK,
         fontWeight: '600',
-        fontSize: '18em',
+        fontSize: 18,
         paddingLeft: '9%',
         marginTop: '40.6%'
       }, 
       text12: {
         color: Colors.BLACK,
         fontWeight: '600',
-        fontSize: '18em',
+        fontSize: 18,
         paddingTop: '6%',
         paddingLeft: '9%'
       },
       text13: {
         color: Colors.BLACK,
         fontWeight: '600',
-        fontSize: '18em',
+        fontSize: 18,
         paddingLeft: '9%'
       },  
       text15: {
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
         marginTop: '2.8%',
         borderRadius: '100%',
         height: '6%',
-        fontSize: '15em',
+        fontSize: 15,
         fontWeight: '400',
         paddingLeft: '7%',
         backgroundColor: Colors.BUTTON_BACKGROUND,
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
         borderColor: Colors.BUTTON_BACKGROUND,
         marginTop: '3.4%',
         borderRadius: 25,
-        fontSize: '15em',
+        fontSize: 15,
         fontWeight: '400',
         backgroundColor: Colors.BUTTON_BACKGROUND,
         marginHorizontal: '7%',
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         color: Colors.WHITE,
         fontWeight: '600',
-        fontSize: '15em',
+        fontSize: 15,
         paddingHorizontal: '13%',
       },
 })
