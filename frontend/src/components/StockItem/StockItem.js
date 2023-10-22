@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5F5F5',
         textAlign: 'center',
         color: 'black',
-        borderRadius: '100%'
+        borderRadius: 100
     },
     quant: {
         color: '#979797'

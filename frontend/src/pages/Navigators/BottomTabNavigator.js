@@ -5,7 +5,6 @@ import HomePage from "../HomePage/HomePage.js";
 import { Colors } from "../../Styles.js";
 import { Events } from "../Events/Events.js";
 import SellerManagerPageNavigator from "./SellerManagerPageNavigator.js";
-import HomePageNavigator from "./HomePageNavigator.js";
 import AccountPage from "../AccountPage/AccountPage.js";
 import SellerManagerPage from "../SellerManagerPage/SellerManagerPage.js";
 

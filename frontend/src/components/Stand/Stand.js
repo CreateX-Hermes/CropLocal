@@ -74,7 +74,7 @@ const Stand = (props) => {
 
     return (
         <NavigationButton style={{flex: 0, flexDirection: 'row', width: 350, height: 160, borderRadius: 20, marginVertical: '1.5%'}} onPress={() => navigation.navigate('Seller', {...props.data})}>
-            <Image source={{uri: picture}} defaultSource={require('../../assets/market_stand.png')} style={{width: '37%', height: '90%', borderRadius: '20%'}}></Image>
+            <Image source={{uri: picture}} defaultSource={require('../../assets/market_stand.png')} style={{width: '37%', height: '90%', borderRadius: 20}}></Image>
             <View style={{flex: 2, width: 300, height: 150, flexDirection: 'column', marginHorizontal: '5%', paddingVertical: '3%'}}>
                 <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '110%'}}>
                     <Text style={styles.HEADING_TEXT}>{standName}</Text>

@@ -5,7 +5,6 @@ import Messages from '../Messages/Messages.js';
 import EditProfile from '../EditProfile/EditProfile';
 import MyWallet from '../MyWallet/MyWallet';
 import Help from '../Help/Help';
-import Login from '../Auth/Login';
 import BecomeALocal from '../BecomeALocal/BecomeALocal';
 import BottomTabNavigator from './BottomTabNavigator';
 import Seller from '../Seller/Seller';

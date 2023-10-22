@@ -160,7 +160,7 @@ const styles2 = StyleSheet.create({
     flex: 1,
   },
   brandName: {
-    fontSize: '48em',
+    fontSize: 48,
     textAlign: 'center',
     fontWeight: 'bold',
     color: 'white',
@@ -170,7 +170,7 @@ const styles2 = StyleSheet.create({
     marginTop: '10%',
   },
   loginContinueTxt: {
-    fontSize: '20em',
+    fontSize: 20,
     textAlign: 'center',
     color: '#071930',
     marginBottom: '10%',
@@ -182,9 +182,9 @@ const styles2 = StyleSheet.create({
     borderColor: '#071930',
     padding: '5%',
     marginVertical: '3%',
-    borderRadius: '100%',
+    borderRadius: 100,
     height: '10.6%',
-    fontSize: '16.5em',
+    fontSize: 16.5,
     fontWeight: '400',
     paddingLeft: '7%'
   },
@@ -207,7 +207,7 @@ const styles2 = StyleSheet.create({
   },
   loginText: {
     color: '#FFFFFF',
-    fontSize: '16em',
+    fontSize: 16,
     fontWeight: '500',
   },
   forgotPassText: {

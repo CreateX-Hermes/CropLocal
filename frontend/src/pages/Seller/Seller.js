@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
         height: 130,
         borderColor: Colors.MAIN,
         borderWidth: 2,
-        borderRadius: '100%'
+        borderRadius: 100
     },
     seller: {
         display: 'flex',
@@ -263,7 +263,7 @@ const styles = StyleSheet.create({
     iconContainer1: {
         width: 45,
         height: 45,
-        borderRadius: '50%',
+        borderRadius: 50,
         backgroundColor: Colors.BUTTON_BACKGROUND,
         display: 'flex',
         flexDirection: 'row',
@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
     iconContainer2: {
         width: 45,
         height: 45,
-        borderRadius: '50%',
+        borderRadius: 50,
         backgroundColor: Colors.BUTTON_BACKGROUND,
         display: 'flex',
         flexDirection: 'row',
@@ -297,7 +297,7 @@ const styles = StyleSheet.create({
         width: 150,
         height: '80%',
         backgroundColor: '#91D569',
-        borderRadius: '50%',
+        borderRadius: 50,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -314,7 +314,7 @@ const styles = StyleSheet.create({
     reserveContainer: {
         position: 'relative',
         bottom: '50%',
-        borderRadius: '50%',
+        borderRadius: 50,
         width: '80%',
         backgroundColor: 'white',
         display: 'flex',

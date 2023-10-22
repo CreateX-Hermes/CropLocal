@@ -16,7 +16,9 @@ const filterReducer = (state, action) => {
     }
     else if (action.type === 'reduce_max_radius') {
         let newRadius = state.maxRadius - 0.1
-        console.log(newRadius)
+        if (newRadius < 0) {
+            newRadius = 0
+        }
         newRadius = newRadius.toFixed(1)
         return {
             ...state,
@@ -24,8 +26,7 @@ const filterReducer = (state, action) => {
         }
     }
     else if (action.type === 'increase_max_radius') {
-        let newRadius = parseFloat(state.maxRadius + 9)
-        console.log(newRadius)
+        let newRadius = parseFloat(state.maxRadius) + 0.1
         newRadius = newRadius.toFixed(1)
         return {
             ...state,
@@ -187,13 +188,13 @@ export default HomePage
 const styles = StyleSheet.create({
     text1: {
         fontWeight: '700',
-        fontSize: '17em',
+        fontSize: 17,
         position: 'relative',
     },
     text10: {
         color: '#FFFFFF',
         fontWeight: '500',
-        fontSize: '16em',
+        fontSize: 16,
         alignSelf: 'center',
         justifyContent: 'center',
     },
@@ -204,14 +205,14 @@ const styles = StyleSheet.create({
     },
     text17: {
         fontWeight: '600',
-        fontSize: '25em',
+        fontSize: 25,
         paddingTop: '4%',
         paddingLeft: '7%',
         width: '100%'
     },
     text20: {
         fontWeight: '500',
-        fontSize: '28em',
+        fontSize: 28,
         paddingTop: '6%',
         paddingHorizontal: '4%',
         alignSelf: 'center',
@@ -219,7 +220,7 @@ const styles = StyleSheet.create({
     },
     text23: {
         fontWeight: '600',
-        fontSize: '25em',
+        fontSize: 25,
         paddingTop: '7%',
         paddingLeft: '7%',
         alignSelf: 'center'
@@ -228,9 +229,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5F5F5',
         padding: '5%',
         marginVertical: '6%',
-        borderRadius: '100%',
+        borderRadius: 100,
         height: '10%',
-        fontSize: '16.5em',
+        fontSize: 16.5,
         fontWeight: '400',
         paddingLeft: '7%',
         width: '88%',

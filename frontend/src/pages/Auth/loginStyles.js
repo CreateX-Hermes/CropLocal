@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
       alignItems: 'center',
       padding: '16%',
       backgroundColor: Colors.LOGIN_BACKGROUND,
-      fontSize: '16.5px'
+      fontSize: 16.5
     },
     field: {
       marginTop: '8%',
@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     }, 
     label: {
       color: "white",
-      fontSize: '16.5em',
+      fontSize: 16.5,
       fontWeight: '500',
       paddingLeft: '8%'
     },
@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
       flex: 1,
     },
     brandName: {
-      fontSize: '48em',
+      fontSize: 48,
       marginTop: '10%',
       textAlign: 'center',
       fontWeight: 'bold',
@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
       opacity: 0.9,
     },
     loginContinueTxt: {
-      fontSize: '20em',
+      fontSize: 20,
       textAlign: 'center',
       color: '#071930',
       marginBottom: '10%',
@@ -50,9 +50,9 @@ export const styles = StyleSheet.create({
         color: 'black',
         padding: '0%',
         marginVertical: '3%',
-        borderRadius: '100%',
+        borderRadius: 100,
         height: '55%',
-        fontSize: '16.5em',
+        fontSize: 16.5,
         fontWeight: '400',
         paddingLeft: '7%'
       },
@@ -72,7 +72,7 @@ export const styles = StyleSheet.create({
     },
     loginText: {
       color: '#FFFFFF',
-      fontSize: '16em',
+      fontSize: 16,
       fontWeight: '500'
     },
     forgotPassText: {

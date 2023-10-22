@@ -8,7 +8,7 @@ import BecomeASeller from '../BecomeALocal/BecomeALocal';
 import EditProfile from '../EditProfile/EditProfile';
 import MyWallet from '../MyWallet/MyWallet';
 import Help from '../Help/Help';
-import Login from '../Auth/Login';
+//import Login from '../Auth/Login';
 import { Colors } from '../../Styles.js'
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import jwt_decode from 'jwt-decode'
@@ -64,7 +64,7 @@ const AccountPage = () => {
     // Close Modal
     setModalVisible(!isModalVisible);
     // Navigate to Edit Profile Page
-    navigation.navigate(Login);
+    //navigation.navigate(Login);
   };
 
   useEffect(() => {
@@ -213,13 +213,13 @@ const styles = StyleSheet.create({
   text1: {
     color: Colors.BLACK,
     fontWeight: '700',
-    fontSize: '26em',
+    fontSize: 26,
     paddingTop: '4%'
   },
   text2: {
     color: Colors.DARK_GRAY,
     fontWeight: '400',
-    fontSize: '17em',
+    fontSize: 17,
     paddingTop: '4%'
   },
   text3: {
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
   text4: {
     color: '#FFFFFF',
     fontWeight: '600',
-    fontSize: '15em',
+    fontSize: 15,
     textDecorationLine: 'underline',
     paddingTop: '4.8%'
   },
@@ -238,13 +238,13 @@ const styles = StyleSheet.create({
     display: 'flex',
     color: Colors.WHITE,
     fontWeight: '600',
-    fontSize: '13em',
+    fontSize: 13,
   },
   text6: {
     display: 'flex',
     color: '#288FBB',
     fontWeight: '400',
-    fontSize: '15em',
+    fontSize: 15,
     alignSelf: 'flex-end',
     paddingTop: '10%'
   },
@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     color: Colors.BLACK,
     fontWeight: '400',
-    fontSize: '14em',
+    fontSize: 14,
     width: '86%',
     marginLeft: '7%',
     paddingTop: '5%'
@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     color: Colors.BLACK,
     fontWeight: '700',
-    fontSize: '24em',
+    fontSize: 24,
     marginLeft: '7%',
     paddingTop: '5%',
   },
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     color: Colors.MAIN,
     fontWeight: '700',
-    fontSize: '24em',
+    fontSize: 24,
     width: '86%',
     paddingTop: '5%',
     marginLeft: '1%'
@@ -278,19 +278,19 @@ const styles = StyleSheet.create({
     display: 'flex',
     color: '#FFFFFF',
     fontWeight: '700',
-    fontSize: '14em',
+    fontSize: 14,
     paddingHorizontal: '9%',
   },
   text10: {
     color: '#FFFFFF',
     fontWeight: '500',
-    fontSize: '16em',
+    fontSize: 16,
     alignSelf: 'center',
     justifyContent: 'center',
   },
   text11: {
     fontWeight: '700',
-    fontSize: '20em',
+    fontSize: 20,
     position: 'relative',
     alignSelf: 'center',
   },
@@ -303,7 +303,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     color: '#000000',
     fontWeight: '600',
-    fontSize: '16em',
+    fontSize: 16,
     paddingLeft: '8%'
   },
   text15: {

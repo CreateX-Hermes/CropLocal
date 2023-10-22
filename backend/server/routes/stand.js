@@ -70,7 +70,6 @@ router.post("/findWithinRadius", async (req, res) => {
         
 
         const objectIdsToCheck = user.favoriteStands;
-        console.log(objectIdsToCheck)
 
         const standsWithExistence = stands.map(stand => {
         const favorite = objectIdsToCheck.includes(stand._id.toString());
