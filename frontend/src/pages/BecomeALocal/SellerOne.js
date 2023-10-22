@@ -1,56 +1,55 @@
-import { StyleSheet, View, SafeAreaView, TouchableOpacity, Modal, Image, Text, TextInput, ScrollView, } from 'react-native'
+import { StyleSheet, View, SafeAreaView, TouchableOpacity, Image, Text, TextInput, ScrollView, } from 'react-native'
 import React, { useLayoutEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { Colors } from '../../Styles.js'
-import NavigationButton from '../../components/NavigationButton/NavigationButton'
-import BecomeALocal from './BecomeALocal.js';
-import AccountPageNavigator from '../Navigators/AccountPageNavigator.js';
+import NavigationButton from '../../components/NavigationButton/NavigationButton.js'
 import { Divider, IconButton, Avatar} from 'react-native-paper';
-import BecomeASellerNavigatorTwo from '../Navigators/BecomeASellerNavigatorTwo.js';
+import SellerTwo from './SellerTwo.js';
 
-const ModalSellerOne = () => {
+const SellerOne = () => {
+  
   
   const navigation = useNavigation();
 
-  const [isModalVisible, setModalVisible] = useState(true);
-
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  }
+  useLayoutEffect(() => {
+    navigation.setOptions({
+        headerShown: false,
+    });
+  }, []);
 
   return (
-        <SafeAreaView backgroundColor={Colors.WHITE}>
-            <View backgroundColor= {Colors.WHITE} height='100%'>
+    <SafeAreaView backgroundColor={Colors.WHITE}>
+        <View backgroundColor= {Colors.WHITE} height='100%'>
 
-            <View style={{position: 'absolute', marginLeft: '6%'}}>
-            <NavigationButton onPress={() => {navigation.goBack()}
-              } style={{height: 50, width: 50, flex: 0, top: '15%'}}>
-            <Image source={require('../../assets/left.png')} style={{width: '70%', resizeMode: 'contain'}}/>
-          </NavigationButton>
-          </View>
+        <View style={{position: 'absolute', marginLeft: '6%'}}>
+        <NavigationButton onPress={() => {navigation.goBack()}
+          } style={{height: 50, width: 50, flex: 0, top: '15%'}}>
+        <Image source={require('../../assets/left.png')} style={{width: '70%', resizeMode: 'contain'}}/>
+      </NavigationButton>
+      </View>
 
-          <ScrollView style={{paddingTop: '14%', zIndex: -2}}>
-                <Text style={styles.text8}>Check Profile Details</Text>
+      <ScrollView style={{paddingTop: '14%', zIndex: -2}}>
+            <Text style={styles.text8}>Check Profile Details</Text>
 
-            
-                <View style={{ alignItems: 'center', marginTop: '15%' }}>
-          <View style={{zIndex: '1', display: 'flex', alignItems: 'flex-start', flexDirection: 'column', justifyContent: 'flex-start', position: 'absolute'}}>
-          <View style={{display: 'flex', borderColor: Colors.MAIN, borderWidth: '5%', borderRadius: 100, bottom: '24%', }}>
-            <Image source={require('../../assets/tempProfilePic.png')} />
-          </View>
-          
-          <View style={{ alignSelf: 'center', bottom: '20%', zIndex: 7 }}>
-            <TouchableOpacity 
-            style={{ 
-            backgroundColor: Colors.BLACK,
-            borderRadius: 50,
-            paddingVertical: '4%',
-            alignSelf: 'center',
-            zIndex: 5,
-            }}>
-            <Text style={styles.text10}>Edit</Text>
-            </TouchableOpacity>
-            </View>
+        
+            <View style={{ alignItems: 'center', marginTop: '15%' }}>
+      <View style={{zIndex: '1', display: 'flex', alignItems: 'flex-start', flexDirection: 'column', justifyContent: 'flex-start', position: 'absolute'}}>
+      <View style={{display: 'flex', borderColor: Colors.MAIN, borderWidth: '5%', borderRadius: 100, bottom: '24%', }}>
+        <Image source={require('../../assets/tempProfilePic.png')} />
+      </View>
+      
+      <View style={{ alignSelf: 'center', bottom: '20%', zIndex: 7 }}>
+        <TouchableOpacity 
+        style={{ 
+        backgroundColor: Colors.BLACK,
+        borderRadius: 50,
+        paddingVertical: '4%',
+        alignSelf: 'center',
+        zIndex: 5,
+        }}>
+        <Text style={styles.text10}>Edit</Text>
+        </TouchableOpacity>
+        </View>
       </View>
       
     </View>
@@ -85,7 +84,7 @@ const ModalSellerOne = () => {
                 borderColor: Colors.WHITE,
                 borderWidth: '4%',
               }} onPress={() => {
-                navigation.navigate(BecomeASellerNavigatorTwo)
+                navigation.navigate(SellerTwo)
               }
                 }>
               <Text style={styles.text22}>Next</Text>
@@ -96,7 +95,7 @@ const ModalSellerOne = () => {
   )
 }
 
-export default ModalSellerOne
+export default SellerOne
 
 const styles = StyleSheet.create({
     text14: {

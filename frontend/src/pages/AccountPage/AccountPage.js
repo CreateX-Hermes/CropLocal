@@ -10,9 +10,9 @@ import MyWallet from '../MyWallet/MyWallet';
 import Help from '../Help/Help';
 import Login from '../Auth/Login';
 import { Colors } from '../../Styles.js'
-import BecomeASellerNavigator from '../Navigators/BecomeASellerNavigator';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import jwt_decode from 'jwt-decode'
+import BecomeALocal from '../BecomeALocal/BecomeALocal';
 
 
 // <Divider style={{ width: '86%', alignSelf: 'center', marginTop: '3.6%', paddingTop: '0.3%' }}/>
@@ -28,42 +28,36 @@ const AccountPage = () => {
     });
   }, []);
 
-  const [isModalVisible, setModalVisible] = useState(false);
   const [firstName, setFirstName] = useState('');
-
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
-
 
   const handleEditProfilePress = () => {
     // Close Modal
-    setModalVisible(!isModalVisible);
+    //setModalVisible(!isModalVisible);
     // Navigate to Edit Profile Page
     navigation.navigate(EditProfile);
   };
 
   const handleBecomeASellerPress = () => {
     // Close Modal
-    setModalVisible(!isModalVisible);
+    // setModalVisible(!isModalVisible);
     // Navigate to Become A Local Page
     navigation.navigate(BecomeASeller);
   };
   const handleMyWalletPress = () => {
     // Close Modal
-    setModalVisible(!isModalVisible);
+    // setModalVisible(!isModalVisible);
     // Navigate to My Wallet Page
     navigation.navigate(MyWallet);
   };
   const handleHelpPress = () => {
     // Close Modal
-    setModalVisible(!isModalVisible);
+    // setModalVisible(!isModalVisible);
     // Navigate to Help Page
     navigation.navigate(Help);
   };
   const handleSignOutPress = () => {
     // Close Modal
-    setModalVisible(!isModalVisible);
+    // setModalVisible(!isModalVisible);
     // Navigate to Edit Profile Page
     navigation.navigate(Login);
   };
@@ -146,7 +140,7 @@ const AccountPage = () => {
                 </Text>
         <View style={{ paddingTop: '6%', alignSelf: 'center' }}>
           <TouchableOpacity
-            onPress={() => navigation.navigate(BecomeASellerNavigator)}
+            onPress={() => navigation.navigate(BecomeALocal)}
             style={{
               backgroundColor: Colors.MAIN,
               borderRadius: 50,

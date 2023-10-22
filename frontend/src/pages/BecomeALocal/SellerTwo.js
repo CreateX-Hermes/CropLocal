@@ -4,12 +4,17 @@ import { useNavigation } from '@react-navigation/native';
 import { Colors } from '../../Styles.js'
 import NavigationButton from '../../components/NavigationButton/NavigationButton'
 import { Divider, IconButton, Avatar} from 'react-native-paper';
-import BecomeASellerNavigatorTwo from '../Navigators/BecomeASellerNavigatorTwo.js';
 
 
 
 const SellerTwo = () => {
     const navigation = useNavigation();
+
+    useLayoutEffect(() => {
+      navigation.setOptions({
+          headerShown: false,
+      });
+    }, []);
 
     var [travelersCount, setTravelersCount] = useState(0);
 
@@ -53,35 +58,35 @@ const SellerTwo = () => {
 
     <Text style={styles.text11}>Number of Items</Text>
     <View style={{flexDirection: 'row'}}>
-    <TouchableOpacity 
-                                onPress={subtractTravelersCount}
-                                style={{ 
-                                backgroundColor: '#F5F5F5',
-                                borderRadius: 100,
-                                marginTop: '7%',
-                                justifyContent: 'center',
-                                paddingVertical:'2%',
-                                paddingHorizontal: '2%',
-                                marginLeft: '8%'
-                                }}>
-                                    <Image source={require('../../assets/minus.png')} style={ styles.text14 }/>
-                                </TouchableOpacity>
+      <TouchableOpacity 
+        onPress={subtractTravelersCount}
+        style={{ 
+        backgroundColor: '#F5F5F5',
+        borderRadius: 100,
+        marginTop: '7%',
+        justifyContent: 'center',
+        paddingVertical:'2%',
+        paddingHorizontal: '2%',
+        marginLeft: '8%'
+        }}>
+            <Image source={require('../../assets/minus.png')} style={ styles.text14 }/>
+        </TouchableOpacity>
 
-                                <Text style={styles.text20}>{travelersCount}</Text>
+        <Text style={styles.text20}>{travelersCount}</Text>
 
-                                <TouchableOpacity 
-                                onPress={addTravelersCount}
-                                style={{ 
-                                backgroundColor: '#F5F5F5',
-                                borderRadius: 100,
-                                marginTop: '7%',
-                                justifyContent: 'center',
-                                paddingVertical:'2.8%',
-                                paddingHorizontal: '2.8%',
-                                }}>
-                                    <Image source={require('../../assets/add.png')} style={ styles.text14 }/>
-                                </TouchableOpacity>
-                            </View>
+        <TouchableOpacity 
+        onPress={addTravelersCount}
+        style={{ 
+        backgroundColor: '#F5F5F5',
+        borderRadius: 100,
+        marginTop: '7%',
+        justifyContent: 'center',
+        paddingVertical:'2.8%',
+        paddingHorizontal: '2.8%',
+        }}>
+        <Image source={require('../../assets/add.png')} style={ styles.text14 }/>
+      </TouchableOpacity>
+    </View>
         
     </ScrollView>
 
