@@ -1,7 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Seller } from './src/pages/Seller/Seller.js';
-import { StyleSheet, Text, View, Image} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import AuthNavigator from './src/pages/Navigators/AuthNavigator';
 import HomePageNavigator from './src/pages/Navigators/HomePageNavigator';

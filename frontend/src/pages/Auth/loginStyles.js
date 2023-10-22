@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
       alignItems: 'center',
       padding: '16%',
       backgroundColor: Colors.LOGIN_BACKGROUND,
-      fontSize: '16.5em'
+      fontSize: '16.5px'
     },
     field: {
       marginTop: '8%',

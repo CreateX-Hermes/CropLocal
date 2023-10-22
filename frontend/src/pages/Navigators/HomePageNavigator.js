@@ -11,7 +11,6 @@ import BottomTabNavigator from './BottomTabNavigator';
 import Seller from '../Seller/Seller';
 import SellerOne from '../BecomeALocal/SellerOne.js';
 import SellerTwo from '../BecomeALocal/SellerTwo.js';
-import SavedLocals from '../SavedLocals/SavedLocals.js';
 
 
 const Stack = createStackNavigator();

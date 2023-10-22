@@ -29,35 +29,40 @@ const AccountPage = () => {
   }, []);
 
   const [firstName, setFirstName] = useState('');
+  const [isModalVisible, setModalVisible] = useState([false])
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible)
+  }
 
   const handleEditProfilePress = () => {
     // Close Modal
-    //setModalVisible(!isModalVisible);
+    setModalVisible(!isModalVisible);
     // Navigate to Edit Profile Page
     navigation.navigate(EditProfile);
   };
 
   const handleBecomeASellerPress = () => {
     // Close Modal
-    // setModalVisible(!isModalVisible);
+    setModalVisible(!isModalVisible);
     // Navigate to Become A Local Page
     navigation.navigate(BecomeASeller);
   };
   const handleMyWalletPress = () => {
     // Close Modal
-    // setModalVisible(!isModalVisible);
+    setModalVisible(!isModalVisible);
     // Navigate to My Wallet Page
     navigation.navigate(MyWallet);
   };
   const handleHelpPress = () => {
     // Close Modal
-    // setModalVisible(!isModalVisible);
+    setModalVisible(!isModalVisible);
     // Navigate to Help Page
     navigation.navigate(Help);
   };
   const handleSignOutPress = () => {
     // Close Modal
-    // setModalVisible(!isModalVisible);
+    setModalVisible(!isModalVisible);
     // Navigate to Edit Profile Page
     navigation.navigate(Login);
   };
@@ -121,10 +126,10 @@ const AccountPage = () => {
         </View>
 
         <Text style={styles.text7}>Hello, I am Greg! I am originally from Cleveland, Ohio but
-        now I live in Boston. Meeting to new people and
-        seeing new places  is some of my favorite memories
-        growing up, and I want to continue to do so.
-                </Text>
+          now I live in Boston. Meeting to new people and
+          seeing new places  is some of my favorite memories
+          growing up, and I want to continue to do so.
+        </Text>
 
         <Divider style={{ width: '86%', alignSelf: 'center', marginTop: '5%', paddingTop: '0.3%' }} />
 
@@ -135,9 +140,9 @@ const AccountPage = () => {
 
 
         <Text style={styles.text7}>Start earning now and show other travelers around the wonderful
-        place you call home. Become a Local guide below
-        and start working for yourself...
-                </Text>
+          place you call home. Become a Local guide below
+          and start working for yourself...
+        </Text>
         <View style={{ paddingTop: '6%', alignSelf: 'center' }}>
           <TouchableOpacity
             onPress={() => navigation.navigate(BecomeALocal)}

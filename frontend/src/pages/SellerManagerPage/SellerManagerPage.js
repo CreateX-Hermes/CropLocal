@@ -5,7 +5,6 @@ import { Colors } from '../../Styles.js'
 import NavigationButton from '../../components/NavigationButton/NavigationButton'
 import MyWallet from '../MyWallet/MyWallet.js';
 import MyPlans from '../MyPlans/MyPlans.js';
-import Seller from '../Seller/Seller.js';
 
 const SellerManagerPage = () => {
 
@@ -14,14 +13,14 @@ const SellerManagerPage = () => {
   return (
     <SafeAreaView backgroundColor={Colors.WHITE}>
     <View backgroundColor= {Colors.WHITE} height='100%'>    
-            <View style={{flexDirection: 'row', marginTop: '12%'}}>
-                <Text style={styles.text8}>Your <Text style={styles.text28}>Digital</Text> Stand</Text>
-            </View>
+        <View style={{flexDirection: 'row', marginTop: '12%'}}>
+            <Text style={styles.text8}>Your <Text style={styles.text28}>Digital</Text> Stand</Text>
+        </View>
         <TouchableOpacity onPress={() => navigation.navigate(MyWallet)}>
         <View style={styles.inputtwo}>
             <Text style={styles.text9}>Your Estimated <Text style={styles.text10}>Earnings</Text></Text>
             
-            <Text style={styles.text14}>(This Month)</Text>
+            <Text style={styles.text14}>This Month</Text>
           
             <View style={{flexDirection: 'row', paddingTop: '1%'}}>
               <Text style={styles.text15}>$1,430.35</Text>
@@ -40,28 +39,26 @@ const SellerManagerPage = () => {
               <Text style={ styles.text22 }>Edit Listing</Text>
             </View>
           </View>
-          <TouchableOpacity
+        <TouchableOpacity
             // onPress={() => navigation.navigate(Seller)}
             style={{backgroundColor: Colors.BLACK, borderRadius: 50,paddingVertical: '3%', width: '30%', alignSelf: 'center', marginTop: '6%'}}>
             <Text style={styles.text23}>View Listing</Text>
-            </TouchableOpacity>
-
-          
-            <TouchableOpacity onPress={() => navigation.navigate(MyPlans)}>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate(MyPlans)}>
         <View style={styles.inputtwo}>
             <Text style={styles.text9}>Your <Text style={styles.text24}>Reservations</Text></Text>
            
           <View style={{flexDirection: 'row', paddingLeft: '7%', paddingTop: '3%', }}>
             <View style={{paddingTop: '1%'}}>
-              <Text style={styles.text14}>(Today)</Text>
+              <Text style={styles.text14}>Today</Text>
               <Text style={styles.text25}>2</Text>
             </View> 
             <View style={{paddingTop: '1%', marginLeft: '3%', marginRight: '3%'}}>
-              <Text style={styles.text14}>(Tommorow)</Text>
+              <Text style={styles.text14}>Tommorow</Text>
               <Text style={styles.text25}>1</Text>
             </View> 
             <View style={{paddingTop: '1%'}}>
-              <Text style={styles.text14}>(Upcoming)</Text>
+              <Text style={styles.text14}>Upcoming</Text>
               <Text style={styles.text25}>6</Text>
             </View> 
           </View>
@@ -70,7 +67,7 @@ const SellerManagerPage = () => {
             
         </View>
         </TouchableOpacity>
-    </View>
+     </View>
     </SafeAreaView>
   )
 }
@@ -82,7 +79,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         color: Colors.BLACK,
         fontWeight: '600',
-        fontSize: '36em',
+        fontSize: 36,
         marginLeft: '7%',
         paddingTop: '5%',
       },
@@ -90,21 +87,21 @@ const styles = StyleSheet.create({
         display: 'flex',
         color: Colors.BLACK,
         fontWeight: '600',
-        fontSize: '24em',
+        fontSize: 24,
         marginLeft: '7%',
       },
       text10: {
         display: 'flex',
         color: Colors.RATING,
         fontWeight: '600',
-        fontSize: '24em',
+        fontSize: 24,
         marginLeft: '7%',
       },
       text28: {
         display: 'flex',
         color: Colors.MAIN,
         fontWeight: '600',
-        fontSize: '36em',
+        fontSize: 36,
         width: '86%',
         paddingTop: '5%',
         marginLeft: '1%'
@@ -112,14 +109,14 @@ const styles = StyleSheet.create({
       text13: {
         color: '#000000',
         fontWeight: '400',
-        fontSize: '15em',
+        fontSize: 15,
         paddingLeft: '9%',
         width: '96%'
       },
       text14: {
         color: Colors.BLACK,
         fontWeight: '400',
-        fontSize: '14em',
+        fontSize: 14,
         paddingLeft: '9%',
         width: '96%',
         paddingTop: '2%'
@@ -127,14 +124,14 @@ const styles = StyleSheet.create({
       text15: {
         color: Colors.BLACK,
         fontWeight: '600',
-        fontSize: '28em',
+        fontSize: 28,
         paddingLeft: '9%',
         paddingTop: '2%'
       },
       text16: {
         color: Colors.BLACK,
         fontWeight: '400',
-        fontSize: '14em',
+        fontSize: 14,
         width: '96%',
         paddingTop: '0%',
         paddingLeft: '12%',
@@ -155,7 +152,7 @@ const styles = StyleSheet.create({
       },
     text18: {
       fontWeight: '600',
-      fontSize: '24em',
+      fontSize: 24,
       paddingBottom: '2%',
       marginLeft: '8%'
     },
@@ -168,7 +165,7 @@ const styles = StyleSheet.create({
     },
     text20: {
       fontWeight: '600',
-      fontSize: '16em',
+      fontSize: 16,
       color: '#E5B07A',
       position: 'relative',
     },
@@ -180,7 +177,7 @@ const styles = StyleSheet.create({
     },
     text22: {
       fontWeight: '600',
-      fontSize: '16em',
+      fontSize: 16,
       color: Colors.MAIN,
       position: 'relative',
       textDecorationLine: 'underline',
@@ -190,27 +187,27 @@ const styles = StyleSheet.create({
       display: 'flex',
       color: '#FFFFFF',
       fontWeight: '600',
-      fontSize: '14em',
+      fontSize: 14,
       paddingHorizontal: '10%', alignSelf: 'center'
     }, 
     text24: {
       display: 'flex',
       color: Colors.MAIN,
       fontWeight: '600',
-      fontSize: '24em',
+      fontSize: 24,
       marginLeft: '7%',
     },
     text25: {
       color: Colors.BLACK,
       fontWeight: '600',
-      fontSize: '24em',
+      fontSize: 24,
       paddingLeft: '9%',
       paddingTop: '5%'
     },
     text26: {
       color: Colors.BLACK,
       fontWeight: '400',
-      fontSize: '14em',
+      fontSize: 14,
       width: '96%',
       paddingTop: '3%',
       marginLeft: '62%'

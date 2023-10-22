@@ -16,6 +16,7 @@ const filterReducer = (state, action) => {
     }
     else if (action.type === 'reduce_max_radius') {
         let newRadius = state.maxRadius - 0.1
+        console.log(newRadius)
         newRadius = newRadius.toFixed(1)
         return {
             ...state,
@@ -24,6 +25,7 @@ const filterReducer = (state, action) => {
     }
     else if (action.type === 'increase_max_radius') {
         let newRadius = parseFloat(state.maxRadius + 9)
+        console.log(newRadius)
         newRadius = newRadius.toFixed(1)
         return {
             ...state,
