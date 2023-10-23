@@ -41,7 +41,7 @@ function BecomeALocal() {
         </NavigationButton>
         <View style={{ flexDirection: 'row', marginTop: '7%' }}>
           <Text style={styles.text8}>
-            Become a<Text style={styles.text28}>Seller</Text> Today.
+            Become a<Text style={styles.text28}> Seller</Text> Today.
           </Text>
         </View>
         <View style={styles.inputtwo}>
@@ -90,7 +90,7 @@ function BecomeALocal() {
 
         <View
           style={{
-            backgroundColor: Colors.BLACK,
+            backgroundColor: Colors.WHITE,
             width: '100%',
             height: '200%',
             position: 'absolute',
@@ -107,7 +107,7 @@ function BecomeALocal() {
         >
           <TouchableOpacity
             style={{
-              backgroundColor: Colors.RATING,
+              backgroundColor: Colors.BLACK,
               borderRadius: 50,
               paddingVertical: '10%',
               alignSelf: 'center',
