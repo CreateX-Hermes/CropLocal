@@ -26,7 +26,7 @@ function AccountPage() {
   }, []);
 
   const [firstName, setFirstName] = useState('');
-  const [isModalVisible, setModalVisible] = useState([false]);
+  const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);

@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderColor: Colors.BUTTON_BACKGROUND,
     marginTop: '2.8%',
-    borderRadius: '100%',
+    borderRadius: 100,
     height: '6%',
     fontSize: 15,
     fontWeight: '400',
