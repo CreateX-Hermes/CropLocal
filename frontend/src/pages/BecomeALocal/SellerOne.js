@@ -125,7 +125,7 @@ function SellerOne() {
 
         <View
           style={{
-            backgroundColor: Colors.BLACK,
+            backgroundColor: Colors.WHITE,
             width: '100%',
             height: '200%',
             position: 'absolute',
@@ -136,7 +136,7 @@ function SellerOne() {
         <View style={{ position: 'absolute', top: '92%', alignSelf: 'center' }}>
           <TouchableOpacity
             style={{
-              backgroundColor: Colors.RATING,
+              backgroundColor: Colors.MAIN,
               borderRadius: 50,
               paddingVertical: '10%',
               alignSelf: 'center',

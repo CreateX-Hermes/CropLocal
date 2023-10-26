@@ -14,6 +14,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Divider, IconButton, Avatar } from 'react-native-paper';
 import { Colors } from '../../Styles.js';
 import NavigationButton from '../../components/NavigationButton/NavigationButton';
+import SellerThree from './SellerThree.js';
 
 function SellerTwo() {
   const navigation = useNavigation();
@@ -84,6 +85,10 @@ function SellerTwo() {
           />
 
           <Text style={styles.text11}>Number of Items</Text>
+
+          <Text style={styles.text6}>(Optional)</Text>
+
+
           <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
               onPress={subtractTravelersCount}
@@ -120,7 +125,7 @@ function SellerTwo() {
 
         <View
           style={{
-            backgroundColor: Colors.BLACK,
+            backgroundColor: Colors.WHITE,
             width: '100%',
             height: '200%',
             position: 'absolute',
@@ -131,13 +136,16 @@ function SellerTwo() {
         <View style={{ position: 'absolute', top: '92%', alignSelf: 'center' }}>
           <TouchableOpacity
             style={{
-              backgroundColor: Colors.RATING,
+              backgroundColor: Colors.MAIN,
               borderRadius: 50,
               paddingVertical: '10%',
               alignSelf: 'center',
               zIndex: 5,
               borderColor: Colors.WHITE,
               borderWidth: '4%',
+            }}
+            onPress={() => {
+              navigation.navigate(SellerThree);
             }}
           >
             <Text style={styles.text22}>Next</Text>
@@ -151,6 +159,12 @@ function SellerTwo() {
 export default SellerTwo;
 
 const styles = StyleSheet.create({
+  text6: {
+    color: Colors.BLACK,
+    fontWeight: '400',
+    paddingTop: '2.4%',
+    marginLeft: '9%'
+  },
   text14: {
     width: 20,
     height: 20,
