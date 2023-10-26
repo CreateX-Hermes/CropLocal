@@ -85,6 +85,10 @@ function SellerTwo() {
           />
 
           <Text style={styles.text11}>Number of Items</Text>
+
+          <Text style={styles.text6}>(Optional)</Text>
+
+
           <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
               onPress={subtractTravelersCount}
@@ -155,6 +159,12 @@ function SellerTwo() {
 export default SellerTwo;
 
 const styles = StyleSheet.create({
+  text6: {
+    color: Colors.BLACK,
+    fontWeight: '400',
+    paddingTop: '2.4%',
+    marginLeft: '9%'
+  },
   text14: {
     width: 20,
     height: 20,
