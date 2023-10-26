@@ -93,25 +93,25 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
 
-    content: {
-        width: '100%',
-        height: 125,
-        backgroundColor: '#F5F5F5',
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20,
-        display: 'flex',
-        flexDirection: 'column'
-    },
-    segment: {
-        display: 'flex',
-        flexDirection: 'row',
-        marginLeft: 20,
-        marginTop: 15,
-        alignItems: 'center'
-    },
-    info: {
-        fontSize: 16,
-        marginLeft: 5,
-        height: 20,
-    }
-})
+  content: {
+    width: '100%',
+    height: 125,
+    backgroundColor: '#F5F5F5',
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  segment: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginLeft: 20,
+    marginTop: 15,
+    alignItems: 'center',
+  },
+  info: {
+    fontSize: 16,
+    marginLeft: 5,
+    height: 20,
+  },
+});

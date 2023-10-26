@@ -1,16 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 
-const FindFriends = () => {
+function FindFriends() {
   return (
     <View>
       <Text>FindFriends</Text>
     </View>
-  )
+  );
 }
 
-export default FindFriends
+export default FindFriends;
 
-const styles = StyleSheet.create({
-    
-})
+const styles = StyleSheet.create({});

@@ -3,7 +3,6 @@ import {
   View,
   SafeAreaView,
   TouchableOpacity,
-  Modal,
   Image,
   Text,
   TextInput,
@@ -13,10 +12,10 @@ import React, { useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Divider, IconButton, Avatar } from 'react-native-paper';
 import { Colors } from '../../Styles.js';
-import NavigationButton from '../../components/NavigationButton/NavigationButton';
-import SellerThree from './SellerThree.js';
+import NavigationButton from '../../components/NavigationButton/NavigationButton.js';
+import SellerTwo from './SellerTwo.js';
 
-function SellerTwo() {
+function SellerOne() {
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
@@ -24,23 +23,6 @@ function SellerTwo() {
       headerShown: false,
     });
   }, []);
-
-  let [travelersCount, setTravelersCount] = useState(0);
-
-  const subtractTravelersCount = () => {
-    if (travelersCount > 0) {
-      travelersCount -= 1;
-    }
-
-    setTravelersCount(travelersCount);
-  };
-
-  const addTravelersCount = () => {
-    if (travelersCount < 25) {
-      travelersCount += 1;
-    }
-    setTravelersCount(travelersCount);
-  };
 
   return (
     <SafeAreaView backgroundColor={Colors.WHITE}>
@@ -65,16 +47,72 @@ function SellerTwo() {
         </View>
 
         <ScrollView style={{ paddingTop: '14%', zIndex: -2 }}>
-          <Text style={styles.text8}>Create Your Stand</Text>
+          <Text style={styles.text8}>Check Profile Details</Text>
 
-          <Text style={styles.text11}>Title</Text>
+          <View style={{ alignItems: 'center', marginTop: '15%' }}>
+            <View
+              style={{
+                zIndex: '1',
+                display: 'flex',
+                alignItems: 'flex-start',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
+                position: 'absolute',
+              }}
+            >
+              <View
+                style={{
+                  display: 'flex',
+                  borderColor: Colors.MAIN,
+                  borderWidth: '5%',
+                  borderRadius: 100,
+                  bottom: '24%',
+                }}
+              >
+                <Image source={require('../../assets/tempProfilePic.png')} />
+              </View>
+
+              <View style={{ alignSelf: 'center', bottom: '20%', zIndex: 7 }}>
+                <TouchableOpacity
+                  style={{
+                    backgroundColor: Colors.BLACK,
+                    borderRadius: 50,
+                    paddingVertical: '4%',
+                    alignSelf: 'center',
+                    zIndex: 5,
+                  }}
+                >
+                  <Text style={styles.text10}>Edit</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+
+          <Text style={styles.text11}>Full Name</Text>
           <TextInput
             style={styles.input}
             placeholder="jSmith23@gmail.com"
             placeholderTextColor={Colors.BLACK}
           />
 
-          <Text style={styles.text13}>Description</Text>
+          <Text style={styles.text12}>Username</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="smithjohnTx2"
+            placeholderTextColor={Colors.BLACK}
+          />
+
+          <Divider
+            style={{
+              width: '86%',
+              alignSelf: 'center',
+              marginTop: '6%',
+              paddingTop: '0.3%',
+              marginBottom: '5%',
+            }}
+          />
+
+          <Text style={styles.text13}>Bio</Text>
           <TextInput
             style={styles.inputtwo}
             placeholder="Hello, I am Greg! I am originally from Cleveland, Ohio but now I live
@@ -83,44 +121,6 @@ function SellerTwo() {
             placeholderTextColor="#000000"
             multiline
           />
-
-          <Text style={styles.text11}>Number of Items</Text>
-
-          <Text style={styles.text6}>(Optional)</Text>
-
-
-          <View style={{ flexDirection: 'row' }}>
-            <TouchableOpacity
-              onPress={subtractTravelersCount}
-              style={{
-                backgroundColor: '#F5F5F5',
-                borderRadius: 100,
-                marginTop: '7%',
-                justifyContent: 'center',
-                paddingVertical: '2%',
-                paddingHorizontal: '2%',
-                marginLeft: '8%',
-              }}
-            >
-              <Image source={require('../../assets/minus.png')} style={styles.text14} />
-            </TouchableOpacity>
-
-            <Text style={styles.text20}>{travelersCount}</Text>
-
-            <TouchableOpacity
-              onPress={addTravelersCount}
-              style={{
-                backgroundColor: '#F5F5F5',
-                borderRadius: 100,
-                marginTop: '7%',
-                justifyContent: 'center',
-                paddingVertical: '2.8%',
-                paddingHorizontal: '2.8%',
-              }}
-            >
-              <Image source={require('../../assets/add.png')} style={styles.text14} />
-            </TouchableOpacity>
-          </View>
         </ScrollView>
 
         <View
@@ -145,7 +145,7 @@ function SellerTwo() {
               borderWidth: '4%',
             }}
             onPress={() => {
-              navigation.navigate(SellerThree);
+              navigation.navigate(SellerTwo);
             }}
           >
             <Text style={styles.text22}>Next</Text>
@@ -156,15 +156,9 @@ function SellerTwo() {
   );
 }
 
-export default SellerTwo;
+export default SellerOne;
 
 const styles = StyleSheet.create({
-  text6: {
-    color: Colors.BLACK,
-    fontWeight: '400',
-    paddingTop: '2.4%',
-    marginLeft: '9%'
-  },
   text14: {
     width: 20,
     height: 20,
@@ -191,7 +185,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 18,
     paddingLeft: '9%',
-    marginTop: '8.6%',
+    marginTop: '40.6%',
   },
   text12: {
     color: Colors.BLACK,
@@ -205,25 +199,11 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 18,
     paddingLeft: '9%',
-    marginTop: '8.6%',
   },
   text15: {
     width: 24,
     height: 24,
     alignSelf: 'center',
-  },
-  text14: {
-    width: 20,
-    height: 20,
-    alignSelf: 'center',
-  },
-  text20: {
-    fontWeight: '500',
-    fontSize: 24,
-    paddingTop: '6%',
-    paddingHorizontal: '4%',
-    alignSelf: 'center',
-    color: Colors.MAIN,
   },
   input: {
     borderWidth: 0,
@@ -236,7 +216,6 @@ const styles = StyleSheet.create({
     paddingLeft: '7%',
     backgroundColor: Colors.BUTTON_BACKGROUND,
     marginHorizontal: '7%',
-    paddingVertical: '4%',
   },
   inputtwo: {
     borderWidth: 0,

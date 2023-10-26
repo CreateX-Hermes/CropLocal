@@ -1,32 +1,30 @@
-import React from "react";
-import { StyleSheet } from 'react-native'
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { Colors } from "../../Styles"
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Colors } from '../../Styles';
 
-const NavigationButton = (props) => {
+function NavigationButton(props) {
+  const defaultStyle = StyleSheet.create({
+    default: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
 
-    const defaultStyle = StyleSheet.create({
-        default: {
-            flex: 1,
-            alignItems: 'center', 
-            justifyContent: 'center', 
+      borderRadius: 100,
 
-            borderRadius: 100,
+      paddingHorizontal: '3.5%',
+      paddingVertical: '3.5%',
 
-            paddingHorizontal: '3.5%', 
-            paddingVertical: '3.5%',
+      backgroundColor: Colors.BUTTON_BACKGROUND,
+      ...props.style,
+    },
+  });
 
-            backgroundColor: Colors.BUTTON_BACKGROUND, 
-            ...props.style
-        }
-    })
-
-    return (
-        <TouchableOpacity onPress={props.onPress} style={defaultStyle.default}>
-            {props.children}
-        </TouchableOpacity>
-    )
+  return (
+    <TouchableOpacity onPress={props.onPress} style={defaultStyle.default}>
+      {props.children}
+    </TouchableOpacity>
+  );
 }
 
-export default NavigationButton
-
+export default NavigationButton;

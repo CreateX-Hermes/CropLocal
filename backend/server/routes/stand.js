@@ -70,7 +70,6 @@ router.post("/findWithinRadius", async (req, res) => {
         
 
         const objectIdsToCheck = user.favoriteStands;
-        console.log(objectIdsToCheck)
 
         const standsWithExistence = stands.map(stand => {
         const favorite = objectIdsToCheck.includes(stand._id.toString());
@@ -98,7 +97,7 @@ router.post("/findFavoriteWithinRadius", async (req, res) => {
         
 
         const objectIdsToCheck = user.favoriteStands;
-        console.log(objectIdsToCheck)
+        
 
         // Perform a geospatial query using $geoNear and $maxDistance
         const stands = await Stand.aggregate(
