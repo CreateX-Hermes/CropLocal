@@ -11,9 +11,7 @@ function Stand(props) {
   const navigation = useNavigation();
 
   React.useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-    });
+    navigation.setOptions({ headerShown: false });
   }, []);
 
   const styles = StyleSheet.create({

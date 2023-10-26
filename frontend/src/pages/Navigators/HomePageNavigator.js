@@ -1,6 +1,5 @@
 import React, { useLayoutEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomePageFilter from '../HomePageFilter/HomePageFilter.js';
 import Messages from '../Messages/Messages.js';
 import EditProfile from '../EditProfile/EditProfile';
 import MyWallet from '../MyWallet/MyWallet';
