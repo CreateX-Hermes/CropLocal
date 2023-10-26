@@ -88,17 +88,17 @@ function SellerOne() {
             </View>
           </View>
 
-          <Text style={styles.text11}>Full Name</Text>
+          <Text style={styles.text11}>Name</Text>
           <TextInput
             style={styles.input}
-            placeholder="jSmith23@gmail.com"
+            placeholder="John Smith"
             placeholderTextColor={Colors.BLACK}
           />
 
-          <Text style={styles.text12}>Username</Text>
+          <Text style={styles.text12}>Email</Text>
           <TextInput
             style={styles.input}
-            placeholder="smithjohnTx2"
+            placeholder="smithjohn@gmail.com"
             placeholderTextColor={Colors.BLACK}
           />
 
@@ -145,7 +145,7 @@ function SellerOne() {
               borderWidth: '4%',
             }}
             onPress={() => {
-              navigation.navigate(SellerTwo);
+              navigation.navigate('SellerTwo', { test: 'test' });
             }}
           >
             <Text style={styles.text22}>Next</Text>
@@ -209,8 +209,8 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderColor: Colors.BUTTON_BACKGROUND,
     marginTop: '2.8%',
-    borderRadius: '100%',
-    height: '6%',
+    borderRadius: 100,
+    height: 30,
     fontSize: 15,
     fontWeight: '400',
     paddingLeft: '7%',

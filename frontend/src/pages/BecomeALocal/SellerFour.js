@@ -1,23 +1,23 @@
 import {
-    StyleSheet,
-    View,
-    SafeAreaView,
-    TouchableOpacity,
-    Modal,
-    Image,
-    Text,
-    TextInput,
-    ScrollView,
-  } from 'react-native';
-  import React, { useLayoutEffect, useState } from 'react';
-  import { useNavigation } from '@react-navigation/native';
-  import { Divider, IconButton, Avatar } from 'react-native-paper';
-  import { Colors } from '../../Styles.js';
-  import NavigationButton from '../../components/NavigationButton/NavigationButton';
+  StyleSheet,
+  View,
+  SafeAreaView,
+  TouchableOpacity,
+  Modal,
+  Image,
+  Text,
+  TextInput,
+  ScrollView,
+} from 'react-native';
+import React, { useLayoutEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { Divider, IconButton, Avatar } from 'react-native-paper';
+import { Colors } from '../../Styles.js';
+import NavigationButton from '../../components/NavigationButton/NavigationButton';
 import SellerFinal from './SellerFinal.js';
 
 const SellerFour = () => {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -48,7 +48,9 @@ const SellerFour = () => {
         </View>
 
         <ScrollView style={{ paddingTop: '14%', zIndex: -2 }}>
-          <Text style={styles.text8}>Add <Text style={styles.text7}>Photos</Text> to your Digital Stand</Text>
+          <Text style={styles.text8}>
+            Add <Text style={styles.text7}>Photos</Text> to your Digital Stand
+          </Text>
 
           <Text style={styles.text6}>(Optional)</Text>
 
@@ -62,7 +64,7 @@ const SellerFour = () => {
               borderWidth: '4%',
               width: '40%',
               marginLeft: '7%',
-              marginTop: '14%'
+              marginTop: '14%',
             }}
           >
             <Text style={styles.text23}>Select Pictures</Text>
@@ -91,85 +93,85 @@ const SellerFour = () => {
               borderWidth: '4%',
             }}
             onPress={() => {
-                navigation.navigate(SellerFinal);
-              }}
+              navigation.navigate(SellerFinal);
+            }}
           >
             <Text style={styles.text22}>Submit</Text>
           </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default SellerFour
+export default SellerFour;
 
 const styles = StyleSheet.create({
-    text6: {
-        color: Colors.BLACK,
-        fontWeight: '400',
-        fontSize: 17,
-        paddingTop: '2.4%',
-        marginLeft: '7%'
-      },
-    text7: {
-        display: 'flex',
-        color: Colors.MAIN,
-        fontWeight: '600',
-        fontSize: 34,
-        marginLeft: '7%',
-        paddingTop: '5%',
-        width: '80%',
-      }, 
-    text8: {
-        display: 'flex',
-        color: Colors.BLACK,
-        fontWeight: '600',
-        fontSize: 34,
-        marginLeft: '7%',
-        paddingTop: '5%',
-        width: '80%',
-      }, 
-      input: {
-        borderWidth: 0,
-        borderColor: Colors.BUTTON_BACKGROUND,
-        marginTop: '8%',
-        borderRadius: '100%',
-        height: '7%',
-        fontSize: 15,
-        fontWeight: '400',
-        paddingLeft: '7%',
-        backgroundColor: Colors.BUTTON_BACKGROUND,
-        marginHorizontal: '7%',
-        paddingVertical: '5%',
-      },
-      inputtwo: {
-        borderWidth: 0,
-        borderColor: Colors.BUTTON_BACKGROUND,
-        marginTop: '3.4%',
-        borderRadius: 25,
-        fontSize: 15,
-        fontWeight: '400',
-        backgroundColor: Colors.BUTTON_BACKGROUND,
-        marginHorizontal: '7%',
-        paddingLeft: '7%',
-        paddingRight: '6%',
-        paddingTop: '4%',
-        paddingBottom: '4%',
-      },
-      text22: {
-        display: 'flex',
-        color: Colors.WHITE,
-        fontWeight: '600',
-        fontSize: 15,
-        paddingHorizontal: '13%',
-      },
-      text23: {
-        display: 'flex',
-        color: Colors.BLACK,
-        fontWeight: '600',
-        fontSize: 14,
-        paddingHorizontal: '8%',
-        alignSelf: 'center'
-      },
-})
+  text6: {
+    color: Colors.BLACK,
+    fontWeight: '400',
+    fontSize: 17,
+    paddingTop: '2.4%',
+    marginLeft: '7%',
+  },
+  text7: {
+    display: 'flex',
+    color: Colors.MAIN,
+    fontWeight: '600',
+    fontSize: 34,
+    marginLeft: '7%',
+    paddingTop: '5%',
+    width: '80%',
+  },
+  text8: {
+    display: 'flex',
+    color: Colors.BLACK,
+    fontWeight: '600',
+    fontSize: 34,
+    marginLeft: '7%',
+    paddingTop: '5%',
+    width: '80%',
+  },
+  input: {
+    borderWidth: 0,
+    borderColor: Colors.BUTTON_BACKGROUND,
+    marginTop: '8%',
+    borderRadius: 100,
+    height: '7%',
+    fontSize: 15,
+    fontWeight: '400',
+    paddingLeft: '7%',
+    backgroundColor: Colors.BUTTON_BACKGROUND,
+    marginHorizontal: '7%',
+    paddingVertical: '5%',
+  },
+  inputtwo: {
+    borderWidth: 0,
+    borderColor: Colors.BUTTON_BACKGROUND,
+    marginTop: '3.4%',
+    borderRadius: 25,
+    fontSize: 15,
+    fontWeight: '400',
+    backgroundColor: Colors.BUTTON_BACKGROUND,
+    marginHorizontal: '7%',
+    paddingLeft: '7%',
+    paddingRight: '6%',
+    paddingTop: '4%',
+    paddingBottom: '4%',
+  },
+  text22: {
+    display: 'flex',
+    color: Colors.WHITE,
+    fontWeight: '600',
+    fontSize: 15,
+    paddingHorizontal: '13%',
+  },
+  text23: {
+    display: 'flex',
+    color: Colors.BLACK,
+    fontWeight: '600',
+    fontSize: 14,
+    paddingHorizontal: '8%',
+    alignSelf: 'center',
+  },
+});

@@ -16,7 +16,7 @@ import { Colors } from '../../Styles.js';
 import NavigationButton from '../../components/NavigationButton/NavigationButton';
 import SellerThree from './SellerThree.js';
 
-function SellerTwo() {
+function SellerTwo({ route }) {
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
@@ -25,21 +25,24 @@ function SellerTwo() {
     });
   }, []);
 
-  let [travelersCount, setTravelersCount] = useState(0);
+  let [itemCount, setItemCount] = useState(0);
+  let [formData, setFormData] = useState({
+    ...route.params,
+  });
+  console.log(formData);
 
-  const subtractTravelersCount = () => {
-    if (travelersCount > 0) {
-      travelersCount -= 1;
-    }
+  const incrementItemCount = (num) => {
+    setItemCount((prevCount) => {
+      const newCount = prevCount + num;
 
-    setTravelersCount(travelersCount);
-  };
-
-  const addTravelersCount = () => {
-    if (travelersCount < 25) {
-      travelersCount += 1;
-    }
-    setTravelersCount(travelersCount);
+      if (newCount > 25) {
+        return 25;
+      } else if (newCount < 0) {
+        return 0;
+      } else {
+        return newCount;
+      }
+    });
   };
 
   return (
@@ -67,10 +70,10 @@ function SellerTwo() {
         <ScrollView style={{ paddingTop: '14%', zIndex: -2 }}>
           <Text style={styles.text8}>Create Your Stand</Text>
 
-          <Text style={styles.text11}>Title</Text>
+          <Text style={styles.text11}>Name</Text>
           <TextInput
             style={styles.input}
-            placeholder="jSmith23@gmail.com"
+            placeholder="Larry's Lemons"
             placeholderTextColor={Colors.BLACK}
           />
 
@@ -88,10 +91,9 @@ function SellerTwo() {
 
           <Text style={styles.text6}>(Optional)</Text>
 
-
           <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
-              onPress={subtractTravelersCount}
+              onPress={() => incrementItemCount(-1)}
               style={{
                 backgroundColor: '#F5F5F5',
                 borderRadius: 100,
@@ -105,10 +107,10 @@ function SellerTwo() {
               <Image source={require('../../assets/minus.png')} style={styles.text14} />
             </TouchableOpacity>
 
-            <Text style={styles.text20}>{travelersCount}</Text>
+            <Text style={styles.text20}>{itemCount}</Text>
 
             <TouchableOpacity
-              onPress={addTravelersCount}
+              onPress={() => incrementItemCount(1)}
               style={{
                 backgroundColor: '#F5F5F5',
                 borderRadius: 100,
@@ -145,7 +147,7 @@ function SellerTwo() {
               borderWidth: '4%',
             }}
             onPress={() => {
-              navigation.navigate(SellerThree);
+              navigation.navigate('SellerThree');
             }}
           >
             <Text style={styles.text22}>Next</Text>
@@ -163,7 +165,7 @@ const styles = StyleSheet.create({
     color: Colors.BLACK,
     fontWeight: '400',
     paddingTop: '2.4%',
-    marginLeft: '9%'
+    marginLeft: '9%',
   },
   text14: {
     width: 20,
@@ -229,14 +231,14 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderColor: Colors.BUTTON_BACKGROUND,
     marginTop: '2.8%',
-    borderRadius: '100%',
-    height: '6%',
+    borderRadius: 100,
+    height: 30,
     fontSize: 15,
     fontWeight: '400',
     paddingLeft: '7%',
     backgroundColor: Colors.BUTTON_BACKGROUND,
     marginHorizontal: '7%',
-    paddingVertical: '4%',
+    //paddingVertical: '4%',
   },
   inputtwo: {
     borderWidth: 0,
