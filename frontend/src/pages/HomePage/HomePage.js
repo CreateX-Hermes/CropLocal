@@ -54,7 +54,7 @@ const HomePage = () => {
     const [filterState, dispatch] = React.useReducer(filterReducer, 
         { 
             showFav: false,
-            maxRadius: 0.2
+            maxRadius: 0.2,
         })
 
     

@@ -1,27 +1,16 @@
 const mongoose = require("mongoose")
 
-const userSchema = new mongoose.Schema({
-    firstName: {
+const eventsSchema = new mongoose.Schema({
+    eventName: {
         type: String,
         required: true
     },
-    lastName: {
-        type: String,
-        required: true
+    featuredStands: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: "Review",
+        default: []
     },
-    email: {
-        type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    favoriteStands: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Stand'
-    }],
-    profilePicture: {
+    eventPicture: {
         type: String
     },
     location: {
@@ -32,17 +21,20 @@ const userSchema = new mongoose.Schema({
             type: String,
             enum: ["Point"], // Specify that it's a Point type
             required: true
-        }
+            }
     },
-    reviews: {
+    eventReviews: {
         type: [mongoose.Schema.Types.ObjectId],
         ref: "Review",
         default: []
     },
-    city: {
+    eventCity: {
         type: String,
         default: ""
+    },
+    eventDate: {
+        type: Date
     }
 })
 
-module.exports = (mongoose.models.User ||  mongoose.model('User', userSchema))
+module.exports = (mongoose.models.Events ||  mongoose.model('Events', eventsSchema))
