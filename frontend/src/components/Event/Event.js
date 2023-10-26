@@ -1,10 +1,17 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
 import { Colors } from '../../Styles.js';
+import { useNavigation } from '@react-navigation/native';
+import { EventPage } from '../../pages/EventPage/EventPage.js';
+import NavigationButton from '../NavigationButton/NavigationButton';
+
 
 export const Event = (props) => {
+    const navigation = useNavigation();
+
     return (
-        <View style={styles.container}>
+        <NavigationButton style={styles.nav} onPress={() => navigation.navigate('EventPage', {...props.data})}>
+            <View style={styles.container}>
             <Image style={styles.event} source={props.data.image}/>
             <View style={styles.header}>
                 <Text style={styles.name}>{props.data.name}</Text>
@@ -29,12 +36,18 @@ export const Event = (props) => {
                     </View>
                 </View>
             </View>
-        </View>
+            </View>
+        </NavigationButton>
     )
 }
 const styles = StyleSheet.create({
+    nav: {
+        backgroundColor: 'transparent'
+    },
     container: {
         width: '100%',
+        height: 250,
+        borderRadius: '20',
         marginTop: 30
     },
     label: {
