@@ -28,9 +28,12 @@ function SellerTwo({ route }) {
   let [itemCount, setItemCount] = useState(0);
   let [formData, setFormData] = useState({
     ...route.params,
+    standName: '',
+    standDescription: '',
+    numOfItems: 0,
   });
-  console.log(formData);
 
+  //refactor to remove the need of extra state
   const incrementItemCount = (num) => {
     setItemCount((prevCount) => {
       const newCount = prevCount + num;
@@ -40,6 +43,7 @@ function SellerTwo({ route }) {
       } else if (newCount < 0) {
         return 0;
       } else {
+        setFormData({ ...formData, numOfItems: newCount });
         return newCount;
       }
     });
@@ -70,19 +74,21 @@ function SellerTwo({ route }) {
         <ScrollView style={{ paddingTop: '14%', zIndex: -2 }}>
           <Text style={styles.text8}>Create Your Stand</Text>
 
-          <Text style={styles.text11}>Name</Text>
+          <Text style={styles.text11}>Stand Name</Text>
           <TextInput
             style={styles.input}
+            value={formData.standName}
+            onChangeText={(text) => setFormData({ ...formData, standName: text })}
             placeholder="Larry's Lemons"
             placeholderTextColor={Colors.BLACK}
           />
 
-          <Text style={styles.text13}>Description</Text>
+          <Text style={styles.text13}>Stand Description</Text>
           <TextInput
             style={styles.inputtwo}
-            placeholder="Hello, I am Greg! I am originally from Cleveland, Ohio but now I live
-    in Boston. Meeting to new people and seeing new places  is some of my favorite memories growing up, and I want to
-    continue to do so. I think sharing our cultures is one of best ways to grow as a person."
+            value={formData.standDescription}
+            onChangeText={(text) => setFormData({ ...formData, standDescription: text })}
+            placeholder="Hi, this is Larry's Lemons!"
             placeholderTextColor="#000000"
             multiline
           />
@@ -147,7 +153,7 @@ function SellerTwo({ route }) {
               borderWidth: '4%',
             }}
             onPress={() => {
-              navigation.navigate('SellerThree');
+              navigation.navigate('SellerThree', { ...formData });
             }}
           >
             <Text style={styles.text22}>Next</Text>

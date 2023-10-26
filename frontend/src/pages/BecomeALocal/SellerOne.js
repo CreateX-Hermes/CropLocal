@@ -24,6 +24,12 @@ function SellerOne() {
     });
   }, []);
 
+  let [formData, setFormData] = useState({
+    name: 'John',
+    email: 'johnsmith@gmail.com',
+    bio: "Hi, I'm Greg!",
+  });
+
   return (
     <SafeAreaView backgroundColor={Colors.WHITE}>
       <View backgroundColor={Colors.WHITE} height="100%">
@@ -91,14 +97,18 @@ function SellerOne() {
           <Text style={styles.text11}>Name</Text>
           <TextInput
             style={styles.input}
-            placeholder="John Smith"
+            value={formData.name}
+            onChangeText={(text) => setFormData({ ...formData, name: text })}
+            placeholder=""
             placeholderTextColor={Colors.BLACK}
           />
 
           <Text style={styles.text12}>Email</Text>
           <TextInput
             style={styles.input}
-            placeholder="smithjohn@gmail.com"
+            value={formData.email}
+            onChangeText={(text) => setFormData({ ...formData, email: text })}
+            placeholder=""
             placeholderTextColor={Colors.BLACK}
           />
 
@@ -115,9 +125,9 @@ function SellerOne() {
           <Text style={styles.text13}>Bio</Text>
           <TextInput
             style={styles.inputtwo}
-            placeholder="Hello, I am Greg! I am originally from Cleveland, Ohio but now I live
-    in Boston. Meeting to new people and seeing new places  is some of my favorite memories growing up, and I want to
-    continue to do so. I think sharing our cultures is one of best ways to grow as a person."
+            value={formData.bio}
+            onChangeText={(text) => setFormData({ ...formData, bio: text })}
+            placeholder="Hi, I'm Greg!"
             placeholderTextColor="#000000"
             multiline
           />
@@ -145,7 +155,7 @@ function SellerOne() {
               borderWidth: '4%',
             }}
             onPress={() => {
-              navigation.navigate('SellerTwo', { test: 'test' });
+              navigation.navigate('SellerTwo', { ...formData });
             }}
           >
             <Text style={styles.text22}>Next</Text>

@@ -16,7 +16,7 @@ import { Colors } from '../../Styles.js';
 import NavigationButton from '../../components/NavigationButton/NavigationButton';
 import SellerFinal from './SellerFinal.js';
 
-const SellerFour = () => {
+const SellerFour = ({ route }) => {
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
@@ -24,6 +24,15 @@ const SellerFour = () => {
       headerShown: false,
     });
   }, []);
+
+  let [formData, setFormData] = useState({
+    ...route.params,
+    standPictures: [],
+  });
+
+  const handleStandCreation = async () => {
+    console.log(formData);
+  };
 
   return (
     <SafeAreaView backgroundColor={Colors.WHITE}>
@@ -92,9 +101,7 @@ const SellerFour = () => {
               borderColor: Colors.WHITE,
               borderWidth: '4%',
             }}
-            onPress={() => {
-              navigation.navigate(SellerFinal);
-            }}
+            onPress={() => handleStandCreation()}
           >
             <Text style={styles.text22}>Submit</Text>
           </TouchableOpacity>

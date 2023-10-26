@@ -15,7 +15,7 @@ import { Colors } from '../../Styles.js';
 import NavigationButton from '../../components/NavigationButton/NavigationButton';
 import SellerFour from './SellerFour.js';
 
-const SellerThree = () => {
+const SellerThree = ({ route }) => {
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
@@ -23,6 +23,11 @@ const SellerThree = () => {
       headerShown: false,
     });
   }, []);
+
+  let [formData, setFormData] = useState({
+    ...route.params,
+    standLocation: '',
+  });
 
   return (
     <SafeAreaView backgroundColor={Colors.WHITE}>
@@ -49,7 +54,12 @@ const SellerThree = () => {
         <ScrollView style={{ paddingTop: '14%', zIndex: -2 }}>
           <Text style={styles.text8}>Where is your Farmer's Market?</Text>
 
-          <TextInput style={styles.input} placeholder="Atlanta, GA" />
+          <TextInput
+            style={styles.input}
+            value={formData.standLocation}
+            onChangeText={(text) => setFormData({ ...formData, standLocation: text })}
+            placeholder="Atlanta, GA"
+          />
         </ScrollView>
 
         <View
@@ -74,7 +84,7 @@ const SellerThree = () => {
               borderWidth: '4%',
             }}
             onPress={() => {
-              navigation.navigate(SellerFour);
+              navigation.navigate('SellerFour', { ...formData });
             }}
           >
             <Text style={styles.text22}>Next</Text>

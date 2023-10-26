@@ -24,11 +24,6 @@ function HomePageNavigator() {
         component={BottomTabNavigator}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
-        name="HomePageFilter"
-        component={HomePageFilter}
-        options={{ headerShown: false }}
-      />
       <Stack.Screen name="EventPage" component={EventPage} />
       <Stack.Screen name="Messages" component={Messages} />
       <Stack.Screen name="Seller" component={Seller} />
