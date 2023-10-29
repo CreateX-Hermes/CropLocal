@@ -2,22 +2,23 @@ import { StyleSheet, View, SafeAreaView, TouchableOpacity, Modal, Image } from '
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { IconButton, Text, Avatar, Divider } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import jwt_decode from 'jwt-decode';
 import Messages from '../Messages/Messages';
 import FindSellers from '../FindSellers/FindSellers';
 import BecomeASeller from '../BecomeALocal/BecomeALocal';
 import EditProfile from '../EditProfile/EditProfile';
 import MyWallet from '../MyWallet/MyWallet';
 import Help from '../Help/Help';
-// import Login from '../Auth/Login';
 import { Colors } from '../../Styles.js';
 import BecomeALocal from '../BecomeALocal/BecomeALocal';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutUserAction } from '../../redux/actions/userActions';
 
 // <Divider style={{ width: '86%', alignSelf: 'center', marginTop: '3.6%', paddingTop: '0.3%' }}/>
 
 function AccountPage() {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const { user: userInformation } = useSelector((state) => state.user);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -25,7 +26,6 @@ function AccountPage() {
     });
   }, []);
 
-  const [firstName, setFirstName] = useState('');
   const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
@@ -58,26 +58,9 @@ function AccountPage() {
     navigation.navigate(Help);
   };
   const handleSignOutPress = () => {
-    // Close Modal
     setModalVisible(!isModalVisible);
-    // Navigate to Edit Profile Page
-    // navigation.navigate(Login);
+    dispatch(logoutUserAction());
   };
-
-  useEffect(() => {
-    const getName = async () => {
-      try {
-        const token = await AsyncStorage.getItem('authToken');
-        const { name, lname } = jwt_decode(token);
-        // console.log("Token from AsyncStorage:", fname + " " + lname);
-        setFirstName(name);
-      } catch (error) {
-        console.error('Error retrieving first name from AsyncStorage:', error);
-      }
-    };
-
-    getName();
-  }, []);
 
   return (
     <SafeAreaView style={{ backgroundColor: Colors.WHITE, flex: 1 }}>
@@ -136,7 +119,7 @@ function AccountPage() {
 
         <View style={{ zIndex: '1', flexDirection: 'row' }}>
           <View style={{ flexDirection: 'column', marginLeft: '7%' }}>
-            <Text style={styles.text1}>{firstName}</Text>
+            <Text style={styles.text1}>{userInformation.firstName}</Text>
             <Text style={styles.text2}>Shopper</Text>
           </View>
           <View style={{ flexDirection: 'column', marginLeft: '14%' }}>
@@ -165,36 +148,43 @@ function AccountPage() {
           to continue to do so.
         </Text>
 
-        <Divider
-          style={{
-            width: '86%',
-            alignSelf: 'center',
-            marginTop: '5%',
-            paddingTop: '0.3%',
-          }}
-        />
+        {!userInformation.isSeller ? (
+          <>
+            <Divider
+              style={{
+                width: '86%',
+                alignSelf: 'center',
+                marginTop: '5%',
+                paddingTop: '0.3%',
+              }}
+            />
 
-        <View style={{ flexDirection: 'row' }}>
-          <Text style={styles.text8}>Become a </Text>
-          <Text style={styles.text28}>Seller</Text>
-        </View>
+            <View style={{ flexDirection: 'row' }}>
+              <Text style={styles.text8}>Become a </Text>
+              <Text style={styles.text28}>Seller</Text>
+            </View>
 
-        <Text style={styles.text7}>
-          Start earning now and show other travelers around the wonderful place you call home.
-          Become a Local guide below and start working for yourself...
-        </Text>
-        <View style={{ paddingTop: '6%', alignSelf: 'center' }}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate(BecomeALocal)}
-            style={{
-              backgroundColor: Colors.MAIN,
-              borderRadius: 50,
-              paddingVertical: '3.2%',
-            }}
-          >
-            <Text style={styles.text9}>Start Now</Text>
-          </TouchableOpacity>
-        </View>
+            <Text style={styles.text7}>
+              Start earning now and show other travelers around the wonderful place you call home.
+              Become a Local guide below and start working for yourself...
+            </Text>
+
+            <View style={{ paddingTop: '6%', alignSelf: 'center' }}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate(BecomeALocal)}
+                style={{
+                  backgroundColor: Colors.MAIN,
+                  borderRadius: 50,
+                  paddingVertical: '3.2%',
+                }}
+              >
+                <Text style={styles.text9}>Start Now</Text>
+              </TouchableOpacity>
+            </View>
+          </>
+        ) : (
+          <></>
+        )}
 
         <Divider
           style={{

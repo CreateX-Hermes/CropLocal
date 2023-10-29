@@ -13,10 +13,11 @@ import { useNavigation } from '@react-navigation/native';
 import { Divider, IconButton, Avatar } from 'react-native-paper';
 import { Colors } from '../../Styles.js';
 import NavigationButton from '../../components/NavigationButton/NavigationButton';
-import SellerFour from './SellerFour.js';
+import { useSelector } from 'react-redux';
 
 const SellerThree = ({ route }) => {
   const navigation = useNavigation();
+  const { user: userInformation } = useSelector((state) => state.user);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -26,7 +27,7 @@ const SellerThree = ({ route }) => {
 
   let [formData, setFormData] = useState({
     ...route.params,
-    standLocation: '',
+    standLocation: userInformation.location,
   });
 
   return (
@@ -54,12 +55,12 @@ const SellerThree = ({ route }) => {
         <ScrollView style={{ paddingTop: '14%', zIndex: -2 }}>
           <Text style={styles.text8}>Where is your Farmer's Market?</Text>
 
-          <TextInput
+          {/* <TextInput
             style={styles.input}
             value={formData.standLocation}
             onChangeText={(text) => setFormData({ ...formData, standLocation: text })}
             placeholder="Atlanta, GA"
-          />
+          /> */}
         </ScrollView>
 
         <View

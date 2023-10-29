@@ -14,10 +14,11 @@ import { useNavigation } from '@react-navigation/native';
 import { Divider, IconButton, Avatar } from 'react-native-paper';
 import { Colors } from '../../Styles.js';
 import NavigationButton from '../../components/NavigationButton/NavigationButton';
-import SellerThree from './SellerThree.js';
+import { useSelector } from 'react-redux';
 
 function SellerTwo({ route }) {
   const navigation = useNavigation();
+  const { user: userInformation } = useSelector((state) => state.user);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -29,7 +30,7 @@ function SellerTwo({ route }) {
   let [formData, setFormData] = useState({
     ...route.params,
     standName: '',
-    standDescription: '',
+    description: '',
     numOfItems: 0,
   });
 
@@ -79,17 +80,17 @@ function SellerTwo({ route }) {
             style={styles.input}
             value={formData.standName}
             onChangeText={(text) => setFormData({ ...formData, standName: text })}
-            placeholder="Larry's Lemons"
-            placeholderTextColor={Colors.BLACK}
+            placeholder={userInformation.firstName + "'s Stand"}
+            placeholderTextColor={Colors.DARK_GRAY}
           />
 
           <Text style={styles.text13}>Stand Description</Text>
           <TextInput
             style={styles.inputtwo}
-            value={formData.standDescription}
-            onChangeText={(text) => setFormData({ ...formData, standDescription: text })}
-            placeholder="Hi, this is Larry's Lemons!"
-            placeholderTextColor="#000000"
+            value={formData.description}
+            onChangeText={(text) => setFormData({ ...formData, description: text })}
+            placeholder={'Hi, this is ' + userInformation.firstName + "'s Stand"}
+            placeholderTextColor={Colors.DARK_GRAY}
             multiline
           />
 

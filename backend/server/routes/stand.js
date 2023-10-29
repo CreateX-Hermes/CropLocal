@@ -13,13 +13,12 @@ router.post("/create", async (req, res) => {
     const user = await User.findOne({ _id: newID });
 
     let location = user.location;
-    let owner = user._id;
     let ownerName = user.firstName;
     let city = user.city;
 
     const newStand = new Stand({
       standName,
-      owner,
+      owner: newID,
       items,
       pictures,
       location,
@@ -28,12 +27,21 @@ router.post("/create", async (req, res) => {
       description,
     });
 
-    const old = await Stand.findOne({ owner });
+    const old = await Stand.findOne({ newID });
 
     if (old) {
       return res.status(501).json({ message: "Stand already exists" });
     }
     await newStand.save();
+
+    await User.findOneAndUpdate(
+      {
+        _id: newID,
+      },
+      {
+        isSeller: true,
+      }
+    );
 
     return res.status(200).json({ message: "Stand created successfully" });
   } catch (error) {

@@ -13,10 +13,11 @@ import { useNavigation } from '@react-navigation/native';
 import { Divider, IconButton, Avatar } from 'react-native-paper';
 import { Colors } from '../../Styles.js';
 import NavigationButton from '../../components/NavigationButton/NavigationButton.js';
-import SellerTwo from './SellerTwo.js';
+import { useSelector } from 'react-redux';
 
 function SellerOne() {
   const navigation = useNavigation();
+  const { user: userInformation } = useSelector((state) => state.user);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -25,9 +26,9 @@ function SellerOne() {
   }, []);
 
   let [formData, setFormData] = useState({
-    name: 'John',
-    email: 'johnsmith@gmail.com',
-    bio: "Hi, I'm Greg!",
+    name: userInformation.firstName,
+    email: userInformation.email,
+    userID: userInformation.userID,
   });
 
   return (
@@ -53,7 +54,7 @@ function SellerOne() {
         </View>
 
         <ScrollView style={{ paddingTop: '14%', zIndex: -2 }}>
-          <Text style={styles.text8}>Check Profile Details</Text>
+          <Text style={styles.text8}>Confirm Your Profile Details</Text>
 
           <View style={{ alignItems: 'center', marginTop: '15%' }}>
             <View
@@ -101,6 +102,7 @@ function SellerOne() {
             onChangeText={(text) => setFormData({ ...formData, name: text })}
             placeholder=""
             placeholderTextColor={Colors.BLACK}
+            editable={false}
           />
 
           <Text style={styles.text12}>Email</Text>
@@ -110,26 +112,7 @@ function SellerOne() {
             onChangeText={(text) => setFormData({ ...formData, email: text })}
             placeholder=""
             placeholderTextColor={Colors.BLACK}
-          />
-
-          <Divider
-            style={{
-              width: '86%',
-              alignSelf: 'center',
-              marginTop: '6%',
-              paddingTop: '0.3%',
-              marginBottom: '5%',
-            }}
-          />
-
-          <Text style={styles.text13}>Bio</Text>
-          <TextInput
-            style={styles.inputtwo}
-            value={formData.bio}
-            onChangeText={(text) => setFormData({ ...formData, bio: text })}
-            placeholder="Hi, I'm Greg!"
-            placeholderTextColor="#000000"
-            multiline
+            editable={false}
           />
         </ScrollView>
 
