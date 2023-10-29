@@ -14,10 +14,13 @@ import { useNavigation } from '@react-navigation/native';
 import { Divider, IconButton, Avatar } from 'react-native-paper';
 import { Colors } from '../../Styles.js';
 import NavigationButton from '../../components/NavigationButton/NavigationButton';
-import SellerFinal from './SellerFinal.js';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { changeRole } from '../../redux/reducers/userSlice.js';
 
 const SellerFour = ({ route }) => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -27,11 +30,19 @@ const SellerFour = ({ route }) => {
 
   let [formData, setFormData] = useState({
     ...route.params,
-    standPictures: [],
+    pictures: [],
   });
 
   const handleStandCreation = async () => {
-    console.log(formData);
+    try {
+      const res = await axios.post('http://localhost:8000/stand/create', formData);
+      if (res.status === 200) {
+        dispatch(changeRole());
+        navigation.navigate('SellerFinal');
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

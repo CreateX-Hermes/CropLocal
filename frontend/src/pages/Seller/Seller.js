@@ -18,7 +18,7 @@ export function Seller({ route }) {
   const [showMore, setShowMore] = useState(false);
 
   const text =
-    'In this one of a kind authentic Parisian experience I will show you the what it’s like to live in the City of Lights like a true Frenchman. From my favorite restaurant and cafe, to my unforgettable overlook of the city only a few know about, this will be an experience you will never forget';
+    "In this one of a kind authentic Parisian experience I will show you the what it's like to live in the City of Lights like a true Frenchman. From my favorite restaurant and cafe, to my unforgettable overlook of the city only a few know about, this will be an experience you will never forget";
 
   const review =
     'Great experience. Everything from the authentic views and areas combined with some of the best food I have ever eaten makes this one of the most memorable trips in recent memory.';
