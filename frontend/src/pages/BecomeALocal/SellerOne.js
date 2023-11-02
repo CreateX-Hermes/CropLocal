@@ -19,7 +19,7 @@ import * as ImagePicker from 'expo-image-picker';
 function SellerOne() {
   const navigation = useNavigation();
   const { user: userInformation } = useSelector((state) => state.user);
-  const tempProfilePic = "https://lh5.googleusercontent.com/p/AF1QipMmvRrGutt75PKKOTKauHiSyQYAlqp3WjodP5QL=w408-h271-k-no"
+  //const tempProfilePic = "https://lh5.googleusercontent.com/p/AF1QipMmvRrGutt75PKKOTKauHiSyQYAlqp3WjodP5QL=w408-h271-k-no"
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
@@ -30,7 +30,6 @@ function SellerOne() {
     name: userInformation.firstName,
     email: userInformation.email,
     userID: userInformation.userID,
-    standPhoto: tempProfilePic
   });
 
   const handleImagePicker = async () => {
@@ -41,7 +40,7 @@ function SellerOne() {
       quality: 1,
     });
     console.log(result);
-  }
+  };
 
   return (
     <SafeAreaView backgroundColor={Colors.WHITE}>

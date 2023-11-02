@@ -53,7 +53,6 @@ const createToken = (
     email: email,
     isSeller: isSeller,
   };
-  console.log(payload);
   const token = jwt.sign(payload, "JohannesQian", { expiresIn: "31d" });
   return token;
 };

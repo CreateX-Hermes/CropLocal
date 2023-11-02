@@ -19,7 +19,8 @@ export default function App() {
 }
 
 const AppStack = () => {
-  const { isAuthenticated } = useSelector((state) => state.user);
+  const { isAuthenticated, user } = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
 
   useEffect(() => {

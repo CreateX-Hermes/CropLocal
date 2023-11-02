@@ -13,7 +13,7 @@ function AuthNavigator() {
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="Signup" component={Signup} />
-      <Stack.Screen name="HomePage" component={BottomTabNavigator} />
+      {/* <Stack.Screen name="HomePage" component={BottomTabNavigator} /> */}
     </Stack.Navigator>
   );
 }

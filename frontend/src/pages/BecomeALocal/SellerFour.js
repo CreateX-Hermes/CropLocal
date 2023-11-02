@@ -19,7 +19,6 @@ import { useDispatch } from 'react-redux';
 import { changeRole } from '../../redux/reducers/userSlice.js';
 import * as ImagePicker from 'expo-image-picker';
 
-
 const SellerFour = ({ route }) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -32,7 +31,7 @@ const SellerFour = ({ route }) => {
 
   let [formData, setFormData] = useState({
     ...route.params,
-    pictures: [],
+    standPhoto: '',
   });
 
   const handleStandCreation = async () => {
@@ -56,9 +55,10 @@ const SellerFour = ({ route }) => {
     });
 
     if (!result.canceled) {
-      // setFormData({ ...formData, pictures:result.assets[0].uri });
+      console.log(result.assets[0].uri);
+      setFormData({ ...formData, standPhoto: result.assets[0].uri });
+      console.log(formData);
     }
-
   };
 
   return (

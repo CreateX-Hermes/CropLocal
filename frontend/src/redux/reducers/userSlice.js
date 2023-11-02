@@ -22,7 +22,6 @@ export const userSlice = createSlice({
         state.user = action.payload;
         state.isAuthenticated = true;
       }
-      //state.contents = action.payload;
     });
     builder.addCase(loginUserAction.rejected, (state, action) => {
       state.error = action.error.message;
@@ -31,6 +30,8 @@ export const userSlice = createSlice({
       if (action.payload != null) {
         state.user = action.payload;
         state.isAuthenticated = true;
+      } else {
+        state.isAuthenticated = false;
       }
     });
     builder.addCase(logoutUserAction.fulfilled, (state) => {

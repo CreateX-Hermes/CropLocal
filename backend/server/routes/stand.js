@@ -5,7 +5,15 @@ const User = require("../models/user");
 
 router.post("/create", async (req, res) => {
   try {
-    const { standName, userID, items, pictures, description } = req.body;
+    const {
+      standName,
+      userID,
+      items,
+      standPhoto: picture,
+      description,
+    } = req.body;
+
+    console.log(picture);
 
     var ObjectId = require("mongodb").ObjectId;
     var newID = new ObjectId(userID);
@@ -20,7 +28,7 @@ router.post("/create", async (req, res) => {
       standName,
       owner: newID,
       items,
-      pictures,
+      picture,
       location,
       ownerName,
       city,
@@ -56,6 +64,7 @@ router.post("/findWithinRadius", async (req, res) => {
     const userCoordinates = [parseFloat(longitude), parseFloat(latitude)];
     var ObjectId = require("mongodb").ObjectId;
     var newID = new ObjectId(userID);
+    console.log(newID);
 
     // Perform a geospatial query using $geoNear and $maxDistance
     const stands = await Stand.aggregate([
