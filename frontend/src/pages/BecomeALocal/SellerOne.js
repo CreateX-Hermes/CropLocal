@@ -14,11 +14,12 @@ import { Divider, IconButton, Avatar } from 'react-native-paper';
 import { Colors } from '../../Styles.js';
 import NavigationButton from '../../components/NavigationButton/NavigationButton.js';
 import { useSelector } from 'react-redux';
+import * as ImagePicker from 'expo-image-picker';
 
 function SellerOne() {
   const navigation = useNavigation();
   const { user: userInformation } = useSelector((state) => state.user);
-
+  const tempProfilePic = "https://lh5.googleusercontent.com/p/AF1QipMmvRrGutt75PKKOTKauHiSyQYAlqp3WjodP5QL=w408-h271-k-no"
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
@@ -29,7 +30,18 @@ function SellerOne() {
     name: userInformation.firstName,
     email: userInformation.email,
     userID: userInformation.userID,
+    standPhoto: tempProfilePic
   });
+
+  const handleImagePicker = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+    console.log(result);
+  }
 
   return (
     <SafeAreaView backgroundColor={Colors.WHITE}>
@@ -87,6 +99,9 @@ function SellerOne() {
                     paddingVertical: '4%',
                     alignSelf: 'center',
                     zIndex: 5,
+                  }}
+                  onPress={() => {
+                    handleImagePicker();
                   }}
                 >
                   <Text style={styles.text10}>Edit</Text>

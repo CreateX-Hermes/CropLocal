@@ -17,6 +17,8 @@ import NavigationButton from '../../components/NavigationButton/NavigationButton
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { changeRole } from '../../redux/reducers/userSlice.js';
+import * as ImagePicker from 'expo-image-picker';
+
 
 const SellerFour = ({ route }) => {
   const navigation = useNavigation();
@@ -43,6 +45,20 @@ const SellerFour = ({ route }) => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleImagePicker = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      // setFormData({ ...formData, pictures:result.assets[0].uri });
+    }
+
   };
 
   return (
@@ -86,8 +102,9 @@ const SellerFour = ({ route }) => {
               marginLeft: '7%',
               marginTop: '14%',
             }}
+            onPress={() => handleImagePicker()}
           >
-            <Text style={styles.text23}>Select Pictures</Text>
+            <Text style={styles.text23}>Select Picture</Text>
           </TouchableOpacity>
         </ScrollView>
 
