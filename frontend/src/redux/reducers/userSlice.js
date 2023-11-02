@@ -36,6 +36,7 @@ export const userSlice = createSlice({
     builder.addCase(logoutUserAction.fulfilled, (state) => {
       state.isAuthenticated = false;
       state.user = {};
+      state.token = '';
     });
   },
 });
