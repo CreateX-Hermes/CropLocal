@@ -3,9 +3,14 @@
     "name": "HermesApp",
     "slug": "HermesApp",
     "version": "1.0.0",
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "bundleIdentifier": "com.anonymous.HermesApp"
+    },
+    "android": {
+      "package": "com.CropLocal.CropLocal"
     }
   },
   "name": "HermesApp"

@@ -11,10 +11,10 @@ import {
 } from 'react-native';
 import React, { useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Divider, IconButton, Avatar } from 'react-native-paper';
 import { Colors } from '../../Styles.js';
 import NavigationButton from '../../components/NavigationButton/NavigationButton';
 import { useSelector } from 'react-redux';
+import { StockItem } from '../../components/StockItem/StockItem.js';
 
 function SellerTwo({ route }) {
   const navigation = useNavigation();
@@ -72,7 +72,7 @@ function SellerTwo({ route }) {
           </NavigationButton>
         </View>
 
-        <ScrollView style={{ paddingTop: '14%', zIndex: -2 }}>
+        <ScrollView style={{ paddingTop: '14%', zIndex: -2, flexDirection: 'column'}}>
           <Text style={styles.text8}>Create Your Stand</Text>
 
           <Text style={styles.text11}>Stand Name</Text>
@@ -130,6 +130,7 @@ function SellerTwo({ route }) {
               <Image source={require('../../assets/add.png')} style={styles.text14} />
             </TouchableOpacity>
           </View>
+          <StockItem isNewStockItem />
         </ScrollView>
 
         <View
@@ -258,8 +259,8 @@ const styles = StyleSheet.create({
     marginHorizontal: '7%',
     paddingLeft: '7%',
     paddingRight: '6%',
-    paddingTop: '4%',
-    paddingBottom: '4%',
+    paddingTop: '2%',
+    paddingBottom: '2%',
   },
   text22: {
     display: 'flex',
