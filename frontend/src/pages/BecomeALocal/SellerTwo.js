@@ -19,6 +19,7 @@ import { StockItem } from '../../components/StockItem/StockItem.js';
 function SellerTwo({ route }) {
   const navigation = useNavigation();
   const { user: userInformation } = useSelector((state) => state.user);
+  const [stockList, setStockList] = React.useState([<StockItem isNewStockItem/>])
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -26,7 +27,7 @@ function SellerTwo({ route }) {
     });
   }, []);
 
-  let [itemCount, setItemCount] = useState(0);
+  let [itemCount, setItemCount] = useState(1);
   let [formData, setFormData] = useState({
     ...route.params,
     standName: '',
@@ -37,6 +38,7 @@ function SellerTwo({ route }) {
   //refactor to remove the need of extra state
   const incrementItemCount = (num) => {
     setItemCount((prevCount) => {
+
       const newCount = prevCount + num;
 
       if (newCount > 25) {
@@ -44,6 +46,14 @@ function SellerTwo({ route }) {
       } else if (newCount < 0) {
         return 0;
       } else {
+        if (num > 0) {
+          setStockList(prev => [...prev, <StockItem isNewStockItem/>])
+        } else {
+          setStockList(prev => {
+            prev.pop()
+            return prev
+          })
+        }
         setFormData({ ...formData, numOfItems: newCount });
         return newCount;
       }
@@ -130,7 +140,7 @@ function SellerTwo({ route }) {
               <Image source={require('../../assets/add.png')} style={styles.text14} />
             </TouchableOpacity>
           </View>
-          <StockItem isNewStockItem />
+          {stockList.map(prev => prev)}
         </ScrollView>
 
         <View

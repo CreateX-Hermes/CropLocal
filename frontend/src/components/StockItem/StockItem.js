@@ -3,27 +3,9 @@ import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import NavigationButton from '../NavigationButton/NavigationButton';
 import { Colors } from '../../Styles';
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
 export function StockItem(props) {
   const images = [];
-
-  const openGallery = async () => {
-    const result = await launchImageLibrary({mediaType: 'photo', includeBase64: false}, 
-      (response) => {
-        if (response.didCancel) {
-          console.log('User cancelled image picker');
-        } else if (response.error) {
-          console.log('ImagePicker Error: ', response.error);
-        } else if (response.customButton) {
-          console.log('User tapped custom button: ', response.customButton);
-        } else {
-          const source = { uri: response?.uri };
-          console.log(source);
-        }
-      }
-    )
-  }
 
   if (props.images) {
     for (let i = 0; i < props.images.length; i++) {
@@ -49,9 +31,9 @@ export function StockItem(props) {
             <TextInput style={newItemStyles.input}/>
           </View>
         </View>
-        <NavigationButton onPress={openGallery} style={{backgroundColor: Colors.RATING, width: '35%', marginTop: '5%', paddingVertical: '2.5%', alignSelf: 'center'}}>
-          <Text>Add Pictures</Text>
-        </NavigationButton>
+        <TouchableOpacity style={{backgroundColor: Colors.RATING, width: '35%', marginTop: '5%', paddingVertical: '3%', alignSelf: 'center', borderRadius: 20}}>
+          <Text style={{alignSelf: 'center'}}>Add Pictures</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -127,9 +109,9 @@ const styles = StyleSheet.create({
 const newItemStyles = StyleSheet.create({
   main: {
     width: '85%',
-    height: '12%',
+    height: 120,
     alignSelf: 'center',
-    marginTop: '5%'
+    marginTop: 20
   },
   title: {
     fontWeight: '600',
