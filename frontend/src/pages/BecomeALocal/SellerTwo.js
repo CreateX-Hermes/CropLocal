@@ -14,10 +14,11 @@ import { useNavigation } from '@react-navigation/native';
 import { Divider, IconButton, Avatar } from 'react-native-paper';
 import { Colors } from '../../Styles.js';
 import NavigationButton from '../../components/NavigationButton/NavigationButton';
-import SellerThree from './SellerThree.js';
+import { useSelector } from 'react-redux';
 
-function SellerTwo() {
+function SellerTwo({ route }) {
   const navigation = useNavigation();
+  const { user: userInformation } = useSelector((state) => state.user);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -25,21 +26,28 @@ function SellerTwo() {
     });
   }, []);
 
-  let [travelersCount, setTravelersCount] = useState(0);
+  let [itemCount, setItemCount] = useState(0);
+  let [formData, setFormData] = useState({
+    ...route.params,
+    standName: '',
+    description: '',
+    numOfItems: 0,
+  });
 
-  const subtractTravelersCount = () => {
-    if (travelersCount > 0) {
-      travelersCount -= 1;
-    }
+  //refactor to remove the need of extra state
+  const incrementItemCount = (num) => {
+    setItemCount((prevCount) => {
+      const newCount = prevCount + num;
 
-    setTravelersCount(travelersCount);
-  };
-
-  const addTravelersCount = () => {
-    if (travelersCount < 25) {
-      travelersCount += 1;
-    }
-    setTravelersCount(travelersCount);
+      if (newCount > 25) {
+        return 25;
+      } else if (newCount < 0) {
+        return 0;
+      } else {
+        setFormData({ ...formData, numOfItems: newCount });
+        return newCount;
+      }
+    });
   };
 
   return (
@@ -67,20 +75,22 @@ function SellerTwo() {
         <ScrollView style={{ paddingTop: '14%', zIndex: -2 }}>
           <Text style={styles.text8}>Create Your Stand</Text>
 
-          <Text style={styles.text11}>Title</Text>
+          <Text style={styles.text11}>Stand Name</Text>
           <TextInput
             style={styles.input}
-            placeholder="jSmith23@gmail.com"
-            placeholderTextColor={Colors.BLACK}
+            value={formData.standName}
+            onChangeText={(text) => setFormData({ ...formData, standName: text })}
+            placeholder={userInformation.firstName + "'s Stand"}
+            placeholderTextColor={Colors.DARK_GRAY}
           />
 
-          <Text style={styles.text13}>Description</Text>
+          <Text style={styles.text13}>Stand Description</Text>
           <TextInput
             style={styles.inputtwo}
-            placeholder="Hello, I am Greg! I am originally from Cleveland, Ohio but now I live
-    in Boston. Meeting to new people and seeing new places  is some of my favorite memories growing up, and I want to
-    continue to do so. I think sharing our cultures is one of best ways to grow as a person."
-            placeholderTextColor="#000000"
+            value={formData.description}
+            onChangeText={(text) => setFormData({ ...formData, description: text })}
+            placeholder={'Hi, this is ' + userInformation.firstName + "'s Stand"}
+            placeholderTextColor={Colors.DARK_GRAY}
             multiline
           />
 
@@ -88,10 +98,9 @@ function SellerTwo() {
 
           <Text style={styles.text6}>(Optional)</Text>
 
-
           <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
-              onPress={subtractTravelersCount}
+              onPress={() => incrementItemCount(-1)}
               style={{
                 backgroundColor: '#F5F5F5',
                 borderRadius: 100,
@@ -105,10 +114,10 @@ function SellerTwo() {
               <Image source={require('../../assets/minus.png')} style={styles.text14} />
             </TouchableOpacity>
 
-            <Text style={styles.text20}>{travelersCount}</Text>
+            <Text style={styles.text20}>{itemCount}</Text>
 
             <TouchableOpacity
-              onPress={addTravelersCount}
+              onPress={() => incrementItemCount(1)}
               style={{
                 backgroundColor: '#F5F5F5',
                 borderRadius: 100,
@@ -145,7 +154,7 @@ function SellerTwo() {
               borderWidth: '4%',
             }}
             onPress={() => {
-              navigation.navigate(SellerThree);
+              navigation.navigate('SellerThree', { ...formData });
             }}
           >
             <Text style={styles.text22}>Next</Text>
@@ -163,7 +172,7 @@ const styles = StyleSheet.create({
     color: Colors.BLACK,
     fontWeight: '400',
     paddingTop: '2.4%',
-    marginLeft: '9%'
+    marginLeft: '9%',
   },
   text14: {
     width: 20,
@@ -229,14 +238,14 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderColor: Colors.BUTTON_BACKGROUND,
     marginTop: '2.8%',
-    borderRadius: '100%',
-    height: '6%',
+    borderRadius: 100,
+    height: 30,
     fontSize: 15,
     fontWeight: '400',
     paddingLeft: '7%',
     backgroundColor: Colors.BUTTON_BACKGROUND,
     marginHorizontal: '7%',
-    paddingVertical: '4%',
+    //paddingVertical: '4%',
   },
   inputtwo: {
     borderWidth: 0,

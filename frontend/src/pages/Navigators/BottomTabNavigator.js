@@ -4,9 +4,8 @@ import { Image } from 'react-native';
 import HomePage from '../HomePage/HomePage.js';
 import { Colors } from '../../Styles.js';
 import { Events } from '../Events/Events.js';
-import SellerManagerPageNavigator from './SellerManagerPageNavigator.js';
 import AccountPage from '../AccountPage/AccountPage.js';
-import SellerManagerPage from '../SellerManagerPage/SellerManagerPage.js';
+import SellerTab from '../SellerManagerPage/SellerTab.js';
 
 const Tab = createBottomTabNavigator();
 
@@ -60,7 +59,7 @@ function BottomTabNavigator() {
       />
       <Tab.Screen
         name="Stands"
-        component={SellerManagerPage}
+        component={SellerTab}
         options={{
           tabBarLabel: 'Stands',
           tabBarIconStyle: { marginTop: 17 },

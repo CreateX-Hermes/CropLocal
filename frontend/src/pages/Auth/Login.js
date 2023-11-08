@@ -1,59 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import HomePage from '../HomePage/HomePage';
 import ForgotPassword from './ForgotPassword';
 import Signup from './Signup';
-import BottomTabNavigator from '../Navigators/BottomTabNavigator';
 import { styles } from './loginStyles.js';
-import HomePageNavigator from '../Navigators/HomePageNavigator';
+import { useSelector, useDispatch } from 'react-redux';
+import { loginUserAction } from '../../redux/actions/userActions';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const {navigation} = props;
+  const dispatch = useDispatch();
   const navigation = useNavigation();
-
-  // check if user previously logged in
-  useEffect(() => {
-    const checkLoginStatus = async () => {
-      try {
-        const token = await AsyncStorage.getItem('authToken');
-
-        if (token) {
-          navigation.navigate(HomePageNavigator);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    // checkLoginStatus()
-  }, []);
 
   const handleLogin = async () => {
     const user = {
       email,
       prepassword: password,
     };
-    let response;
-    try {
-      response = await axios.post('http://localhost:8000/user/login', user);
-      const { token } = response.data;
-      AsyncStorage.setItem('authToken', token);
-    } catch (error) {
-      console.log(error);
-    }
-    let loggedIn;
-    if (response && response.status == 200) {
-      navigation.navigate(HomePageNavigator);
-    } else {
-      loggedIn = false;
-    }
-    // Navigate to the homepage if loggedIn, display error message if loggedIn = false.
-    // navigation.navigate(BottomTabNavigator);
+
+    await dispatch(loginUserAction(user));
   };
 
   return (

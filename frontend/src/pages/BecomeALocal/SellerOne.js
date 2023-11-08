@@ -13,16 +13,34 @@ import { useNavigation } from '@react-navigation/native';
 import { Divider, IconButton, Avatar } from 'react-native-paper';
 import { Colors } from '../../Styles.js';
 import NavigationButton from '../../components/NavigationButton/NavigationButton.js';
-import SellerTwo from './SellerTwo.js';
+import { useSelector } from 'react-redux';
+import * as ImagePicker from 'expo-image-picker';
 
 function SellerOne() {
   const navigation = useNavigation();
-
+  const { user: userInformation } = useSelector((state) => state.user);
+  //const tempProfilePic = "https://lh5.googleusercontent.com/p/AF1QipMmvRrGutt75PKKOTKauHiSyQYAlqp3WjodP5QL=w408-h271-k-no"
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
     });
   }, []);
+
+  let [formData, setFormData] = useState({
+    name: userInformation.firstName,
+    email: userInformation.email,
+    userID: userInformation.userID,
+  });
+
+  const handleImagePicker = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+    console.log(result);
+  };
 
   return (
     <SafeAreaView backgroundColor={Colors.WHITE}>
@@ -47,7 +65,7 @@ function SellerOne() {
         </View>
 
         <ScrollView style={{ paddingTop: '14%', zIndex: -2 }}>
-          <Text style={styles.text8}>Check Profile Details</Text>
+          <Text style={styles.text8}>Confirm Your Profile Details</Text>
 
           <View style={{ alignItems: 'center', marginTop: '15%' }}>
             <View
@@ -81,6 +99,9 @@ function SellerOne() {
                     alignSelf: 'center',
                     zIndex: 5,
                   }}
+                  onPress={() => {
+                    handleImagePicker();
+                  }}
                 >
                   <Text style={styles.text10}>Edit</Text>
                 </TouchableOpacity>
@@ -88,38 +109,24 @@ function SellerOne() {
             </View>
           </View>
 
-          <Text style={styles.text11}>Full Name</Text>
+          <Text style={styles.text11}>Name</Text>
           <TextInput
             style={styles.input}
-            placeholder="jSmith23@gmail.com"
+            value={formData.name}
+            onChangeText={(text) => setFormData({ ...formData, name: text })}
+            placeholder=""
             placeholderTextColor={Colors.BLACK}
+            editable={false}
           />
 
-          <Text style={styles.text12}>Username</Text>
+          <Text style={styles.text12}>Email</Text>
           <TextInput
             style={styles.input}
-            placeholder="smithjohnTx2"
+            value={formData.email}
+            onChangeText={(text) => setFormData({ ...formData, email: text })}
+            placeholder=""
             placeholderTextColor={Colors.BLACK}
-          />
-
-          <Divider
-            style={{
-              width: '86%',
-              alignSelf: 'center',
-              marginTop: '6%',
-              paddingTop: '0.3%',
-              marginBottom: '5%',
-            }}
-          />
-
-          <Text style={styles.text13}>Bio</Text>
-          <TextInput
-            style={styles.inputtwo}
-            placeholder="Hello, I am Greg! I am originally from Cleveland, Ohio but now I live
-    in Boston. Meeting to new people and seeing new places  is some of my favorite memories growing up, and I want to
-    continue to do so. I think sharing our cultures is one of best ways to grow as a person."
-            placeholderTextColor="#000000"
-            multiline
+            editable={false}
           />
         </ScrollView>
 
@@ -145,7 +152,7 @@ function SellerOne() {
               borderWidth: '4%',
             }}
             onPress={() => {
-              navigation.navigate(SellerTwo);
+              navigation.navigate('SellerTwo', { ...formData });
             }}
           >
             <Text style={styles.text22}>Next</Text>
@@ -209,8 +216,8 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderColor: Colors.BUTTON_BACKGROUND,
     marginTop: '2.8%',
-    borderRadius: '100%',
-    height: '6%',
+    borderRadius: 100,
+    height: 30,
     fontSize: 15,
     fontWeight: '400',
     paddingLeft: '7%',

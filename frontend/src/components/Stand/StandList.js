@@ -4,16 +4,17 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import jwt_decode from 'jwt-decode';
 import Stand from './Stand';
+import { useSelector } from 'react-redux';
 
 function StandList(props) {
+  const { user } = useSelector((state) => state.user);
+
   const [standData, setStandData] = useState([]);
 
   const fetchAllData = async () => {
-    const token = await AsyncStorage.getItem('authToken');
-
     // console.log(jwt_decode(token))
 
-    const { location, userID } = jwt_decode(token);
+    const { location, userID } = user;
 
     const fetchedData = await axios.post('http://localhost:8000/stand/findWithinRadius', {
       longitude: location[0],
@@ -26,11 +27,7 @@ function StandList(props) {
   };
 
   const fetchFavoriteData = async () => {
-    const token = await AsyncStorage.getItem('authToken');
-
-    // console.log(jwt_decode(token))
-
-    const { location, userID } = jwt_decode(token);
+    const { location, userID } = user;
 
     const fetchedData = await axios.post('http://localhost:8000/stand/findFavoriteWithinRadius', {
       longitude: location[0],

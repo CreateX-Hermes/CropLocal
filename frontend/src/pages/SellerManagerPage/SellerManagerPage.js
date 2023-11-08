@@ -5,9 +5,11 @@ import { Colors } from '../../Styles.js';
 import NavigationButton from '../../components/NavigationButton/NavigationButton';
 import MyWallet from '../MyWallet/MyWallet.js';
 import MyPlans from '../MyPlans/MyPlans.js';
+import { useSelector } from 'react-redux';
 
 function SellerManagerPage() {
   const navigation = useNavigation();
+  const { user: userInformation } = useSelector((state) => state.user);
 
   return (
     <SafeAreaView backgroundColor={Colors.WHITE}>
@@ -15,14 +17,14 @@ function SellerManagerPage() {
         <View style={{ flexDirection: 'row', marginTop: '12%' }}>
           <Text style={styles.text8}>
             Your
-            <Text style={styles.text28}>Digital</Text> Stand
+            <Text style={styles.text28}> Digital</Text> Stand
           </Text>
         </View>
         <TouchableOpacity onPress={() => navigation.navigate(MyWallet)}>
           <View style={styles.inputtwo}>
             <Text style={styles.text9}>
               Your Estimated
-              <Text style={styles.text10}>Earnings</Text>
+              <Text style={styles.text10}> Earnings</Text>
             </Text>
 
             <Text style={styles.text14}>This Month</Text>
@@ -61,7 +63,7 @@ function SellerManagerPage() {
           <View style={styles.inputtwo}>
             <Text style={styles.text9}>
               Your
-              <Text style={styles.text24}>Reservations</Text>
+              <Text style={styles.text24}> Reservations</Text>
             </Text>
 
             <View style={{ flexDirection: 'row', paddingLeft: '7%', paddingTop: '3%' }}>
