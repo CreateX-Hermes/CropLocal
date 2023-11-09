@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Colors } from '../../Styles';
 import { StockItem } from '../../components/StockItem/StockItem';
 import { Review } from '../../components/Review/Review';
+import ReserveItems from '../HomePage/ReserveItems';
 
 export function Seller({ route }) {
   const navigation = useNavigation();
@@ -57,7 +58,7 @@ export function Seller({ route }) {
               <Text style={{ fontWeight: 'bold' }}>$49</Text>
             </Text>
           </View>
-          <TouchableOpacity style={styles.rButton}>
+          <TouchableOpacity onPress={() => navigation.navigate(ReserveItems)} style={styles.rButton}>
             <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15 }}>Reserve</Text>
           </TouchableOpacity>
         </View>
