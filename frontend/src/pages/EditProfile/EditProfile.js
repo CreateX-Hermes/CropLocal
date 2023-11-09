@@ -10,9 +10,12 @@ import {
 import React, { useLayoutEffect } from 'react';
 import { Divider, IconButton, Avatar } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutUserAction } from '../../redux/actions/userActions';
 
 function EditProfile() {
   const navigation = useNavigation();
+  const { user: userInformation } = useSelector((state) => state.user);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -101,13 +104,12 @@ function EditProfile() {
         <Text style={styles.text11}>Full Name</Text>
         <TextInput
           style={styles.input}
-          placeholder="jSmith23@gmail.com"
+          placeholder={userInformation.email}
           placeholderTextColor="#000000"
         />
 
         <Text style={styles.text12}>Username</Text>
-        <TextInput style={styles.input} placeholder="smithjohnTx2" placeholderTextColor="#000000" />
-
+        <TextInput style={styles.input} placeholder={userInformation.firstName} placeholderTextColor="#000000" />
         <Divider
           style={{
             width: '86%',
