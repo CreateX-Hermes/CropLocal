@@ -3,23 +3,22 @@ import {
   View,
   SafeAreaView,
   TouchableOpacity,
-  Modal,
   Image,
   Text,
   TextInput,
   ScrollView,
 } from 'react-native';
+import { useSelector } from 'react-redux';
 import React, { useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Colors } from '../../Styles.js';
+import { Colors } from '../../Styles';
 import NavigationButton from '../../components/NavigationButton/NavigationButton';
-import { useSelector } from 'react-redux';
-import { StockItem } from '../../components/StockItem/StockItem.js';
+import { StockItem } from '../../components/StockItem/StockItem';
 
 function SellerTwo({ route }) {
   const navigation = useNavigation();
   const { user: userInformation } = useSelector((state) => state.user);
-  const [stockList, setStockList] = React.useState([<StockItem isNewStockItem/>])
+  const [stockList, setStockList] = React.useState([<StockItem isNewStockItem />]);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -27,18 +26,15 @@ function SellerTwo({ route }) {
     });
   }, []);
 
-  let [itemCount, setItemCount] = useState(1);
-  let [formData, setFormData] = useState({
+  const [itemCount, setItemCount] = useState(1);
+  const [formData, setFormData] = useState({
     ...route.params,
     standName: '',
     description: '',
     numOfItems: 0,
   });
-
-  //refactor to remove the need of extra state
   const incrementItemCount = (num) => {
     setItemCount((prevCount) => {
-
       const newCount = prevCount + num;
 
       if (newCount > 25) {
@@ -47,12 +43,12 @@ function SellerTwo({ route }) {
         return 0;
       } else {
         if (num > 0) {
-          setStockList(prev => [...prev, <StockItem isNewStockItem/>])
+          setStockList((prev) => [...prev, <StockItem isNewStockItem />]);
         } else {
-          setStockList(prev => {
-            prev.pop()
-            return prev
-          })
+          setStockList((prev) => {
+            prev.pop();
+            return prev;
+          });
         }
         setFormData({ ...formData, numOfItems: newCount });
         return newCount;
@@ -82,7 +78,7 @@ function SellerTwo({ route }) {
           </NavigationButton>
         </View>
 
-        <ScrollView style={{ paddingTop: '14%', zIndex: -2, flexDirection: 'column'}}>
+        <ScrollView style={{ paddingTop: '14%', zIndex: -2, flexDirection: 'column' }}>
           <Text style={styles.text8}>Create Your Stand</Text>
 
           <Text style={styles.text11}>Stand Name</Text>
@@ -90,16 +86,16 @@ function SellerTwo({ route }) {
             style={styles.input}
             value={formData.standName}
             onChangeText={(text) => setFormData({ ...formData, standName: text })}
-            placeholder={userInformation.firstName + "'s Stand"}
+            placeholder={`${userInformation.firstName}'s Stand`}
             placeholderTextColor={Colors.DARK_GRAY}
           />
 
           <Text style={styles.text13}>Stand Description</Text>
           <TextInput
-            style={styles.inputtwo}
+            style={styles.inputTwo}
             value={formData.description}
             onChangeText={(text) => setFormData({ ...formData, description: text })}
-            placeholder={'Hi, this is ' + userInformation.firstName + "'s Stand"}
+            placeholder={`Hi, this is ${userInformation.firstName}'s Stand`}
             placeholderTextColor={Colors.DARK_GRAY}
             multiline
           />
@@ -140,7 +136,7 @@ function SellerTwo({ route }) {
               <Image source={require('../../assets/add.png')} style={styles.text14} />
             </TouchableOpacity>
           </View>
-          {stockList.map(prev => prev)}
+          {stockList.map((prev) => prev)}
         </ScrollView>
 
         <View
@@ -184,11 +180,6 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     paddingTop: '2.4%',
     marginLeft: '9%',
-  },
-  text14: {
-    width: 20,
-    height: 20,
-    alignSelf: 'center',
   },
   text8: {
     display: 'flex',
@@ -256,9 +247,8 @@ const styles = StyleSheet.create({
     paddingLeft: '7%',
     backgroundColor: Colors.BUTTON_BACKGROUND,
     marginHorizontal: '7%',
-    //paddingVertical: '4%',
   },
-  inputtwo: {
+  inputTwo: {
     borderWidth: 0,
     borderColor: Colors.BUTTON_BACKGROUND,
     marginTop: '3.4%',

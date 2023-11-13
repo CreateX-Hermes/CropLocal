@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
-import NavigationButton from '../NavigationButton/NavigationButton';
 import { Colors } from '../../Styles';
+import * as ImagePicker from 'expo-image-picker';
 
 export function StockItem(props) {
   const images = [];
@@ -12,28 +12,81 @@ export function StockItem(props) {
       images.push(<Image style={styles.image} source={props.images[i]} />);
     }
   }
-  
+
+  const [stockImages, setStockImages] = React.useState([]);
+
+  const removeImage = (uri) => {
+    
+  }
+  const pickImage = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [3, 3],
+      quality: 1,
+    });
+    if (!result.canceled) {
+      setStockImages((prev) => {
+        return [
+          ...prev,
+          <View id={result.assets[0].uri}>
+            <Image source={{ uri: result.assets[0].uri }} style={newItemStyles.image} />
+            <TouchableOpacity
+              style={{
+                backgroundColor: '#F5F5F5',
+                paddingHorizontal: 5,
+                width: '20%',
+                borderRadius: 100,
+                position: 'absolute',
+                left: 5,
+                top: 5,
+              }}
+              onPress={() => removeImage(result.assets[0].uri)}
+            >
+              <Image source={require('../../assets/minus.png')} style={{ width: 20, height: 20, alignSelf: 'center', }} />
+            </TouchableOpacity>
+          </View>,
+        ];
+      });
+    }
+  };
+
   if (props.isNewStockItem) {
     return (
       <View style={newItemStyles.main}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Text style={newItemStyles.title}>Item Name: </Text>
-          <TextInput style={newItemStyles.input}/>
+          <TextInput style={newItemStyles.input} />
         </View>
-        <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View
+          style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}
+        >
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Text>$</Text>
-            <TextInput style={newItemStyles.input}/>
+            <TextInput style={newItemStyles.input} />
             <Text>/Unit</Text>
           </View>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Text>Total Stock: </Text>
-            <TextInput style={newItemStyles.input}/>
+            <TextInput style={newItemStyles.input} />
           </View>
         </View>
-        <TouchableOpacity style={{backgroundColor: Colors.RATING, width: '35%', marginTop: '5%', paddingVertical: '3%', alignSelf: 'center', borderRadius: 20}}>
-          <Text style={{alignSelf: 'center'}}>Add Pictures</Text>
+        <TouchableOpacity
+          style={{
+            backgroundColor: Colors.RATING,
+            width: '35%',
+            marginTop: '5%',
+            paddingVertical: '3%',
+            alignSelf: 'center',
+            borderRadius: 20,
+          }}
+          onPress={pickImage}
+        >
+          <Text style={{ alignSelf: 'center' }}>Add Pictures</Text>
         </TouchableOpacity>
+        <ScrollView style={newItemStyles.images} horizontal>
+          {stockImages}
+        </ScrollView>
       </View>
     );
   }
@@ -109,9 +162,8 @@ const styles = StyleSheet.create({
 const newItemStyles = StyleSheet.create({
   main: {
     width: '85%',
-    height: 120,
     alignSelf: 'center',
-    marginTop: 20
+    marginTop: 20,
   },
   title: {
     fontWeight: '600',
@@ -127,4 +179,13 @@ const newItemStyles = StyleSheet.create({
     color: 'black',
     borderRadius: 100,
   },
-})
+  images: {
+    marginTop: '5%',
+  },
+  image: {
+    width: 179,
+    height: 121,
+    marginRight: 10,
+    borderRadius: 10,
+  },
+});
