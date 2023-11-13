@@ -5,6 +5,9 @@ import { Colors } from '../../Styles.js';
 import { EventList } from '../../components/Event/EventList.js';
 
 export function Events() {
+
+  
+
   return (
     <View style={styles.main}>
       <View style={styles.header}>
