@@ -92,7 +92,6 @@ const styles = StyleSheet.create({
         fontWeight: 500,
         fontSize: 20,
     },
-
   content: {
     width: '100%',
     height: 125,
