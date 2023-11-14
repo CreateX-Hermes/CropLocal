@@ -14,9 +14,12 @@ import {
   import { Divider, IconButton, Avatar } from 'react-native-paper';
   import { Colors } from '../../Styles.js';
   import NavigationButton from '../../components/NavigationButton/NavigationButton';
-import ReservationConfirmation from './ReservationConfirmation.js';
+import AccountPage from '../AccountPage/AccountPage.js';
+import HomePage from './HomePage.js';
+import HomePageNavigator from '../Navigators/HomePageNavigator.js';
+import BottomTabNavigator from '../Navigators/BottomTabNavigator.js';
 
-const ReserveItems = () => {
+const ReservationConfirmation = () => {
     const navigation = useNavigation();
 
   return (
@@ -24,9 +27,7 @@ const ReserveItems = () => {
       <View backgroundColor={Colors.WHITE} height="100%">
         <View style={{ position: 'absolute', marginLeft: '6%' }}>
           <NavigationButton
-            onPress={() => {
-              navigation.goBack();
-            }}
+            onPress={() => navigation.navigate(HomePage)}
             style={{
               height: 50,
               width: 50,
@@ -35,14 +36,14 @@ const ReserveItems = () => {
             }}
           >
             <Image
-              source={require('../../assets/left.png')}
-              style={{ width: '70%', resizeMode: 'contain' }}
+              source={require('../../assets/close.png')}
+              style={{ width: '50%', resizeMode: 'contain' }}
             />
           </NavigationButton>
         </View>
 
-        <ScrollView style={{ paddingTop: '14%', zIndex: -2 }}>
-          <Text style={styles.text8}><Text style={styles.text18}>Confirm </Text>Items</Text>
+        <View style={{ paddingTop: '14%', zIndex: -2 }}>
+          <Text style={styles.text8}>Reservation <Text style={styles.text18}>Confirmed</Text></Text>
 
           <Text style={styles.text11}>Urban Gardens</Text>
 
@@ -69,79 +70,20 @@ const ReserveItems = () => {
 
           <Divider style={styles.dividerStyle1}/>
 
-          <Text style={styles.text13}>My Items:</Text>
-        
-        <View style={{ width: '86%', backgroundColor: Colors.BUTTON_BACKGROUND, alignSelf: 'center', borderRadius: 20, marginTop: '3%', paddingBottom: '3.8%'}}>
-            <View style={{ position: 'relative', width: '90%', alignSelf: 'center', flexDirection: 'column', }}>
-
-            {/** List of items portion of breakdown */}
-            <View>
-                {/** One "Component" of item in list of My Items */}
-            <View>
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <Text style={styles.text31}>Eggs<Text style={styles.text31}>:</Text></Text>
-                    <Text style={styles.text32}>$<Text style={styles.text32}>39.96</Text></Text>
-                </View>
-                <Text style={styles.text33}>(Qty : <Text style={styles.text33}>3</Text>)</Text>
+            <View style={{ width: '80%', alignSelf: 'center' }}>
+            <Text style={styles.text32}>*This reservation has been added to your reservations under your profile</Text>
             </View>
+          
 
-            <View>
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <Text style={styles.text31}>Lemons<Text style={styles.text31}>:</Text></Text>
-                    <Text style={styles.text32}>$<Text style={styles.text32}>7.95</Text></Text>
-                </View>
-                <Text style={styles.text33}>(Qty : <Text style={styles.text33}>8</Text>)</Text>
-            </View>
         </View>
 
 
-        {/** Total row portion at bottom of breakdown */}
-        <View style={{ marginTop: '40%' }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                <Text style={styles.text31}>Total:</Text>
-                <Text style={styles.text32}>$<Text style={styles.text32}>47.91</Text></Text>
-            </View>
-        </View>
-
-            </View>
-        </View>
-
-
-        </ScrollView>
-
-        <View
-          style={{
-            backgroundColor: Colors.BLACK,
-            width: '100%',
-            height: '200%',
-            position: 'absolute',
-            top: '95%',
-          }}
-        />
-
-        <View style={{ position: 'absolute', top: '92%', alignSelf: 'center' }}>
-          <TouchableOpacity
-          onPress={() => navigation.navigate(ReservationConfirmation)}
-            style={{
-              backgroundColor: Colors.MAIN,
-              borderRadius: 50,
-              paddingVertical: '10%',
-              alignSelf: 'center',
-              zIndex: 5,
-              borderColor: Colors.WHITE,
-              borderWidth: '4%',
-            }}
-          >
-            <Text 
-            style={styles.text22}>Confirm</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     </SafeAreaView>
   )
 }
 
-export default ReserveItems
+export default ReservationConfirmation
 
 const styles = StyleSheet.create({
     text6: {
