@@ -14,6 +14,7 @@ import SellerThree from '../BecomeALocal/SellerThree.js';
 import SellerFour from '../BecomeALocal/SellerFour.js';
 import SellerFinal from '../BecomeALocal/SellerFinal.js';
 import ReserveItems from '../HomePage/ReserveItems.js';
+import ReservationConfirmation from '../HomePage/ReservationConfirmation.js';
 
 const Stack = createStackNavigator();
 
@@ -41,6 +42,8 @@ function HomePageNavigator() {
       <Stack.Screen name="MyWallet" component={MyWallet} />
       <Stack.Screen name="Help" component={Help} />
       <Stack.Screen name="ReserveItems" component={ReserveItems} options={{ headerShown: false }} />
+      
+      <Stack.Screen name="ReservationConfirmation" component={ReservationConfirmation} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }
