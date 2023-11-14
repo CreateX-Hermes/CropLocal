@@ -7,21 +7,31 @@ import {
   Image,
   TextInput,
 } from 'react-native';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useState} from 'react';
 import { Divider, IconButton, Avatar } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 import { logoutUserAction } from '../../redux/actions/userActions';
 
 function EditProfile() {
   const navigation = useNavigation();
   const { user: userInformation } = useSelector((state) => state.user);
+  const [firstName, setFirstName] = useState(userInformation.firstName);
+  const [email, setEmail] = useState(userInformation.email);
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
     });
   }, []);
+
+  const updateNameEmail = async () => {
+    const response = await axios.post('http://localhost:8000/user/updateNameEmail', {userID: userInformation.userID, firstName, email});
+    if(response.status == 200) {
+      navigation.goBack()
+    }
+  };
 
   return (
     <SafeAreaView style={{ backgroundColor: '#071930' }}>
@@ -42,7 +52,7 @@ function EditProfile() {
             <Image source={require('../../assets/closeCancel.png')} style={styles.text14} />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.goBack()}
+            onPress={() => updateNameEmail()}
             style={{
               backgroundColor: '#FFFFFF',
               borderRadius: 100,
@@ -101,15 +111,16 @@ function EditProfile() {
           </View>
         </View>
 
-        <Text style={styles.text11}>Full Name</Text>
+        <Text style={styles.text11}>First Name</Text>
         <TextInput
           style={styles.input}
-          placeholder={userInformation.email}
+          value={firstName}
+          onChangeText={(text) => setFirstName(text)}
           placeholderTextColor="#000000"
         />
 
-        <Text style={styles.text12}>Username</Text>
-        <TextInput style={styles.input} placeholder={userInformation.firstName} placeholderTextColor="#000000" />
+        <Text style={styles.text12}>Email</Text>
+        <TextInput style={styles.input} value={email} onChangeText={(text) => setEmail(text)} placeholderTextColor="#000000" />
         <Divider
           style={{
             width: '86%',
