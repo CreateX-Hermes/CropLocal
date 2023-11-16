@@ -6,6 +6,9 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "bundleIdentifier": "com.anonymous.HermesApp"
+    },
+    "android": {
+      "package": "com.CropLocal.CropLocal"
     }
   },
   "name": "HermesApp"

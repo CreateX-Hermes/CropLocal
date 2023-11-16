@@ -148,7 +148,7 @@ function AccountPage() {
           to continue to do so.
         </Text>
 
-        {!userInformation.isSeller ? (
+        {userInformation.isSeller ? (
           <>
             <Divider
               style={{

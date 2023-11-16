@@ -5,41 +5,43 @@ import { useNavigation } from '@react-navigation/native';
 import { EventPage } from '../../pages/EventPage/EventPage.js';
 import NavigationButton from '../NavigationButton/NavigationButton';
 
-
 export const Event = (props) => {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
-    return (
-        <NavigationButton style={styles.nav} onPress={() => navigation.navigate('EventPage', {...props.data})}>
-            <View style={styles.container}>
-            <Image style={styles.event} source={props.data.image}/>
-            <View style={styles.header}>
-                <Text style={styles.name}>{props.data.name}</Text>
-                <View style={styles.location}>
-                    <Image style={styles.icon} source={require('../../assets/wlocation.png')} />
-                    <Text style={styles.locationName}>{props.data.location}</Text>
-                </View>
+  return (
+    <NavigationButton
+      style={styles.nav}
+      onPress={() => navigation.navigate('EventPage', { ...props.data })}
+    >
+      <View style={styles.container}>
+        <Image style={styles.event} source={props.data.image} />
+        <View style={styles.header}>
+          <Text style={styles.name}>{props.data.name}</Text>
+          <View style={styles.location}>
+            <Image style={styles.icon} source={require('../../assets/wlocation.png')} />
+            <Text style={styles.locationName}>{props.data.location}</Text>
+          </View>
+        </View>
+        <View style={styles.content}>
+          <View style={styles.segment}>
+            <Image style={styles.label} source={require('../../assets/calender.png')} />
+            <Text style={styles.info}>{`${props.data.startDate} - ${props.data.endDate}`}</Text>
+          </View>
+          <View style={styles.row}>
+            <View style={styles.segment}>
+              <Image style={styles.label} source={require('../../assets/clock.png')} />
+              <Text style={styles.info}>{`${props.data.startTime} - ${props.data.endTime}`}</Text>
             </View>
-            <View style={styles.content}>
-                <View style={styles.segment}>
-                    <Image style={styles.label} source={require('../../assets/calender.png')} />
-                    <Text style={styles.info}>{`${props.data.startDate} - ${props.data.endDate}`}</Text> 
-                </View>
-                <View style={styles.row}>
-                    <View style={styles.segment}>
-                        <Image style={styles.label} source={require('../../assets/clock.png')} />
-                        <Text style={styles.info}>{`${props.data.startTime} - ${props.data.endTime}`}</Text>
-                    </View>
-                    <View style={styles.segment}>
-                        <Image style={styles.stand} source={require('../../assets/store2.png')} />
-                        <Text style={styles.info}>{`${props.data.stands} stands`}</Text>
-                    </View>
-                </View>
+            <View style={styles.segment}>
+              <Image style={styles.stand} source={require('../../assets/store2.png')} />
+              <Text style={styles.info}>{`${props.data.stands} stands`}</Text>
             </View>
-            </View>
-        </NavigationButton>
-    )
-}
+          </View>
+        </View>
+      </View>
+    </NavigationButton>
+  );
+};
 const styles = StyleSheet.create({
     nav: {
         backgroundColor: 'transparent'

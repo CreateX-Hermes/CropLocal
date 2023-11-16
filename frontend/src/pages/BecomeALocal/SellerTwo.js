@@ -3,22 +3,22 @@ import {
   View,
   SafeAreaView,
   TouchableOpacity,
-  Modal,
   Image,
   Text,
   TextInput,
   ScrollView,
 } from 'react-native';
+import { useSelector } from 'react-redux';
 import React, { useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Divider, IconButton, Avatar } from 'react-native-paper';
-import { Colors } from '../../Styles.js';
+import { Colors } from '../../Styles';
 import NavigationButton from '../../components/NavigationButton/NavigationButton';
-import { useSelector } from 'react-redux';
+import { StockItem } from '../../components/StockItem/StockItem';
 
 function SellerTwo({ route }) {
   const navigation = useNavigation();
   const { user: userInformation } = useSelector((state) => state.user);
+  const [stockList, setStockList] = React.useState([<StockItem isNewStockItem />]);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -26,15 +26,13 @@ function SellerTwo({ route }) {
     });
   }, []);
 
-  let [itemCount, setItemCount] = useState(0);
-  let [formData, setFormData] = useState({
+  const [itemCount, setItemCount] = useState(1);
+  const [formData, setFormData] = useState({
     ...route.params,
     standName: '',
     description: '',
     numOfItems: 0,
   });
-
-  //refactor to remove the need of extra state
   const incrementItemCount = (num) => {
     setItemCount((prevCount) => {
       const newCount = prevCount + num;
@@ -44,6 +42,14 @@ function SellerTwo({ route }) {
       } else if (newCount < 0) {
         return 0;
       } else {
+        if (num > 0) {
+          setStockList((prev) => [...prev, <StockItem isNewStockItem />]);
+        } else {
+          setStockList((prev) => {
+            prev.pop();
+            return prev;
+          });
+        }
         setFormData({ ...formData, numOfItems: newCount });
         return newCount;
       }
@@ -67,70 +73,76 @@ function SellerTwo({ route }) {
           >
             <Image
               source={require('../../assets/left.png')}
-              style={{ width: '70%', resizeMode: 'contain' }}
+              style={{ width: '100%', resizeMode: 'contain' }}
             />
           </NavigationButton>
         </View>
+        <View style={{ height: '92%', zIndex: -2 }}>
+          <ScrollView
+            style={{ paddingTop: '14%', zIndex: -2, flexDirection: 'column', height: '50%' }}
+          >
+            <View style={{ paddingBottom: 60 }}>
+              <Text style={styles.text8}>Create Your Stand</Text>
 
-        <ScrollView style={{ paddingTop: '14%', zIndex: -2 }}>
-          <Text style={styles.text8}>Create Your Stand</Text>
+              <Text style={styles.text11}>Stand Name</Text>
+              <TextInput
+                style={styles.input}
+                value={formData.standName}
+                onChangeText={(text) => setFormData({ ...formData, standName: text })}
+                placeholder={`${userInformation.firstName}'s Stand`}
+                placeholderTextColor={Colors.DARK_GRAY}
+              />
 
-          <Text style={styles.text11}>Stand Name</Text>
-          <TextInput
-            style={styles.input}
-            value={formData.standName}
-            onChangeText={(text) => setFormData({ ...formData, standName: text })}
-            placeholder={userInformation.firstName + "'s Stand"}
-            placeholderTextColor={Colors.DARK_GRAY}
-          />
+              <Text style={styles.text13}>Stand Description</Text>
+              <TextInput
+                style={styles.inputTwo}
+                value={formData.description}
+                onChangeText={(text) => setFormData({ ...formData, description: text })}
+                placeholder={`Hi, this is ${userInformation.firstName}'s Stand`}
+                placeholderTextColor={Colors.DARK_GRAY}
+                multiline
+              />
 
-          <Text style={styles.text13}>Stand Description</Text>
-          <TextInput
-            style={styles.inputtwo}
-            value={formData.description}
-            onChangeText={(text) => setFormData({ ...formData, description: text })}
-            placeholder={'Hi, this is ' + userInformation.firstName + "'s Stand"}
-            placeholderTextColor={Colors.DARK_GRAY}
-            multiline
-          />
+              <Text style={styles.text11}>Number of Items</Text>
 
-          <Text style={styles.text11}>Number of Items</Text>
+              <Text style={styles.text6}>(Optional)</Text>
 
-          <Text style={styles.text6}>(Optional)</Text>
+              <View style={{ flexDirection: 'row' }}>
+                <TouchableOpacity
+                  onPress={() => incrementItemCount(-1)}
+                  style={{
+                    backgroundColor: '#F5F5F5',
+                    borderRadius: 100,
+                    marginTop: '7%',
+                    justifyContent: 'center',
+                    paddingVertical: '2%',
+                    paddingHorizontal: '2%',
+                    marginLeft: '8%',
+                  }}
+                >
+                  <Image source={require('../../assets/minus.png')} style={styles.text14} />
+                </TouchableOpacity>
 
-          <View style={{ flexDirection: 'row' }}>
-            <TouchableOpacity
-              onPress={() => incrementItemCount(-1)}
-              style={{
-                backgroundColor: '#F5F5F5',
-                borderRadius: 100,
-                marginTop: '7%',
-                justifyContent: 'center',
-                paddingVertical: '2%',
-                paddingHorizontal: '2%',
-                marginLeft: '8%',
-              }}
-            >
-              <Image source={require('../../assets/minus.png')} style={styles.text14} />
-            </TouchableOpacity>
+                <Text style={styles.text20}>{itemCount}</Text>
 
-            <Text style={styles.text20}>{itemCount}</Text>
-
-            <TouchableOpacity
-              onPress={() => incrementItemCount(1)}
-              style={{
-                backgroundColor: '#F5F5F5',
-                borderRadius: 100,
-                marginTop: '7%',
-                justifyContent: 'center',
-                paddingVertical: '2.8%',
-                paddingHorizontal: '2.8%',
-              }}
-            >
-              <Image source={require('../../assets/add.png')} style={styles.text14} />
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
+                <TouchableOpacity
+                  onPress={() => incrementItemCount(1)}
+                  style={{
+                    backgroundColor: '#F5F5F5',
+                    borderRadius: 100,
+                    marginTop: '7%',
+                    justifyContent: 'center',
+                    paddingVertical: '2.8%',
+                    paddingHorizontal: '2.8%',
+                  }}
+                >
+                  <Image source={require('../../assets/add.png')} style={styles.text14} />
+                </TouchableOpacity>
+              </View>
+              {stockList.map((prev) => prev)}
+            </View>
+          </ScrollView>
+        </View>
 
         <View
           style={{
@@ -173,11 +185,6 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     paddingTop: '2.4%',
     marginLeft: '9%',
-  },
-  text14: {
-    width: 20,
-    height: 20,
-    alignSelf: 'center',
   },
   text8: {
     display: 'flex',
@@ -245,9 +252,8 @@ const styles = StyleSheet.create({
     paddingLeft: '7%',
     backgroundColor: Colors.BUTTON_BACKGROUND,
     marginHorizontal: '7%',
-    //paddingVertical: '4%',
   },
-  inputtwo: {
+  inputTwo: {
     borderWidth: 0,
     borderColor: Colors.BUTTON_BACKGROUND,
     marginTop: '3.4%',
@@ -258,8 +264,8 @@ const styles = StyleSheet.create({
     marginHorizontal: '7%',
     paddingLeft: '7%',
     paddingRight: '6%',
-    paddingTop: '4%',
-    paddingBottom: '4%',
+    paddingTop: '2%',
+    paddingBottom: '2%',
   },
   text22: {
     display: 'flex',
