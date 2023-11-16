@@ -110,6 +110,23 @@ router.get("/getUserLocation", async (req, res) => {
   }
 });
 
+router.post("/updateNameEmail", async (req, res) => {
+  try {
+    let { userID, firstName, email } = req.body;
+    var ObjectId = require("mongodb").ObjectId;
+    userID = new ObjectId(userID);
+    console.log(email)
+    console.log(firstName)
+    console.log(req.body)
+    await User.findOneAndUpdate({ _id: userID }, {email: email, firstName: firstName});
+
+    return res.status(200).json({ message: "Success" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Error" });
+  }
+});
+
 router.post("/updateFavoriteStands", async (req, res) => {
   try {
     let { userID, standID } = req.body;
