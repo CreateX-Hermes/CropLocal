@@ -9,6 +9,7 @@ export function EventList() {
       name: 'Christkindl Market',
       location: 'Atlanta, GA',
       image: require('./christmas.png'),
+      lImage: require('./market1.png'),
       startDate: 'Tue, June 21 ',
       endDate: 'Sun, June 26',
       startTime: '6:00',
@@ -19,6 +20,7 @@ export function EventList() {
       name: 'Ponce City Market',
       location: 'Atlanta, GA',
       image: require('./ponce.png'),
+      lImage: require('./poncel.png'),
       startDate: 'Tue, June 21 ',
       endDate: 'Sun, June 26',
       startTime: '6:00',
@@ -43,9 +45,9 @@ export function EventList() {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
+    height: '100%',
     display: 'flex',
     alignItems: 'center',
-    marginTop: 60,
   },
   main: {
     height: '100%',

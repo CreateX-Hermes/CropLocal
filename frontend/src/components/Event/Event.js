@@ -43,58 +43,57 @@ export const Event = (props) => {
   );
 };
 const styles = StyleSheet.create({
-  nav: {
-    backgroundColor: 'transparent',
-  },
-  container: {
-    width: '100%',
-    height: 250,
-    borderRadius: '20',
-    marginTop: 30,
-  },
-  label: {
-    width: 25,
-    height: 25,
-  },
-  stand: {
-    width: 25,
-    height: 30,
-  },
-  row: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  event: {
-    height: 125,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-  },
-  icon: {
-    width: 10,
-    height: 16,
-  },
-  header: {
-    marginTop: 50,
-    marginLeft: 25,
-    position: 'absolute',
-  },
-  location: {
-    display: 'flex',
-    flexDirection: 'row',
-    marginTop: 5,
-  },
-  locationName: {
-    color: 'white',
-    fontSize: 15,
-    fontWeight: 500,
-    marginLeft: 5,
-  },
-  name: {
-    color: 'white',
-    fontWeight: 500,
-    fontSize: 20,
-  },
-
+    nav: {
+        backgroundColor: 'transparent'
+    },
+    container: {
+        width: '100%',
+        height: 250,
+        borderRadius: '20',
+        marginTop: 30
+    },
+    label: {
+        width: 25,
+        height: 25
+    },
+    stand: {
+        width: 25,
+        height: 30
+    },
+    row: {
+        display: 'flex',
+        flexDirection: 'row'
+    },
+    event: {
+        height: 125,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20
+    },
+    icon: {
+        width: 10,
+        height: 16
+    },
+    header: {
+        marginTop: 50,
+        marginLeft: 25,
+        position: 'absolute',
+    },
+    location: {
+        display: 'flex',
+        flexDirection: 'row',
+        marginTop: 5
+    },
+    locationName: {
+        color: 'white',
+        fontSize: 15,
+        fontWeight: 500,
+        marginLeft: 5
+    },
+    name: {
+        color: 'white',
+        fontWeight: 500,
+        fontSize: 20,
+    },
   content: {
     width: '100%',
     height: 125,
