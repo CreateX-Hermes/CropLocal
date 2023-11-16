@@ -73,71 +73,76 @@ function SellerTwo({ route }) {
           >
             <Image
               source={require('../../assets/left.png')}
-              style={{ width: '70%', resizeMode: 'contain' }}
+              style={{ width: '100%', resizeMode: 'contain' }}
             />
           </NavigationButton>
         </View>
+        <View style={{ height: '92%', zIndex: -2 }}>
+          <ScrollView
+            style={{ paddingTop: '14%', zIndex: -2, flexDirection: 'column', height: '50%' }}
+          >
+            <View style={{ paddingBottom: 60 }}>
+              <Text style={styles.text8}>Create Your Stand</Text>
 
-        <ScrollView style={{ paddingTop: '14%', zIndex: -2, flexDirection: 'column' }}>
-          <Text style={styles.text8}>Create Your Stand</Text>
+              <Text style={styles.text11}>Stand Name</Text>
+              <TextInput
+                style={styles.input}
+                value={formData.standName}
+                onChangeText={(text) => setFormData({ ...formData, standName: text })}
+                placeholder={`${userInformation.firstName}'s Stand`}
+                placeholderTextColor={Colors.DARK_GRAY}
+              />
 
-          <Text style={styles.text11}>Stand Name</Text>
-          <TextInput
-            style={styles.input}
-            value={formData.standName}
-            onChangeText={(text) => setFormData({ ...formData, standName: text })}
-            placeholder={`${userInformation.firstName}'s Stand`}
-            placeholderTextColor={Colors.DARK_GRAY}
-          />
+              <Text style={styles.text13}>Stand Description</Text>
+              <TextInput
+                style={styles.inputTwo}
+                value={formData.description}
+                onChangeText={(text) => setFormData({ ...formData, description: text })}
+                placeholder={`Hi, this is ${userInformation.firstName}'s Stand`}
+                placeholderTextColor={Colors.DARK_GRAY}
+                multiline
+              />
 
-          <Text style={styles.text13}>Stand Description</Text>
-          <TextInput
-            style={styles.inputTwo}
-            value={formData.description}
-            onChangeText={(text) => setFormData({ ...formData, description: text })}
-            placeholder={`Hi, this is ${userInformation.firstName}'s Stand`}
-            placeholderTextColor={Colors.DARK_GRAY}
-            multiline
-          />
+              <Text style={styles.text11}>Number of Items</Text>
 
-          <Text style={styles.text11}>Number of Items</Text>
+              <Text style={styles.text6}>(Optional)</Text>
 
-          <Text style={styles.text6}>(Optional)</Text>
+              <View style={{ flexDirection: 'row' }}>
+                <TouchableOpacity
+                  onPress={() => incrementItemCount(-1)}
+                  style={{
+                    backgroundColor: '#F5F5F5',
+                    borderRadius: 100,
+                    marginTop: '7%',
+                    justifyContent: 'center',
+                    paddingVertical: '2%',
+                    paddingHorizontal: '2%',
+                    marginLeft: '8%',
+                  }}
+                >
+                  <Image source={require('../../assets/minus.png')} style={styles.text14} />
+                </TouchableOpacity>
 
-          <View style={{ flexDirection: 'row' }}>
-            <TouchableOpacity
-              onPress={() => incrementItemCount(-1)}
-              style={{
-                backgroundColor: '#F5F5F5',
-                borderRadius: 100,
-                marginTop: '7%',
-                justifyContent: 'center',
-                paddingVertical: '2%',
-                paddingHorizontal: '2%',
-                marginLeft: '8%',
-              }}
-            >
-              <Image source={require('../../assets/minus.png')} style={styles.text14} />
-            </TouchableOpacity>
+                <Text style={styles.text20}>{itemCount}</Text>
 
-            <Text style={styles.text20}>{itemCount}</Text>
-
-            <TouchableOpacity
-              onPress={() => incrementItemCount(1)}
-              style={{
-                backgroundColor: '#F5F5F5',
-                borderRadius: 100,
-                marginTop: '7%',
-                justifyContent: 'center',
-                paddingVertical: '2.8%',
-                paddingHorizontal: '2.8%',
-              }}
-            >
-              <Image source={require('../../assets/add.png')} style={styles.text14} />
-            </TouchableOpacity>
-          </View>
-          {stockList.map((prev) => prev)}
-        </ScrollView>
+                <TouchableOpacity
+                  onPress={() => incrementItemCount(1)}
+                  style={{
+                    backgroundColor: '#F5F5F5',
+                    borderRadius: 100,
+                    marginTop: '7%',
+                    justifyContent: 'center',
+                    paddingVertical: '2.8%',
+                    paddingHorizontal: '2.8%',
+                  }}
+                >
+                  <Image source={require('../../assets/add.png')} style={styles.text14} />
+                </TouchableOpacity>
+              </View>
+              {stockList.map((prev) => prev)}
+            </View>
+          </ScrollView>
+        </View>
 
         <View
           style={{

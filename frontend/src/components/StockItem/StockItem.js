@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import { Colors } from '../../Styles';
 import * as ImagePicker from 'expo-image-picker';
+import { Divider } from 'react-native-paper';
 
 export function StockItem(props) {
   const images = [];
@@ -15,37 +16,56 @@ export function StockItem(props) {
 
   const [stockImages, setStockImages] = React.useState([]);
 
-  const removeImage = (uri) => {
-    
-  }
+  const removeItem = (uri) => {
+    setStockImages((prev) => {
+      const newArr = [
+        ...prev.filter((val) => {
+          if (val.id === uri) {
+            return false;
+          }
+          return true;
+        }),
+      ];
+      return newArr;
+    });
+  };
+
   const pickImage = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
-      aspect: [3, 3],
+      aspect: [3, 2],
       quality: 1,
     });
     if (!result.canceled) {
       setStockImages((prev) => {
         return [
           ...prev,
-          <View id={result.assets[0].uri}>
-            <Image source={{ uri: result.assets[0].uri }} style={newItemStyles.image} />
-            <TouchableOpacity
-              style={{
-                backgroundColor: '#F5F5F5',
-                paddingHorizontal: 5,
-                width: '20%',
-                borderRadius: 100,
-                position: 'absolute',
-                left: 5,
-                top: 5,
-              }}
-              onPress={() => removeImage(result.assets[0].uri)}
-            >
-              <Image source={require('../../assets/minus.png')} style={{ width: 20, height: 20, alignSelf: 'center', }} />
-            </TouchableOpacity>
-          </View>,
+          {
+            id: result.assets[0].uri,
+            view: (
+              <View id={result.assets[0].uri}>
+                <Image source={{ uri: result.assets[0].uri }} style={newItemStyles.image} />
+                <TouchableOpacity
+                  style={{
+                    backgroundColor: '#F5F5F5',
+                    paddingHorizontal: 5,
+                    width: '20%',
+                    borderRadius: 100,
+                    position: 'absolute',
+                    left: 5,
+                    top: 5,
+                  }}
+                  onPress={() => removeItem(result.assets[0].uri)}
+                >
+                  <Image
+                    source={require('../../assets/minus.png')}
+                    style={{ width: 20, height: 20, alignSelf: 'center' }}
+                  />
+                </TouchableOpacity>
+              </View>
+            ),
+          },
         ];
       });
     }
@@ -85,8 +105,22 @@ export function StockItem(props) {
           <Text style={{ alignSelf: 'center' }}>Add Pictures</Text>
         </TouchableOpacity>
         <ScrollView style={newItemStyles.images} horizontal>
-          {stockImages}
+          {stockImages.map((curr) => curr.view)}
         </ScrollView>
+        <TextInput
+          style={newItemStyles.description}
+          multiline
+          placeholder={'Description'}
+          textAlign={'left'}
+        />
+        <Divider
+          style={{
+            width: '100%',
+            alignSelf: 'center',
+            marginTop: '5%',
+            paddingTop: '0.3%',
+          }}
+        />
       </View>
     );
   }
@@ -180,12 +214,21 @@ const newItemStyles = StyleSheet.create({
     borderRadius: 100,
   },
   images: {
-    marginTop: '5%',
+    marginVertical: '5%',
   },
   image: {
     width: 179,
     height: 121,
     marginRight: 10,
     borderRadius: 10,
+  },
+  description: {
+    backgroundColor: '#F5F5F5',
+    textAlign: 'center',
+    color: 'black',
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    minHeight: 50,
   },
 });
